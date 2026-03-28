@@ -24,6 +24,11 @@ h1{
     font-family: "New-Yorker", sans-serif;
 }
 
+#form-button{
+    background-color: lightgray;
+    padding: .5rem 1rem;
+    border-radius: 8px;
+}
 footer{
     color: var(--color);
     background-color: var(--background-color);
