@@ -1,5 +1,23 @@
 :root{
-    color: black;
-    background-color: white;
+    --color: black;
+    --background-color: white;
+    --body-copy: 1rem;
+    --heading-copy: 2rem;
+    --gutter: 2rem
+}
 
+body{
+    color: var(--background-color);
+    color: var(--color);
+    font-size: var(--body-copy);
+}
+
+h1{
+    font-size: 3rem;
+}
+
+footer{
+    color: var(--color);
+    background-color: var(--background-color);
+    padding-inline: var(--gutter);
 }
