@@ -22,10 +22,24 @@ userForm.addEventListener("submit", (event) => {
 let renderItems = (data, cuisineSelection) => {
   // The `ul` where the items will be inserted.
   let dataList = document.getElementById("selected-restaurant");
-  const selectedRestaurant = data.filter(
+  const filteredRestaurants = data.filter(
     (restaurant) => restaurant.Cuisine.toLowerCase() === cuisineSelection,
   );
-  console.log(selectedRestaurant);
+  console.log(filteredRestaurants);
+
+  // Source - https://stackoverflow.com/a/4550514
+// Posted by Jacob Relkin, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-03-28, License - CC BY-SA 4.0
+
+const selectedRestaurant = filteredRestaurants[Math.floor(Math.random() * filteredRestaurants.length)];
+
+let listItem = `
+				<li class="restaurant-card">
+					<h2>${selectedRestaurant.Restaurant}</h2>
+				</li>
+			`;
+
+    dataList.insertAdjacentHTML("beforeend", listItem); // Add it to the `ul`!
 
   return;
   // Loop through each item in the data array:
