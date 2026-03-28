@@ -1,0 +1,56 @@
+[
+  {
+    "Cuisine": "Moroccan",
+    "Restaurant": "Dar Lbahja",
+    "Dish": "Lamb Tagine",
+    "Dish Type": "tagine / stew",
+    "Price": "$$",
+    "Location": "Astoria, Queens",
+    "Description": "Slow-braised lamb with warm spices, tender and deeply aromatic, layered with sweetness and richness in every bite."
+  },
+  {
+    "Cuisine": "Egyptian",
+    "Restaurant": "Mum Feteer",
+    "Dish": "Beef Feteer",
+    "Dish Type": "pastry / shared plates",
+    "Price": "$$",
+    "Location": "Astoria, Queens",
+    "Description": "A layered pastry enjoyed both sweet and savory, here featuring a spiced beef filling, crisp, rich and filling"
+  },
+  {
+    "Cuisine": "Palestinian",
+    "Restaurant": "Ayat",
+    "Dish": "Mansaf",
+    "Dish Type": "stew / rice dish",
+    "Price": "$$$",
+    "Location": "Multiple Locations, NYC",
+    "Description": "Tender lamb served over rice and soaked in a warm, tangy yogurt sauce, rich, fragrant, and meant to be shared"
+  },
+  {
+    "Cuisine": "Yemeni",
+    "Restaurant": "Alshaybani",
+    "Dish": "Mandi",
+    "Dish Type": "rice dish",
+    "Price": "$$",
+    "Location": "Bay Ridge, Brooklyn",
+    "Description": "Lamb layered over aromatic rice, infused with warm spices and a subtle smokiness"
+  },
+  {
+    "Cuisine": "Lebanese",
+    "Restaurant": "Au Za'atar",
+    "Dish": "Shorba",
+    "Dish Type": "soup",
+    "Price": "$",
+    "Location": "Midtown, Manhattan",
+    "Description": "A warm, comforting soup offered in several variations, from red lentil to chicken or beef, simple, nourishing, and deeply familiar."
+  },
+  {
+    "Cuisine": "Syrian",
+    "Restaurant": "Laila",
+    "Dish": "Toshkah Sujok",
+    "Dish Type": "bread / pastry",
+    "Price": "$",
+    "Location": "Bay Ridge, Brooklyn",
+    "Description": "Pita bread stuffed with sujok, tomato and cheese"
+  }
+]

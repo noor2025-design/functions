@@ -12,8 +12,16 @@ body{
     font-size: var(--body-copy);
 }
 
+@font-face {
+font-family: "New-Yorker";
+src: url('../fonts/new-yorker-6Y46.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
 h1{
     font-size: 3rem;
+    font-family: "New-Yorker", sans-serif;
 }
 
 footer{
