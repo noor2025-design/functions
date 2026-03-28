@@ -29,3 +29,15 @@ footer{
     background-color: var(--background-color);
     padding-inline: var(--gutter);
 }
+
+/* Media Query for small desktops */
+/* I pulled these key breakpoints from https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
+@media (width >= 769px) {
+
+}
+/* Media Query for large desktops */
+/* I pulled these key breakpoints from https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
+@media (width >= 1025px) {
+
+
+}
