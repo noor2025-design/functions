@@ -54,7 +54,6 @@ if (filteredPrices.length === 0) {
                     <p>${selectedRestaurant.location}</p>
                     <p>${selectedRestaurant.price}</p>
                     <p>${selectedRestaurant.description}</p>
-
 				</li>
 			`;
 
