@@ -25,10 +25,10 @@ let renderItems = (data, cuisineSelection, priceSelection) => {
   // The `ul` where the items will be inserted.
   let dataList = document.getElementById("selected-restaurant");
   const filteredCuisines = data.filter(
-    (restaurant) => restaurant.Cuisine.toLowerCase() === cuisineSelection,
+    (restaurant) => restaurant.cuisine === cuisineSelection,
   );
   const filteredPrices = filteredCuisines.filter(
-    (restaurant) => restaurant.Price === priceSelection,
+    (restaurant) => restaurant.price === priceSelection,
   );
 
   // Source - https://stackoverflow.com/a/4550514
@@ -47,11 +47,10 @@ if (filteredPrices.length === 0) {
 
   let listItem = `
 				<li class="restaurant-card">
-					<h2>${selectedRestaurant.Restaurant}</h2>
-                    <p>${selectedRestaurant.Dish} </p>
+					<h2>${selectedRestaurant.restaurant}</h2>
+                    <p>${selectedRestaurant.dish} </p>
 				</li>
 			`;
 
   dataList.insertAdjacentHTML("beforeend", listItem); // Add it to the `ul`!
-
 }
