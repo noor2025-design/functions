@@ -22,40 +22,57 @@ userForm.addEventListener("submit", (event) => {
 
 // Function to render your items.
 let renderItems = (data, cuisineSelection, priceSelection) => {
+  if (priceSelection === "" && cuisineSelection === "") {
+    console.log("empty");
+
+    return;
+  }
   // The `ul` where the items will be inserted.
   let dataList = document.getElementById("selected-restaurant");
-  const filteredCuisines = data.filter(
-    (restaurant) => restaurant.cuisine === cuisineSelection,
-  );
-  const filteredPrices = filteredCuisines.filter(
-    (restaurant) => restaurant.price === priceSelection,
-  );
+  let filteredCuisines;
+  let filteredPrices;
+  //   let filteredRestaurants = data;
+
+  console.log(cuisineSelection);
+
+  if (cuisineSelection !== "") {
+    filteredCuisines = data.filter(
+      (restaurant) => restaurant.cuisine === cuisineSelection,
+    );
+  }
+  if (priceSelection !== "" && cuisineSelection !== "") {
+    filteredPrices = filteredCuisines.filter(
+      (restaurant) => restaurant.price === priceSelection,
+    );
+  } else if (priceSelection !== "" && cuisineSelection === "") {
+    filteredPrices = data.filter(
+      (restaurant) => restaurant.price === priceSelection,
+    );
+  }
 
   // Source - https://stackoverflow.com/a/4550514
   // Posted by Jacob Relkin, modified by community. See post 'Timeline' for change history
   // Retrieved 2026-03-28, License - CC BY-SA 4.0
-
   let selectedRestaurant;
-if (filteredPrices.length === 0) {
-      selectedRestaurant =
-     filteredCuisines[Math.floor(Math.random() * filteredCuisines.length)];
-} else {
-    
+  if (priceSelection !== "" && filteredPrices.length !== 0) {
     selectedRestaurant =
-     filteredPrices[Math.floor(Math.random() * filteredPrices.length)];
-}
+      filteredPrices[Math.floor(Math.random() * filteredPrices.length)];
+  } else {
+    selectedRestaurant =
+      filteredCuisines[Math.floor(Math.random() * filteredCuisines.length)];
+  }
 
   let listItem = `
 				<li class="restaurant-card">
 					<h2>${selectedRestaurant.restaurant}</h2>
                     <p>${selectedRestaurant.dish}</p>
-                    <p>${selectedRestaurant.dish type}</p>
-                    <p>${selectedRestaurant.cuisine}</p>
+                    <p>${selectedRestaurant.dishType}</p>
                     <p>${selectedRestaurant.location}</p>
-                    <p>${selectedRestaurant.price}</p>
                     <p>${selectedRestaurant.description}</p>
-				</li>
-			`;
+                    </li>
+                    `;
 
+  // <p>${selectedRestaurant.price}</p>
+  // <p>${selectedRestaurant.cuisine}</p>
   dataList.insertAdjacentHTML("beforeend", listItem); // Add it to the `ul`!
-}
+};

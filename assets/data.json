@@ -3,7 +3,7 @@
     "cuisine": "moroccan",
     "restaurant": "dar lbahja",
     "dish": "lamb tagine",
-    "dish type": "tagine / stew",
+    "dishType": "tagine / stew",
     "price": "$$",
     "location": "astoria, queens",
     "description": "slow-braised lamb with warm spices, tender and deeply aromatic, layered with sweetness and richness in every bite."
@@ -12,7 +12,7 @@
     "cuisine": "egyptian",
     "restaurant": "mum feteer",
     "dish": "beef feteer",
-    "dish type": "pastry / shared plates",
+    "dishType": "pastry / shared plates",
     "price": "$$",
     "location": "astoria, queens",
     "description": "a layered pastry enjoyed both sweet and savory, here featuring a spiced beef filling, crisp, rich and filling"
@@ -21,7 +21,7 @@
     "cuisine": "palestinian",
     "restaurant": "ayat",
     "dish": "mansaf",
-    "dish type": "stew / rice dish",
+    "dishType": "stew / rice dish",
     "price": "$$$",
     "location": "multiple locations, nyc",
     "description": "tender lamb served over rice and soaked in a warm, tangy yogurt sauce, rich, fragrant, and meant to be shared"
@@ -30,7 +30,7 @@
     "cuisine": "yemeni",
     "restaurant": "alshaybani",
     "dish": "mandi",
-    "dish type": "rice dish",
+    "dishType": "rice dish",
     "price": "$$",
     "location": "bay ridge, brooklyn",
     "description": "lamb layered over aromatic rice, infused with warm spices and a subtle smokiness"
@@ -39,7 +39,7 @@
     "cuisine": "lebanese",
     "restaurant": "au za'atar",
     "dish": "shorba",
-    "dish type": "soup",
+    "dishType": "soup",
     "price": "$",
     "location": "midtown, manhattan",
     "description": "a warm, comforting soup offered in several variations, from red lentil to chicken or beef, simple, nourishing, and deeply familiar."
@@ -48,7 +48,7 @@
     "cuisine": "syrian",
     "restaurant": "laila",
     "dish": "toshkah sujok",
-    "dish type": "bread / pastry",
+    "dishType": "bread / pastry",
     "price": "$",
     "location": "bay ridge, brooklyn",
     "description": "pita bread stuffed with sujok, tomato and cheese"
