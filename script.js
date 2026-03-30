@@ -28,7 +28,7 @@ let renderItems = (data, cuisineSelection, priceSelection) => {
     return;
   }
   // The `ul` where the items will be inserted.
-  let dataList = document.getElementById("selected-restaurant");
+  let dataList = document.querySelector("#selected-restaurant ul");
   let filteredCuisines;
   let filteredPrices;
   //   let filteredRestaurants = data;
