@@ -48,7 +48,13 @@ if (filteredPrices.length === 0) {
   let listItem = `
 				<li class="restaurant-card">
 					<h2>${selectedRestaurant.restaurant}</h2>
-                    <p>${selectedRestaurant.dish} </p>
+                    <p>${selectedRestaurant.dish}</p>
+                    <p>${selectedRestaurant.dish type}</p>
+                    <p>${selectedRestaurant.cuisine}</p>
+                    <p>${selectedRestaurant.location}</p>
+                    <p>${selectedRestaurant.price}</p>
+                    <p>${selectedRestaurant.description}</p>
+
 				</li>
 			`;
 
