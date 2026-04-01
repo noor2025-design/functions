@@ -1,5 +1,5 @@
 const userForm = document.getElementById("user-form");
-
+// The page was refreshing every time I hit submit and cleared the results. I found event.preventDefault() to stop this behavior and it tells the browser to ignore the browser behavior and listen to javascript from this reference https://www.tutorialspoint.com/article/how-to-stop-refreshing-the-page-on-submit-in-javascript.
 userForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const cuisineSelect = document.getElementById("cuisine-select");
@@ -7,8 +7,9 @@ userForm.addEventListener("submit", (event) => {
 
   const cuisineSelection = cuisineSelect.value;
   const priceSelection = priceSelect.value;
-  console.log(cuisineSelection);
-  //    add restaurant and dish suggestion to the page based on cuisine selection
+// I needed to capture the users dropdown selections to pass into my function . I learend from this post that U could use getElementById to grab the dropdown and .value to get the selected option, then store each for cuisine and price from stack overflow https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript.
+  //   console.log(cuisineSelection);
+  // add restaurant and dish suggestion to the page based on cuisine selection
 
   // Fetch gets your (local) JSON file…
   // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
@@ -23,17 +24,19 @@ userForm.addEventListener("submit", (event) => {
 // Function to render your items.
 let renderItems = (data, cuisineSelection, priceSelection) => {
   if (priceSelection === "" && cuisineSelection === "") {
-    console.log("empty");
+    // console.log("empty");
 
     return;
   }
+//   I noticed the site was still populating results when hitting submit without selecting anything. The return is used inside the function if both fields are empty and found this from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return.
+
   // The `ul` where the items will be inserted.
   let dataList = document.querySelector("#selected-restaurant ul");
   let filteredCuisines;
   let filteredPrices;
   //   let filteredRestaurants = data;
 
-  console.log(cuisineSelection);
+//   console.log(cuisineSelection);
 
   if (cuisineSelection !== "") {
     filteredCuisines = data.filter(
@@ -50,9 +53,8 @@ let renderItems = (data, cuisineSelection, priceSelection) => {
     );
   }
 
-  // Source - https://stackoverflow.com/a/4550514
-  // Posted by Jacob Relkin, modified by community. See post 'Timeline' for change history
-  // Retrieved 2026-03-28, License - CC BY-SA 4.0
+  // I wanted the results to randomly select a different restuarant each time so the site doesnt push out the same resturants when I add more resturants to my json file.  I reviewed this article from stack overflow (https://stackoverflow.com/a/4550514) and a tutor explained it more clearly. The Math.random () generates a decimal number and multiplies it by the array length and Math.floor () rounds it down to a whole number because as I add more restuarants then the array will become longer so filteredPrices.length and filteredCuisines.length will grow. The Math.random is multiplied by however many resturants is in the data.  
+  
   let selectedRestaurant;
   if (priceSelection !== "" && filteredPrices.length !== 0) {
     selectedRestaurant =
