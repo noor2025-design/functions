@@ -16,7 +16,7 @@ body{
 
 @font-face {
 font-family: "New-Yorker";
-src: url('../fonts/New-Yorker-6Y46.ttf') format('truetype');
+src: url('./fonts/New-Yorker-6Y46.ttf') format('truetype');
 font-weight: normal;
 font-style: normal;
 }
