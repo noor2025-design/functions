@@ -1,56 +1,56 @@
 [
   {
-    "cuisine": "moroccan",
-    "restaurant": "dar lbahja",
-    "dish": "lamb tagine",
-    "dishType": "tagine / stew",
+    "cuisine": "Moroccan",
+    "restaurant": "Dar Lbahja",
+    "dish": "Lamb Tagine",
+    "dishType": "Tagine / Stew",
     "price": "$$",
-    "location": "astoria, queens",
-    "description": "slow-braised lamb with warm spices, tender and deeply aromatic, layered with sweetness and richness in every bite."
+    "location": "Astoria, Queens",
+    "description": "Slow-braised lamb with warm spices, tender and deeply aromatic, layered with sweetness and richness in every bite."
   },
   {
-    "cuisine": "egyptian",
-    "restaurant": "mum feteer",
-    "dish": "beef feteer",
-    "dishType": "pastry / shared plates",
+    "cuisine": "Egyptian",
+    "restaurant": "Mum Feteer",
+    "dish": "Beef Feteer",
+    "dishType": "Pastry / Shared plates",
     "price": "$$",
-    "location": "astoria, queens",
-    "description": "a layered pastry enjoyed both sweet and savory, here featuring a spiced beef filling, crisp, rich and filling"
+    "location": "Astoria, Queens",
+    "description": "A layered pastry enjoyed both sweet and savory, here featuring a spiced beef filling, crisp, rich and filling."
   },
   {
-    "cuisine": "palestinian",
-    "restaurant": "ayat",
-    "dish": "mansaf",
-    "dishType": "stew / rice dish",
+    "cuisine": "Palestinian",
+    "restaurant": "Ayat",
+    "dish": "Mansaf",
+    "dishType": "Stew / Rice Dish",
     "price": "$$$",
-    "location": "multiple locations, nyc",
-    "description": "tender lamb served over rice and soaked in a warm, tangy yogurt sauce, rich, fragrant, and meant to be shared"
+    "location": "Multiple Locations, NYC",
+    "description": "Tender lamb served over rice and soaked in a warm, tangy yogurt sauce, rich, fragrant, and meant to be shared."
   },
   {
-    "cuisine": "yemeni",
-    "restaurant": "alshaybani",
-    "dish": "mandi",
-    "dishType": "rice dish",
+    "cuisine": "Yemeni",
+    "restaurant": "Alshaybani",
+    "dish": "Mandi",
+    "dishType": "Rice Dish",
     "price": "$$",
-    "location": "bay ridge, brooklyn",
-    "description": "lamb layered over aromatic rice, infused with warm spices and a subtle smokiness"
+    "location": "Bay Ridge, Brooklyn",
+    "description": "Lamb layered over aromatic rice, infused with warm spices and a subtle smokiness."
   },
   {
-    "cuisine": "lebanese",
-    "restaurant": "au za'atar",
-    "dish": "shorba",
-    "dishType": "soup",
+    "cuisine": "Lebanese",
+    "restaurant": "Au Za'atar",
+    "dish": "Shorba",
+    "dishType": "Soup",
     "price": "$",
-    "location": "midtown, manhattan",
-    "description": "a warm, comforting soup offered in several variations, from red lentil to chicken or beef, simple, nourishing, and deeply familiar."
+    "location": "Midtown, Manhattan",
+    "description": "A warm, comforting soup offered in several variations, from red lentil to chicken or beef, simple, nourishing, and deeply familiar."
   },
   {
-    "cuisine": "syrian",
-    "restaurant": "laila",
-    "dish": "toshkah sujok",
-    "dishType": "bread / pastry",
+    "cuisine": "Syrian",
+    "restaurant": "Laila",
+    "dish": "Toshkah Sujok",
+    "dishType": "Bread / Pastry",
     "price": "$",
-    "location": "bay ridge, brooklyn",
-    "description": "pita bread stuffed with sujok, tomato and cheese"
+    "location": "Bay Ridge, Brooklyn",
+    "description": "Pita bread stuffed with sujok, tomato and cheese."
   }
 ]
