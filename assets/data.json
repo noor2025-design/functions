@@ -6,7 +6,8 @@
     "dishType": "Tagine / Stew",
     "price": "$$",
     "location": "Astoria, Queens",
-    "description": "Slow-braised lamb with warm spices, tender and deeply aromatic, layered with sweetness and richness in every bite."
+    "description": "Slow-braised lamb with warm spices, tender and deeply aromatic, layered with sweetness and richness in every bite.",
+    "address": "25-48 Steinway St, Astoria, NY 11103"
   },
   {
     "cuisine": "Egyptian",
@@ -15,7 +16,8 @@
     "dishType": "Pastry / Shared plates",
     "price": "$$",
     "location": "Astoria, Queens",
-    "description": "A layered pastry enjoyed both sweet and savory, here featuring a spiced beef filling, crisp, rich and filling."
+    "description": "A layered pastry enjoyed both sweet and savory, here featuring a spiced beef filling, crisp, rich and filling.",
+    "address": ""
   },
   {
     "cuisine": "Palestinian",
@@ -24,7 +26,8 @@
     "dishType": "Stew / Rice Dish",
     "price": "$$$",
     "location": "Multiple Locations, NYC",
-    "description": "Tender lamb served over rice and soaked in a warm, tangy yogurt sauce, rich, fragrant, and meant to be shared."
+    "description": "Tender lamb served over rice and soaked in a warm, tangy yogurt sauce, rich, fragrant, and meant to be shared.",
+     "address": ""
   },
   {
     "cuisine": "Yemeni",
@@ -33,7 +36,8 @@
     "dishType": "Rice Dish",
     "price": "$$",
     "location": "Bay Ridge, Brooklyn",
-    "description": "Lamb layered over aromatic rice, infused with warm spices and a subtle smokiness."
+    "description": "Lamb layered over aromatic rice, infused with warm spices and a subtle smokiness.",
+     "address": ""
   },
   {
     "cuisine": "Lebanese",
@@ -42,7 +46,8 @@
     "dishType": "Soup",
     "price": "$",
     "location": "Midtown, Manhattan",
-    "description": "A warm, comforting soup offered in several variations, from red lentil to chicken or beef, simple, nourishing, and deeply familiar."
+    "description": "A warm, comforting soup offered in several variations, from red lentil to chicken or beef, simple, nourishing, and deeply familiar.",
+     "address": ""
   },
   {
     "cuisine": "Syrian",
@@ -51,6 +56,8 @@
     "dishType": "Bread / Pastry",
     "price": "$",
     "location": "Bay Ridge, Brooklyn",
-    "description": "Pita bread stuffed with sujok, tomato and cheese."
+    "description": "Pita bread stuffed with sujok, tomato and cheese.",
+     "address": ""
   }
 ]
+
