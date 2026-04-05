@@ -38,9 +38,10 @@ let renderItems = (data, cuisineSelection, priceSelection) => {
 
 //   console.log(cuisineSelection);
 
+// https://www.w3schools.com/jsref/jsref_tolowercase.asp
   if (cuisineSelection !== "") {
     filteredCuisines = data.filter(
-      (restaurant) => restaurant.cuisine === cuisineSelection,
+      (restaurant) => restaurant.cuisine.toLowerCase() === cuisineSelection,
     );
   }
   if (priceSelection !== "" && cuisineSelection !== "") {
@@ -76,5 +77,7 @@ let renderItems = (data, cuisineSelection, priceSelection) => {
 
   // <p>${selectedRestaurant.price}</p>
   // <p>${selectedRestaurant.cuisine}</p>
+  // https://stackoverflow.com/questions/3450593/how-do-i-clear-the-content-of-a-div-using-javascript, https://www.w3schools.com/jsref/prop_html_innerhtml.asp
+  dataList.innerHTML = "";
   dataList.insertAdjacentHTML("beforeend", listItem); // Add it to the `ul`!
 };
