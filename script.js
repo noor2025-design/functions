@@ -63,7 +63,6 @@ let renderItems = (data, cuisineSelection, priceSelection) => {
   }
 
   // I wanted the results to randomly select a different restuarant each time so the site doesnt push out the same resturants when I add more resturants to my json file.  I reviewed this article from stack overflow (https://stackoverflow.com/a/4550514) and a tutor explained it more clearly. The Math.random () generates a decimal number and multiplies it by the array length and Math.floor () rounds it down to a whole number because as I add more restuarants then the array will become longer so filteredPrices.length and filteredCuisines.length will grow. The Math.random is multiplied by however many resturants is in the data.
-
   let selectedRestaurant;
   if (priceSelection !== "" && filteredPrices.length !== 0) {
     selectedRestaurant =

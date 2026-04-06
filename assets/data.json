@@ -7,7 +7,8 @@
     "price": "$$",
     "location": "Astoria, Queens",
     "description": "Slow-braised lamb with warm spices, tender and deeply aromatic, layered with sweetness and richness in every bite.",
-    "address": "25-48 Steinway St, Astoria, NY 11103"
+    "address": "47-12 30th Ave., Astoria, NY 11103",
+    "hours of operation": "Wed-Sun 12:00pm-10:00pm"
   },
   {
     "cuisine": "Egyptian",
@@ -17,7 +18,8 @@
     "price": "$$",
     "location": "Astoria, Queens",
     "description": "A layered pastry enjoyed both sweet and savory, here featuring a spiced beef filling, crisp, rich and filling.",
-    "address": ""
+    "address": "25-48 Steinway St, Astoria, NY 11103",
+    "hours of operation": "Tues-Sun 2:00pm-11:30pm"
   },
   {
     "cuisine": "Palestinian",
@@ -27,7 +29,8 @@
     "price": "$$$",
     "location": "Multiple Locations, NYC",
     "description": "Tender lamb served over rice and soaked in a warm, tangy yogurt sauce, rich, fragrant, and meant to be shared.",
-     "address": ""
+    "address": "33-25 Crescent St, Astoria, NY 11106, 8504 3rd Ave, Brooklyn, NY 11209,242 knickerbocker ave, Brooklyn, NY 11237,1616 Cortelyou Rd, Brooklyn, NY 11226,274 36th St, Brooklyn, NY 11232,107 Loisaida Ave, New York, NY 10009,941 Amsterdam Ave, New York, NY 10025,2018 Hylan Blvd, Staten Island, NY 10306",
+    "hours of operation": "Varies by location"
   },
   {
     "cuisine": "Yemeni",
@@ -37,7 +40,8 @@
     "price": "$$",
     "location": "Bay Ridge, Brooklyn",
     "description": "Lamb layered over aromatic rice, infused with warm spices and a subtle smokiness.",
-     "address": ""
+     "address": "7316 3rd Ave, Brooklyn, NY 11209",
+     "hours of operation":"Mon-Sun 10am-11:00pm"
   },
   {
     "cuisine": "Lebanese",
@@ -47,7 +51,8 @@
     "price": "$",
     "location": "Midtown, Manhattan",
     "description": "A warm, comforting soup offered in several variations, from red lentil to chicken or beef, simple, nourishing, and deeply familiar.",
-     "address": ""
+     "address": "1063 1st Ave, New York, NY 10022",
+     "hours of operation": "Mon-Sun 10am-2:00am"
   },
   {
     "cuisine": "Syrian",
@@ -57,7 +62,8 @@
     "price": "$",
     "location": "Bay Ridge, Brooklyn",
     "description": "Pita bread stuffed with sujok, tomato and cheese.",
-     "address": ""
+    "address": "8530 3rd Ave, Brooklyn, NY 11209",
+    "hours of operation": "Mon-Thurs 12-11pm, Fri-Sat 12pm-12am, Sun 12pm-10pm"
   }
 ]
 
