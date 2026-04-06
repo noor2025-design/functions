@@ -36,15 +36,30 @@
             <option value="lebanese">Lebanese</option>
             <option value="syrian">Syrian</option>
           </select>
-          <label for="price-select">Select a Cuisine Type:</label>
+          <!-- <label for="price-select">Select a Price Range:</label>
           <select name="price" id="price-select">
             <option value="">--Select a Price Range--</option>
             <option value="$">$</option>
             <option value="$$">$$</option>
             <option value="$$$">$$$</option>
-          </select>
+          </select> -->
+          
+          <!-- https://www.w3schools.com/tags/att_input_type_radio.asp -->
+          <div>
+            <p>Select a Price Range:</p>
+          <input type="radio" name="price" value="$" id="low-price" class="price-input">
+          <label for="low-price">$</label>
+          <input type="radio" name="price" value="$$" id="mid-price" class="price-input">
+           <label for="mid-price">$$</label>
+          <input type="radio" name="price" value="$$$" id="high-price" class="price-input">
+           <label for="high-price">$$$</label>
+            <input type="radio" name="price" value="" id="any-price" class="price-input" checked>
+           <label for="any-price">Any Price</label>
+           </div>
           <button id="form-button" type="submit">Submit</button>
+          <!-- https://www.geeksforgeeks.org/javascript/how-to-get-value-of-selected-radio-button-using-javascript/ -->
         </form>
+        
       </section>
       <section id="selected-restaurant">
         <ul></ul>

@@ -3,10 +3,18 @@ const userForm = document.getElementById("user-form");
 userForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const cuisineSelect = document.getElementById("cuisine-select");
-  const priceSelect = document.getElementById("price-select");
+  // const priceSelect = document.getElementById("price-select");
+
+// https://dev.to/rayan2228/the-ultimate-css-selectors-cheat-sheet-2025-45ep, https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/
+
+  const priceRadioInput = document.querySelector(".price-input:checked");
+  console.log(priceRadioInput);
+  console.log(priceRadioInput.checked);
 
   const cuisineSelection = cuisineSelect.value;
-  const priceSelection = priceSelect.value;
+  // const priceSelection = priceSelect.value;
+  const priceSelection = priceRadioInput.value;
+
   // I needed to capture the users dropdown selections to pass into my function . I learned from this post that you could use getElementById to grab the dropdown and .value to get the selected option, then store each for cuisine and price from stack overflow https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript.
   //   console.log(cuisineSelection);
   // add restaurant and dish suggestion to the page based on cuisine selection
@@ -74,7 +82,7 @@ let renderItems = (data, cuisineSelection, priceSelection) => {
                     <p>${selectedRestaurant.dishType}</p>
                     <p>${selectedRestaurant.location}</p>
                     <p>${selectedRestaurant.description}</p>
-                    <a href="${googleUrl}">Get Directions</a>
+                    <a href="${googleUrl}" target="_blank">Get Directions</a>
                     </li>
                     `;
   // https://stackoverflow.com/questions/1300838/how-to-convert-an-address-into-a-google-maps-link-not-map

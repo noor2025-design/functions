@@ -20,7 +20,10 @@ font-weight: normal;
 font-style: normal;
 }
 
-
+.price-input{
+    appearance: radio;
+    margin-left: 1rem;
+}
 main{
     padding: var(--gutter);
 }
