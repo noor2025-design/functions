@@ -20,6 +20,7 @@ font-weight: normal;
 font-style: normal;
 }
 
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/appearance */
 .price-input{
     appearance: radio;
     margin-left: 1rem;
@@ -69,7 +70,19 @@ h3{
     text-align: center;
     min-width: 150px;
 }
+.directions-link{
+    background-color: lightgray;
+    padding: .5rem 1rem;
+    border-radius: 8px;
+     text-align: center;
+     width: 30%;
+    min-width: 150px;
+    align-self: center;
+}
 
+.borough-checkbox{
+    appearance: auto;
+}
 select{
     background: lightgray;
     padding: .5rem 1rem;

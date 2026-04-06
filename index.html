@@ -43,7 +43,7 @@
             <option value="$$">$$</option>
             <option value="$$$">$$$</option>
           </select> -->
-          
+
           <!-- https://www.w3schools.com/tags/att_input_type_radio.asp -->
           <div>
             <p>Select a Price Range:</p>
@@ -55,9 +55,17 @@
            <label for="high-price">$$$</label>
             <input type="radio" name="price" value="" id="any-price" class="price-input" checked>
            <label for="any-price">Any Price</label>
-           </div>
-          <button id="form-button" type="submit">Submit</button>
-          <!-- https://www.geeksforgeeks.org/javascript/how-to-get-value-of-selected-radio-button-using-javascript/ -->
+          </div>
+           <!-- https://www.geeksforgeeks.org/javascript/how-to-get-value-of-selected-radio-button-using-javascript/ -->
+           
+           <!-- https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/ -->
+           <p>Select your preferred borough(s)</p>
+           <label for="manhattan-checkbox"> <input type="checkbox" name="borough" value="manhattan" id="manhattan-checkbox" class="borough-checkbox">Manhattan</label>
+           <label for="brooklyn-checkbox"> <input type="checkbox" name="borough" value="brooklyn" id="brooklyn-checkbox" class="borough-checkbox">Brooklyn</label>
+           <label for="queens-checkbox"> <input type="checkbox" name="borough" value="queens" id="queens-checkbox" class="borough-checkbox">Queens</label>
+           <label for="bronx-checkbox"> <input type="checkbox" name="borough" value="bronx" id="bronx-checkbox" class="borough-checkbox">Bronx</label>
+           <label for="staten-island-checkbox"> <input type="checkbox" name="borough" value="staten-island" id="staten-island-checkbox" class="borough-checkbox">Staten Island</label>
+         <button id="form-button" type="submit">Submit</button>
         </form>
         
       </section>

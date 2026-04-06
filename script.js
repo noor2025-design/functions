@@ -5,15 +5,29 @@ userForm.addEventListener("submit", (event) => {
   const cuisineSelect = document.getElementById("cuisine-select");
   // const priceSelect = document.getElementById("price-select");
 
-// https://dev.to/rayan2228/the-ultimate-css-selectors-cheat-sheet-2025-45ep, https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/
+  // https://dev.to/rayan2228/the-ultimate-css-selectors-cheat-sheet-2025-45ep, https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/
 
   const priceRadioInput = document.querySelector(".price-input:checked");
+  const boroughCheckboxes = document.querySelectorAll(
+    ".borough-checkbox:checked",
+  );
+  console.log(boroughCheckboxes);
+
   console.log(priceRadioInput);
   console.log(priceRadioInput.checked);
 
   const cuisineSelection = cuisineSelect.value;
   // const priceSelection = priceSelect.value;
   const priceSelection = priceRadioInput.value;
+  let boroughValues = [];
+  if (boroughCheckboxes) {
+    boroughCheckboxes.forEach((checkbox) => {
+      boroughValues.push(checkbox.value);
+    });
+  }
+  console.log(boroughValues);
+  // https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/
+  // https://stackoverflow.com/questions/16312528/check-if-an-array-contains-any-element-of-another-array-in-javascript
 
   // I needed to capture the users dropdown selections to pass into my function . I learned from this post that you could use getElementById to grab the dropdown and .value to get the selected option, then store each for cuisine and price from stack overflow https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript.
   //   console.log(cuisineSelection);
@@ -25,13 +39,17 @@ userForm.addEventListener("submit", (event) => {
     .then((response) => response.json())
     .then((data) => {
       // And passes the data to the function, above!
-      renderItems(data, cuisineSelection, priceSelection);
+      renderItems(data, cuisineSelection, priceSelection, boroughValues);
     });
 });
 
 // Function to render your items.
-let renderItems = (data, cuisineSelection, priceSelection) => {
-  if (priceSelection === "" && cuisineSelection === "") {
+let renderItems = (data, cuisineSelection, priceSelection, boroughValues) => {
+  if (
+    priceSelection === "" &&
+    cuisineSelection === "" &&
+    boroughValues.length === 0
+  ) {
     // console.log("empty");
 
     return;
@@ -42,9 +60,27 @@ let renderItems = (data, cuisineSelection, priceSelection) => {
   let dataList = document.querySelector("#selected-restaurant ul");
   let filteredCuisines;
   let filteredPrices;
-  //   let filteredRestaurants = data;
+  let filteredBoroughs;
 
-  //   console.log(cuisineSelection);
+  // Alternate filtering method
+  // let filteredRestaurants = data;
+
+  // if (cuisineSelection !== "") {
+  //   filteredRestaurants = filteredRestaurants.filter(
+  //     (restaurant) => restaurant.cuisine.toLowerCase() === cuisineSelection,
+  //   );
+  // }
+  // if (priceSelection !== "") {
+  //   let isEmpty =
+  //     filteredRestaurants.filter(
+  //       (restaurant) => restaurant.price === priceSelection,
+  //     ).length === 0;
+  //   if (!isEmpty) {
+  //     filteredRestaurants = filteredRestaurants.filter(
+  //       (restaurant) => restaurant.price === priceSelection,
+  //     );
+  //   }
+  // }
 
   // https://www.w3schools.com/jsref/jsref_tolowercase.asp
   if (cuisineSelection !== "") {
@@ -61,10 +97,34 @@ let renderItems = (data, cuisineSelection, priceSelection) => {
       (restaurant) => restaurant.price === priceSelection,
     );
   }
+  // using boroughValues want to match restaurants filtered by price and if there are no matches for cuisine and price then filter only by cuisine
+  if (
+    boroughValues.length !== 0 &&
+    priceSelection !== "" &&
+    filteredPrices.length !== 0
+  ) {
+    filteredBoroughs = filteredPrices.filter((restaurant) =>
+      restaurant.borough.some((borough) => boroughValues.includes(borough)),
+    );
+  } else if (boroughValues.length !== 0 && cuisineSelection !== "") {
+    filteredBoroughs = filteredCuisines.filter((restaurant) =>
+      restaurant.borough.some((borough) => boroughValues.includes(borough)),
+    );
+  } else if (boroughValues.length !== 0 && cuisineSelection === "") {
+    filteredBoroughs = data.filter((restaurant) =>
+      restaurant.borough.some((borough) => boroughValues.includes(borough)),
+    );
+  }
+  console.log(filteredBoroughs);
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
+  // https://www.w3schools.com/jsref/jsref_some.asp
 
   // I wanted the results to randomly select a different restuarant each time so the site doesnt push out the same resturants when I add more resturants to my json file.  I reviewed this article from stack overflow (https://stackoverflow.com/a/4550514) and a tutor explained it more clearly. The Math.random () generates a decimal number and multiplies it by the array length and Math.floor () rounds it down to a whole number because as I add more restuarants then the array will become longer so filteredPrices.length and filteredCuisines.length will grow. The Math.random is multiplied by however many resturants is in the data.
   let selectedRestaurant;
-  if (priceSelection !== "" && filteredPrices.length !== 0) {
+  if (boroughValues.length !== 0 && filteredBoroughs.length !== 0) {
+    selectedRestaurant =
+      filteredBoroughs[Math.floor(Math.random() * filteredBoroughs.length)];
+  } else if (priceSelection !== "" && filteredPrices.length !== 0) {
     selectedRestaurant =
       filteredPrices[Math.floor(Math.random() * filteredPrices.length)];
   } else {
@@ -81,7 +141,7 @@ let renderItems = (data, cuisineSelection, priceSelection) => {
                     <p>${selectedRestaurant.dishType}</p>
                     <p>${selectedRestaurant.location}</p>
                     <p>${selectedRestaurant.description}</p>
-                    <a href="${googleUrl}" target="_blank">Get Directions</a>
+                    <a class="directions-link" href="${googleUrl}" target="_blank">Get Directions</a>
                     </li>
                     `;
   // https://stackoverflow.com/questions/1300838/how-to-convert-an-address-into-a-google-maps-link-not-map
