@@ -116,6 +116,7 @@ let renderItems = (data, cuisineSelection, priceSelection, boroughValues) => {
     );
   }
   console.log(filteredBoroughs);
+  // https://stackoverflow.com/questions/16312528/check-if-an-array-contains-any-element-of-another-array-in-javascript
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
   // https://www.w3schools.com/jsref/jsref_some.asp
 
