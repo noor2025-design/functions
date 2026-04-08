@@ -142,6 +142,7 @@ let renderItems = (data, cuisineSelection, priceSelection, boroughValues) => {
                     <p>${selectedRestaurant.dishType}</p>
                     <p>${selectedRestaurant.location}</p>
                     <p>${selectedRestaurant.description}</p>
+                    <p>${selectedRestaurant.hoursOfOperation}</p>
                     <a class="directions-link" href="${googleUrl}" target="_blank">Get Directions</a>
                     </li>
                     `;
