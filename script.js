@@ -5,7 +5,7 @@ userForm.addEventListener("submit", (event) => {
   const cuisineSelect = document.getElementById("cuisine-select");
   // const priceSelect = document.getElementById("price-select");
 
-  // https://dev.to/rayan2228/the-ultimate-css-selectors-cheat-sheet-2025-45ep, https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/
+  // I used the :checked pseudo-class selector from DEV article to target only inputs that are selected by the user. The document.querySelector(".price-input:checked") grabs the single checked radio button and document.querySelectorAll(".borough-checkbox:checked") grabs all checked borough checkboxes at once. I also used the forEach loop pattern from the javascript tutorial article to loop through the checked borough checkboxes for each value in the array to filter the results. Sources: https://dev.to/rayan2228/the-ultimate-css-selectors-cheat-sheet-2025-45ep, https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/
 
   const priceRadioInput = document.querySelector(".price-input:checked");
   const boroughCheckboxes = document.querySelectorAll(
@@ -26,9 +26,8 @@ userForm.addEventListener("submit", (event) => {
     });
   }
   console.log(boroughValues);
-  // https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/
-  // https://stackoverflow.com/questions/16312528/check-if-an-array-contains-any-element-of-another-array-in-javascript
 
+// **Drop Down menu reference**
   // I needed to capture the users dropdown selections to pass into my function . I learned from this post that you could use getElementById to grab the dropdown and .value to get the selected option, then store each for cuisine and price from stack overflow https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript.
   //   console.log(cuisineSelection);
   // add restaurant and dish suggestion to the page based on cuisine selection
@@ -82,7 +81,8 @@ let renderItems = (data, cuisineSelection, priceSelection, boroughValues) => {
   //   }
   // }
 
-  // https://www.w3schools.com/jsref/jsref_tolowercase.asp
+
+  // Source: I used the toLowerCase() to make the cuisine filter not be case sensitive. My dropdown option values are all lowercase but my JSON dats has cuisine names with the first letter capital. I used toLowerCase() on the restaurant cuisine value from JSON to match the user selection so both uppercase and lowercase selections are treated the same. Source: https://www.w3schools.com/jsref/jsref_tolowercase.asp
   if (cuisineSelection !== "") {
     filteredCuisines = data.filter(
       (restaurant) => restaurant.cuisine.toLowerCase() === cuisineSelection,
@@ -97,7 +97,8 @@ let renderItems = (data, cuisineSelection, priceSelection, boroughValues) => {
       (restaurant) => restaurant.price === priceSelection,
     );
   }
-  // using boroughValues want to match restaurants filtered by price and if there are no matches for cuisine and price then filter only by cuisine
+  
+  // right logic - using boroughValues want to match restaurants filtered by price and if there are no matches for cuisine and price then filter only by cuisine?
   if (
     boroughValues.length !== 0 &&
     priceSelection !== "" &&
@@ -116,11 +117,12 @@ let renderItems = (data, cuisineSelection, priceSelection, boroughValues) => {
     );
   }
   console.log(filteredBoroughs);
-  // https://stackoverflow.com/questions/16312528/check-if-an-array-contains-any-element-of-another-array-in-javascript
+  // The if/else statements filters restuarants by borough depending on what other filters were or were not selected by the user. If the user selected a price AND boroughs, it filters from the price results. If the user only selected boroughs with no other filters then it filters through the whole dataset. I found out about .some and .includes syntax to check if any borough in a restaurants array matches any of the users selections from stack overflow and the other articles. The .some stops when it finds its first match instead of looping through everytghing and .includes checks for specific values in the array which would return true or false.  Sources: https://stackoverflow.com/questions/16312528/check-if-an-array-contains-any-element-of-another-array-in-javascript
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
   // https://www.w3schools.com/jsref/jsref_some.asp
 
-  // I wanted the results to randomly select a different restuarant each time so the site doesnt push out the same resturants when I add more resturants to my json file.  I reviewed this article from stack overflow (https://stackoverflow.com/a/4550514) and a tutor explained it more clearly. The Math.random () generates a decimal number and multiplies it by the array length and Math.floor () rounds it down to a whole number because as I add more restuarants then the array will become longer so filteredPrices.length and filteredCuisines.length will grow. The Math.random is multiplied by however many resturants is in the data.
+
+  // I wanted the results to randomly select a different restuarant each time so the site doesnt push out the same restaurants when I add more resturants to my json file. I reviewed this article from stack overflow (https://stackoverflow.com/a/4550514) and a tutor explained it more clearly. The Math.random () generates a decimal number and multiplies it by the array length and Math.floor () rounds it down to a whole number because as I add more restuarants then the array will become longer so filteredPrices.length and filteredCuisines.length will grow. The Math.random is multiplied by however many resturants is in the data.
   let selectedRestaurant;
   if (boroughValues.length !== 0 && filteredBoroughs.length !== 0) {
     selectedRestaurant =
@@ -146,10 +148,12 @@ let renderItems = (data, cuisineSelection, priceSelection, boroughValues) => {
                     <a class="directions-link" href="${googleUrl}" target="_blank">Get Directions</a>
                     </li>
                     `;
-  // https://stackoverflow.com/questions/1300838/how-to-convert-an-address-into-a-google-maps-link-not-map
+  // I wanted to create a clickable google maps link for each restaurant using the address stored in my JSON data. I learned from stack overflow that you can create a google maps link by appending an address string that would search for the location. A tutor helped me understand how to connect this to my JSON data so that the selectedRestaurant.address pulls the address string and appends the URL. Source: https://stackoverflow.com/questions/1300838/how-to-convert-an-address-into-a-google-maps-link-not-map
+
   // <p>${selectedRestaurant.price}</p>
   // <p>${selectedRestaurant.cuisine}</p>
-  // https://stackoverflow.com/questions/3450593/how-do-i-clear-the-content-of-a-div-using-javascript, https://www.w3schools.com/jsref/prop_html_innerhtml.asp
+
+  // When I first tested the submit button, every time the user clicked the submit button the new results were being added on top of the previous results instead of one time. I found from stack overflow and W3 that I needed to clear the div before rendering new results each time the form was submitted and that setting innerHTML to "" would clear out results. Sources: https://stackoverflow.com/questions/3450593/how-do-i-clear-the-content-of-a-div-using-javascript, https://www.w3schools.com/jsref/prop_html_innerhtml.asp
   dataList.innerHTML = "";
   dataList.insertAdjacentHTML("beforeend", listItem); // Add it to the `ul`!
 };

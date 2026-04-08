@@ -20,7 +20,7 @@ font-weight: normal;
 font-style: normal;
 }
 
-/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/appearance */
+/* I used appearance:radio to restore the default radio button that was wiped out by the reset. I learned about the appearance prporty from this MDN article. Source: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/appearance */
 .price-input{
     appearance: radio;
     margin-left: 1rem;
