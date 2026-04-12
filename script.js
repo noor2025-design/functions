@@ -2,6 +2,7 @@ const userForm = document.getElementById("user-form");
 let restaurantData;
 let filteredRestaurants; 
 
+// fetching data on page load so that it can be available for multiple functions instead of repeating it 
 fetch("assets/data.json")
   .then((response) => response.json())
   .then((data) => {
