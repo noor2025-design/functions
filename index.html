@@ -28,8 +28,9 @@
           <p>What are you in the mood for?</p>
         <form id="user-form">
           <label for="cuisine-select">Select a Cuisine Type:</label>
-          <select name="cuisine" id="cuisine-select">
+          <select name="cuisine" id="cuisine-select" onchange="handleCuisine()">
             <option value="">--Please choose an option--</option>
+            <option value="">Any Cuisine</option>
             <option value="moroccan">Moroccan</option>
             <option value="egyptian">Egyptian</option>
             <option value="palestinian">Palestinian</option>
@@ -37,6 +38,10 @@
             <option value="lebanese">Lebanese</option>
             <option value="syrian">Syrian</option>
           </select>
+
+          <!-- how to detect when select input changes? -->
+          <!-- https://www.w3schools.com/jsref/event_onselect.asp,https://www.w3schools.com/jsref/event_onchange.asp,https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select_event -->
+
           <!-- <label for="price-select">Select a Price Range:</label>
           <select name="price" id="price-select">
             <option value="">--Select a Price Range--</option>

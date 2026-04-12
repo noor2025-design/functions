@@ -1,4 +1,12 @@
 const userForm = document.getElementById("user-form");
+let restaurantData;
+
+fetch("assets/data.json")
+  .then((response) => response.json())
+  .then((data) => {
+    restaurantData = data;
+  });
+
 // The page was refreshing every time I hit submit and cleared the results. I found event.preventDefault() to stop this behavior and it tells the browser to ignore the browser behavior and listen to javascript from this reference https://www.tutorialspoint.com/article/how-to-stop-refreshing-the-page-on-submit-in-javascript.
 userForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -27,7 +35,7 @@ userForm.addEventListener("submit", (event) => {
   }
   console.log(boroughValues);
 
-// **Drop Down menu reference**
+  // **Drop Down menu reference**
   // I needed to capture the users dropdown selections to pass into my function . I learned from this post that you could use getElementById to grab the dropdown and .value to get the selected option, then store each for cuisine and price from stack overflow https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript.
   //   console.log(cuisineSelection);
   // add restaurant and dish suggestion to the page based on cuisine selection
@@ -81,7 +89,6 @@ let renderItems = (data, cuisineSelection, priceSelection, boroughValues) => {
   //   }
   // }
 
-
   // Source: I used the toLowerCase() to make the cuisine filter not be case sensitive. My dropdown option values are all lowercase but my JSON dats has cuisine names with the first letter capital. I used toLowerCase() on the restaurant cuisine value from JSON to match the user selection so both uppercase and lowercase selections are treated the same. Source: https://www.w3schools.com/jsref/jsref_tolowercase.asp
   if (cuisineSelection !== "") {
     filteredCuisines = data.filter(
@@ -97,7 +104,7 @@ let renderItems = (data, cuisineSelection, priceSelection, boroughValues) => {
       (restaurant) => restaurant.price === priceSelection,
     );
   }
-  
+
   // right logic - using boroughValues want to match restaurants filtered by price and if there are no matches for cuisine and price then filter only by cuisine?
   if (
     boroughValues.length !== 0 &&
@@ -120,7 +127,6 @@ let renderItems = (data, cuisineSelection, priceSelection, boroughValues) => {
   // The if/else statements filters restuarants by borough depending on what other filters were or were not selected by the user. If the user selected a price AND boroughs, it filters from the price results. If the user only selected boroughs with no other filters then it filters through the whole dataset. I found out about .some and .includes syntax to check if any borough in a restaurants array matches any of the users selections from stack overflow and the other articles. The .some stops when it finds its first match instead of looping through everytghing and .includes checks for specific values in the array which would return true or false.  Sources: https://stackoverflow.com/questions/16312528/check-if-an-array-contains-any-element-of-another-array-in-javascript
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
   // https://www.w3schools.com/jsref/jsref_some.asp
-
 
   // I wanted the results to randomly select a different restuarant each time so the site doesnt push out the same restaurants when I add more resturants to my json file. I reviewed this article from stack overflow (https://stackoverflow.com/a/4550514) and a tutor explained it more clearly. The Math.random () generates a decimal number and multiplies it by the array length and Math.floor () rounds it down to a whole number because as I add more restuarants then the array will become longer so filteredPrices.length and filteredCuisines.length will grow. The Math.random is multiplied by however many resturants is in the data.
   let selectedRestaurant;
@@ -151,9 +157,43 @@ let renderItems = (data, cuisineSelection, priceSelection, boroughValues) => {
                     </li>
                     `;
   // I wanted to create a clickable google maps link for each restaurant using the address stored in my JSON data. I learned from stack overflow that you can create a google maps link by appending an address string that would search for the location. A tutor helped me understand how to connect this to my JSON data so that the selectedRestaurant.address pulls the address string and appends the URL. Source: https://stackoverflow.com/questions/1300838/how-to-convert-an-address-into-a-google-maps-link-not-map
-// need to add message if match is not found - Hmmm...nothing matched that exactly but we found something close. Give this one a try:.
+  // need to add message if match is not found - Hmmm...nothing matched that exactly but we found something close. Give this one a try:.
 
   // When I first tested the submit button, every time the user clicked the submit button the new results were being added on top of the previous results instead of one time. I found from stack overflow and W3 that I needed to clear the div before rendering new results each time the form was submitted and that setting innerHTML to "" would clear out results. Sources: https://stackoverflow.com/questions/3450593/how-do-i-clear-the-content-of-a-div-using-javascript, https://www.w3schools.com/jsref/prop_html_innerhtml.asp
   dataList.innerHTML = "";
   dataList.insertAdjacentHTML("beforeend", listItem); // Add it to the `ul`!
 };
+
+function handleCuisine() {
+  console.log("test");
+  // when the user makes a selection from the dropdown menu, want to disable prices that are not available
+  // 1. Filter data based on cuisine type
+  const cuisineSelect = document.getElementById("cuisine-select");
+  const cuisineSelection = cuisineSelect.value;
+  let filteredCuisines = restaurantData;
+  if (cuisineSelection !== "") {
+    filteredCuisines = restaurantData.filter(
+      (restaurant) => restaurant.cuisine.toLowerCase() === cuisineSelection,
+    );
+  }
+  // tutor helped me understand  https://bobbyhadz.com/blog/javascript-array-push-if-not-exist
+  // 2. Push available prices to an array
+  let availablePrices = [];
+  filteredCuisines.forEach((restaurant) => {
+    if (!availablePrices.includes(restaurant.price)) {
+      availablePrices.push(restaurant.price);
+    }
+  });
+  console.log(availablePrices);
+
+  // 3. Disable the price radio inputs based on the available prices
+  // "any price" was also disabled with this change but fixed with tutor help
+  let radioOptions = document.querySelectorAll(".price-input");
+  console.log(radioOptions);
+  radioOptions.forEach((option) => {
+    if (option.value !== "") {
+      option.disabled = !availablePrices.includes(option.value);
+    }
+  });
+}
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select_event, https://dev.to/rayan2228/the-ultimate-css-selectors-cheat-sheet-2025-45ep
