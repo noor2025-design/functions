@@ -60,6 +60,8 @@
               value="$"
               id="low-price"
               class="price-input"
+              onchange="handlePrices()"
+          
             />
             <label for="low-price">$</label>
             <input
@@ -68,6 +70,7 @@
               value="$$"
               id="mid-price"
               class="price-input"
+              onchange="handlePrices()"
             />
             <label for="mid-price">$$</label>
             <input
@@ -76,6 +79,7 @@
               value="$$$"
               id="high-price"
               class="price-input"
+              onchange="handlePrices()"
             />
             <label for="high-price">$$$</label>
             <input
@@ -85,10 +89,12 @@
               id="any-price"
               class="price-input"
               checked
+              onchange="handlePrices()"
             />
             <label for="any-price">Any Price</label>
           </div>
-
+<!-- https://www.w3schools.com/jsref/event_onchange.asp -->
+ 
           <!-- I used <input type="checkbox"> inside <label> elements to create a group of borough filter options for users. Each checkbox has label matching the "id" with "for". All five checkboxes have the same name of "borough" so that I can use querySelectorAll in javascript to pull all the boroughs that the user selected. Source: https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/ -->
             <p>What borough(s)?</p>
           <p>Select your preferred borough(s)</p>

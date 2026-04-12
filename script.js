@@ -1,5 +1,6 @@
 const userForm = document.getElementById("user-form");
 let restaurantData;
+let filteredRestaurants; 
 
 fetch("assets/data.json")
   .then((response) => response.json())
@@ -42,16 +43,16 @@ userForm.addEventListener("submit", (event) => {
 
   // Fetch gets your (local) JSON file…
   // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-  fetch("assets/data.json")
-    .then((response) => response.json())
-    .then((data) => {
+  // fetch("assets/data.json")
+  //   .then((response) => response.json())
+  //   .then((data) => {
       // And passes the data to the function, above!
-      renderItems(data, cuisineSelection, priceSelection, boroughValues);
-    });
+      renderItems(cuisineSelection, priceSelection, boroughValues);
+    // });
 });
 
 // Function to render your items.
-let renderItems = (data, cuisineSelection, priceSelection, boroughValues) => {
+let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
   if (
     priceSelection === "" &&
     cuisineSelection === "" &&
@@ -65,9 +66,9 @@ let renderItems = (data, cuisineSelection, priceSelection, boroughValues) => {
 
   // The `ul` where the items will be inserted.
   let dataList = document.querySelector("#selected-restaurant ul");
-  let filteredCuisines;
-  let filteredPrices;
-  let filteredBoroughs;
+  // let filteredCuisines;
+  // let filteredPrices;
+  // let filteredBoroughs;
 
   // Alternate filtering method
   // let filteredRestaurants = data;
@@ -90,56 +91,62 @@ let renderItems = (data, cuisineSelection, priceSelection, boroughValues) => {
   // }
 
   // Source: I used the toLowerCase() to make the cuisine filter not be case sensitive. My dropdown option values are all lowercase but my JSON dats has cuisine names with the first letter capital. I used toLowerCase() on the restaurant cuisine value from JSON to match the user selection so both uppercase and lowercase selections are treated the same. Source: https://www.w3schools.com/jsref/jsref_tolowercase.asp
-  if (cuisineSelection !== "") {
-    filteredCuisines = data.filter(
-      (restaurant) => restaurant.cuisine.toLowerCase() === cuisineSelection,
-    );
-  }
-  if (priceSelection !== "" && cuisineSelection !== "") {
-    filteredPrices = filteredCuisines.filter(
-      (restaurant) => restaurant.price === priceSelection,
-    );
-  } else if (priceSelection !== "" && cuisineSelection === "") {
-    filteredPrices = data.filter(
-      (restaurant) => restaurant.price === priceSelection,
-    );
-  }
+  // if (cuisineSelection !== "") {
+  //   filteredCuisines = data.filter(
+  //     (restaurant) => restaurant.cuisine.toLowerCase() === cuisineSelection,
+  //   );
+  // }
+  // if (priceSelection !== "" && cuisineSelection !== "") {
+  //   filteredPrices = filteredCuisines.filter(
+  //     (restaurant) => restaurant.price === priceSelection,
+  //   );
+  // } else if (priceSelection !== "" && cuisineSelection === "") {
+  //   filteredPrices = data.filter(
+  //     (restaurant) => restaurant.price === priceSelection,
+  //   );
+  // }
 
   // right logic - using boroughValues want to match restaurants filtered by price and if there are no matches for cuisine and price then filter only by cuisine?
-  if (
-    boroughValues.length !== 0 &&
-    priceSelection !== "" &&
-    filteredPrices.length !== 0
-  ) {
-    filteredBoroughs = filteredPrices.filter((restaurant) =>
+  // if (
+  //   boroughValues.length !== 0 &&
+  //   priceSelection !== "" &&
+  //   filteredPrices.length !== 0
+  // ) {
+  //   filteredBoroughs = filteredPrices.filter((restaurant) =>
+  //     restaurant.borough.some((borough) => boroughValues.includes(borough)),
+  //   );
+  // } else if (boroughValues.length !== 0 && cuisineSelection !== "") {
+  //   filteredBoroughs = filteredCuisines.filter((restaurant) =>
+  //     restaurant.borough.some((borough) => boroughValues.includes(borough)),
+  //   );
+  // } else if (boroughValues.length !== 0 && cuisineSelection === "") {
+  //   filteredBoroughs = data.filter((restaurant) =>
+  //     restaurant.borough.some((borough) => boroughValues.includes(borough)),
+  //   );
+  // }
+  if(boroughValues.length !== 0){
+    filteredRestaurants = filteredRestaurants.filter((restaurant) =>
       restaurant.borough.some((borough) => boroughValues.includes(borough)),
     );
-  } else if (boroughValues.length !== 0 && cuisineSelection !== "") {
-    filteredBoroughs = filteredCuisines.filter((restaurant) =>
-      restaurant.borough.some((borough) => boroughValues.includes(borough)),
-    );
-  } else if (boroughValues.length !== 0 && cuisineSelection === "") {
-    filteredBoroughs = data.filter((restaurant) =>
-      restaurant.borough.some((borough) => boroughValues.includes(borough)),
-    );
-  }
-  console.log(filteredBoroughs);
+  } 
+  
   // The if/else statements filters restuarants by borough depending on what other filters were or were not selected by the user. If the user selected a price AND boroughs, it filters from the price results. If the user only selected boroughs with no other filters then it filters through the whole dataset. I found out about .some and .includes syntax to check if any borough in a restaurants array matches any of the users selections from stack overflow and the other articles. The .some stops when it finds its first match instead of looping through everytghing and .includes checks for specific values in the array which would return true or false.  Sources: https://stackoverflow.com/questions/16312528/check-if-an-array-contains-any-element-of-another-array-in-javascript
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
   // https://www.w3schools.com/jsref/jsref_some.asp
 
   // I wanted the results to randomly select a different restuarant each time so the site doesnt push out the same restaurants when I add more resturants to my json file. I reviewed this article from stack overflow (https://stackoverflow.com/a/4550514) and a tutor explained it more clearly. The Math.random () generates a decimal number and multiplies it by the array length and Math.floor () rounds it down to a whole number because as I add more restuarants then the array will become longer so filteredPrices.length and filteredCuisines.length will grow. The Math.random is multiplied by however many resturants is in the data.
-  let selectedRestaurant;
-  if (boroughValues.length !== 0 && filteredBoroughs.length !== 0) {
-    selectedRestaurant =
-      filteredBoroughs[Math.floor(Math.random() * filteredBoroughs.length)];
-  } else if (priceSelection !== "" && filteredPrices.length !== 0) {
-    selectedRestaurant =
-      filteredPrices[Math.floor(Math.random() * filteredPrices.length)];
-  } else {
-    selectedRestaurant =
-      filteredCuisines[Math.floor(Math.random() * filteredCuisines.length)];
-  }
+  // let selectedRestaurant;
+  // if (boroughValues.length !== 0 && filteredBoroughs.length !== 0) {
+  //   selectedRestaurant =
+  //     filteredBoroughs[Math.floor(Math.random() * filteredBoroughs.length)];
+  // } else if (priceSelection !== "" && filteredPrices.length !== 0) {
+  //   selectedRestaurant =
+  //     filteredPrices[Math.floor(Math.random() * filteredPrices.length)];
+  // } else {
+  //   selectedRestaurant =
+  //     filteredCuisines[Math.floor(Math.random() * filteredCuisines.length)];
+  // }
+  let selectedRestaurant =  filteredRestaurants[Math.floor(Math.random() * filteredRestaurants.length)];
   // building template with selected restaurant
   const googleUrl = "https://maps.google.com/?q=" + selectedRestaurant.address;
 
@@ -170,16 +177,16 @@ function handleCuisine() {
   // 1. Filter data based on cuisine type
   const cuisineSelect = document.getElementById("cuisine-select");
   const cuisineSelection = cuisineSelect.value;
-  let filteredCuisines = restaurantData;
+  filteredRestaurants = restaurantData;
   if (cuisineSelection !== "") {
-    filteredCuisines = restaurantData.filter(
+     filteredRestaurants = restaurantData.filter(
       (restaurant) => restaurant.cuisine.toLowerCase() === cuisineSelection,
     );
   }
   // tutor helped me understand  https://bobbyhadz.com/blog/javascript-array-push-if-not-exist
   // 2. Push available prices to an array
   let availablePrices = [];
-  filteredCuisines.forEach((restaurant) => {
+   filteredRestaurants.forEach((restaurant) => {
     if (!availablePrices.includes(restaurant.price)) {
       availablePrices.push(restaurant.price);
     }
@@ -195,5 +202,39 @@ function handleCuisine() {
       option.disabled = !availablePrices.includes(option.value);
     }
   });
+  handlePrices()
 }
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select_event, https://dev.to/rayan2228/the-ultimate-css-selectors-cheat-sheet-2025-45ep
+
+function handlePrices() {
+  console.log("test 2");
+  const priceRadioInput = document.querySelector(".price-input:checked");
+  const priceSelection = priceRadioInput.value;
+  if (priceSelection !== "") {
+    filteredRestaurants = filteredRestaurants.filter(
+      (restaurant) => restaurant.price === priceSelection,
+    );
+  }
+  console.log(filteredRestaurants);
+  
+   let availableBoroughs = [];
+   filteredRestaurants.forEach((restaurant) => {
+    // if (!restaurant.borough.some((borough) => availableBoroughs.includes(borough))) {
+      availableBoroughs.push(...restaurant.borough);
+      console.log(restaurant.borough);
+      
+    // }
+  });
+  console.log(availableBoroughs);
+  
+  const boroughCheckboxes = document.querySelectorAll(
+    ".borough-checkbox",
+  );
+boroughCheckboxes.forEach((checkbox) => {
+    if (checkbox.value !== "") {
+      checkbox.disabled = !availableBoroughs.includes(checkbox.value);
+    }
+  });
+}
+
+// how to push an array to another array -https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push, https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat
