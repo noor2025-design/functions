@@ -140,18 +140,18 @@ let renderItems = (data, cuisineSelection, priceSelection, boroughValues) => {
   let listItem = `
 				<li class="restaurant-card">
 					<h2>${selectedRestaurant.restaurant}</h2>
+                    <p>${selectedRestaurant.cuisine}</p>
                     <p>${selectedRestaurant.dish}</p>
                     <p>${selectedRestaurant.dishType}</p>
-                    <p>${selectedRestaurant.location}</p>
                     <p>${selectedRestaurant.description}</p>
+                    <p>${selectedRestaurant.price}</p>
+                    <p>${selectedRestaurant.location}</p>
                     <p>${selectedRestaurant.hoursOfOperation}</p>
                     <a class="directions-link" href="${googleUrl}" target="_blank">Get Directions</a>
                     </li>
                     `;
   // I wanted to create a clickable google maps link for each restaurant using the address stored in my JSON data. I learned from stack overflow that you can create a google maps link by appending an address string that would search for the location. A tutor helped me understand how to connect this to my JSON data so that the selectedRestaurant.address pulls the address string and appends the URL. Source: https://stackoverflow.com/questions/1300838/how-to-convert-an-address-into-a-google-maps-link-not-map
-
-  // <p>${selectedRestaurant.price}</p>
-  // <p>${selectedRestaurant.cuisine}</p>
+// need to add message if match is not found - Hmmm...nothing matched that exactly but we found something close. Give this one a try:.
 
   // When I first tested the submit button, every time the user clicked the submit button the new results were being added on top of the previous results instead of one time. I found from stack overflow and W3 that I needed to clear the div before rendering new results each time the form was submitted and that setting innerHTML to "" would clear out results. Sources: https://stackoverflow.com/questions/3450593/how-do-i-clear-the-content-of-a-div-using-javascript, https://www.w3schools.com/jsref/prop_html_innerhtml.asp
   dataList.innerHTML = "";
