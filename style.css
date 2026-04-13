@@ -1,14 +1,15 @@
 :root{
-    --color: black;
-    --background-color: white;
+    --primary-color: #F05D49;
+    --secondary-color:#F8BDF9;
+    --background-color: #F6F0EC;
     --body-copy: 1rem;
     --heading-copy: 2rem;
     --gutter: 2rem
 }
 
 body{
-    color: var(--background-color);
-    color: var(--color);
+    background-color: var(--background-color);
+    color: var(--primary-color);
     font-size: var(--body-copy);
 }
 
@@ -28,6 +29,10 @@ font-style: normal;
 main{
     padding: var(--gutter);
 }
+header{
+    position: relative;
+    padding: 2rem;
+}
 h1{
     font-size: 6rem;
     font-family: 'New-Yorker', sans-serif;
@@ -35,22 +40,67 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
+    line-height: .8;
     /* padding: 2rem 1rem; */
 
 }
 
+ h1 > span:first-of-type{
+    font-size: 2rem;
+ }
 h2{
 flex-direction: column;
 font-family:"nawin-arabic", sans-serif;
-font-size: 2rem ;
+font-size: 4rem ;
 font-weight: 400;
 font-style: normal;
+color: var(--secondary-color);
     display: flex;
     justify-content: center;
     align-items: center; 
     text-align: center;  
+    position: absolute;
+    bottom: -20px;
+    left: 50% ;
+    transform: translateX(-50%) ;
+}
+.intro-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+.intro-phrase{
+     font-size: 2rem;
+    font-family: 'New-Yorker', sans-serif;
+}
+.intro-card{
+    background-color: var(--secondary-color);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-block: 3rem;
+   font-family: 'New-Yorker', sans-serif;
+   position: relative;
+}
+.intro-card p{
+    font-size: 2rem;
+    
+}
+.intro-card button{
+    background-color: var(--primary-color);
+    border-radius: 16px;
+    padding: 1rem 2rem;
+    color: var(--secondary-color);
+    position: absolute;
+    bottom: -30px;
+    left: 50% ;
+    transform: translateX(-50%);
+    font-size: 1rem; 
 }
 
+.intro-card button:hover{
+    background-color: #ea6f5e;
+}
 h3{
  font-family: "Libre Caslon Text", sans-serif;
  font-size: 1.5rem;

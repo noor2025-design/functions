@@ -12,34 +12,49 @@
       href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://use.typekit.net/bgt0qjk.css">
+    <link rel="stylesheet" href="https://use.typekit.net/bgt0qjk.css" />
     <script defer src="script.js"></script>
   </head>
+
   <body>
     <header>
-      <h1>The Plate</h1>
+      <h1><span>THE</span><span>PLATE</span></h1>
       <h2>صحن</h2>
       <!-- <h3>New York City</h3> -->
     </header>
     <main>
-      <!-- <p>This is your curated guide to some of the best arabic cuisines in NYC. Tell us what you’re feeling and we’ll find you the restaurant and your next dish.</p> -->
-      
+      <section class="intro-section">
+        <p class="intro-phrase">Stop Scrolling. Start Eating</p>
+        <section class="intro-card">
+          <p class="intro-description">
+            This is your curated guide to some of the best arabic cuisines in
+            NYC. Tell us what you’re feeling and we’ll find you the restaurant
+            and your next dish.
+          </p>
+          <button id="intro-button" type="button">Let's Get Started!</button>
+        </section>
+      </section>
       <section class="user-inputs">
         <!-- A <select> tag element creates a dropdown menu with each <option> tag inside of each type of cuisine the user can pick from in the menu. I used the following references for how to set this up for my project from https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/select,https://www.javascripttutorial.net/javascript-dom/javascript-select-box/ -->
-          <p>What are you in the mood for?</p>
+        <h3>What are you in the mood for?</h3>
         <form id="user-form">
-          <label for="cuisine-select">Select a Cuisine Type:</label>
-          <select name="cuisine" id="cuisine-select" onchange="handleCuisine()">
-            <option value="">--Please choose an option--</option>
-            <option value="">Any Cuisine</option>
-            <option value="moroccan">Moroccan</option>
-            <option value="egyptian">Egyptian</option>
-            <option value="palestinian">Palestinian</option>
-            <option value="yemeni">Yemeni</option>
-            <option value="lebanese">Lebanese</option>
-            <option value="syrian">Syrian</option>
-          </select>
-
+          <section>
+            <label for="cuisine-select">Select a Cuisine Type:</label>
+            <select
+              name="cuisine"
+              id="cuisine-select"
+              onchange="handleCuisine()"
+            >
+              <option value="">--Please choose an option--</option>
+              <option value="">Any Cuisine</option>
+              <option value="moroccan">Moroccan</option>
+              <option value="egyptian">Egyptian</option>
+              <option value="palestinian">Palestinian</option>
+              <option value="yemeni">Yemeni</option>
+              <option value="lebanese">Lebanese</option>
+              <option value="syrian">Syrian</option>
+            </select>
+          </section>
           <!-- how to detect when select input changes? -->
           <!-- https://www.w3schools.com/jsref/event_onselect.asp,https://www.w3schools.com/jsref/event_onchange.asp,https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select_event -->
 
@@ -53,8 +68,8 @@
 
           <!-- I used <input type="radio"> to create a group of radio buttons. I learned that all radio buttons in the same group should share the same name so that only one option can be selected at a time. Each button also has a value when the form is submitted by the user and what javascript reads as the user selection. I also used "checked" on the "any price" button to set it to default so that users don't feel constrained to one price point. I used the HTML checked attribute on "any price" radio button to make it default selected option when the page first loads so that a value is always selected. Sources: https://www.w3schools.com/tags/att_input_type_radio.asp,https://www.geeksforgeeks.org/javascript/how-to-get-value-of-selected-radio-button-using-javascript/,https://www.w3schools.com/tags/att_input_checked.asp  -->
           <div>
-            <p>What's the budget?</p>
-            <p>Select a Price Range:</p>
+            <h3>What's the budget?</h3>
+            <!-- <p>Select a Price Range:</p> -->
             <input
               type="radio"
               name="price"
@@ -62,7 +77,6 @@
               id="low-price"
               class="price-input"
               onchange="handlePrices()"
-          
             />
             <label for="low-price">$</label>
             <input
@@ -94,11 +108,11 @@
             />
             <label for="any-price">Any Price</label>
           </div>
-<!-- https://www.w3schools.com/jsref/event_onchange.asp -->
+          <!-- https://www.w3schools.com/jsref/event_onchange.asp -->
 
           <!-- I used <input type="checkbox"> inside <label> elements to create a group of borough filter options for users. Each checkbox has label matching the "id" with "for". All five checkboxes have the same name of "borough" so that I can use querySelectorAll in javascript to pull all the boroughs that the user selected. Source: https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/ -->
-            <p>What borough(s)?</p>
-          <p>Select your preferred borough(s)</p>
+          <h3>What borough(s)?</h3>
+          <!-- <p>Select your preferred borough(s)</p> -->
           <label for="manhattan-checkbox">
             <input
               type="checkbox"
@@ -154,10 +168,9 @@
 
     <footer>
       <!-- <p>ONE.RESTUARANT.ONE DISH.NO OVERTHINKING</p> -->
-       <!-- <p>Parsons School of Design, The New School</p> -->
-       <!-- <a href="">Typography & Interaction</a> -->
-        <!-- <p>2026 Noor Abdussaboor</p> -->
-
+      <!-- <p>Parsons School of Design, The New School</p> -->
+      <!-- <a href="">Typography & Interaction</a> -->
+      <!-- <p>2026 Noor Abdussaboor</p> -->
     </footer>
   </body>
 </html>
