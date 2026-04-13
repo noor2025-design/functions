@@ -239,3 +239,13 @@ boroughCheckboxes.forEach((checkbox) => {
 }
 
 // how to push an array to another array -https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push, https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat
+
+const cuisineFigures = document.querySelectorAll(".cuisine-select-section figure")
+
+function handleCuisineFigure(event) {
+  console.log(event.target.nextElementSibling);
+  const figureValue = event.target.nextElementSibling.textContent.toLowerCase()
+  console.log(figureValue);
+  
+}
+// https://stackoverflow.com/questions/44676281/plain-javascript-event-target-get-the-next-sibling-the-first-child

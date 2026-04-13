@@ -36,10 +36,10 @@
       </section>
       <section class="user-inputs">
         <!-- A <select> tag element creates a dropdown menu with each <option> tag inside of each type of cuisine the user can pick from in the menu. I used the following references for how to set this up for my project from https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/select,https://www.javascripttutorial.net/javascript-dom/javascript-select-box/ -->
-        <h3>What are you in the mood for?</h3>
         <form id="user-form">
-          <section>
-            <label for="cuisine-select">Select a Cuisine Type:</label>
+          <section class="cuisine-select-section">
+            <h3>What are you in the mood for?</h3>
+            <!-- <label for="cuisine-select">Select a Cuisine Type:</label> -->
             <select
               name="cuisine"
               id="cuisine-select"
@@ -54,6 +54,60 @@
               <option value="lebanese">Lebanese</option>
               <option value="syrian">Syrian</option>
             </select>
+            <figure onclick="handleCuisineFigure(event)">
+              <div class="image-wrapper">
+                <img
+                  src="./assets/images/Moroccan-bastilla-restaurant-card.jpg"
+                  alt="Moroccan Bastilla"
+                />
+              </div>
+              <div class="figure-overlay"></div>
+              <figcaption>Moroccan</figcaption>
+            </figure>
+            <figure onclick="handleCuisineFigure(event)">
+              <div class="image-wrapper">
+                <img
+                  src="./assets/images/Egyptian-koshary-restaurant-card.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="figure-overlay"></div>
+              <figcaption>Egyptian</figcaption>
+            </figure>
+            <figure onclick="handleCuisineFigure(event)">
+              <div class="image-wrapper">
+                <img
+                  src="./assets/images/Palestinian-Maklouba-restaurant-card.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="figure-overlay"></div>
+              <figcaption>Palestinian</figcaption>
+            </figure>
+            <figure onclick="handleCuisineFigure(event)">
+              <div class="image-wrapper">
+                <img src="./assets/images/Yemeni-restuarant-card.jpg" alt="" />
+              </div>
+              <div class="figure-overlay"></div>
+              <figcaption>Yemeni</figcaption>
+            </figure>
+            <figure>
+              <div class="image-wrapper">
+                <img
+                  src="./assets/images/Lebanese-restaurant-card.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="figure-overlay"></div>
+              <figcaption>Lebanese</figcaption>
+            </figure>
+            <figure onclick="handleCuisineFigure(event)">
+              <div class="image-wrapper">
+                <img src="./assets/images/Syrian-restaurant-card.jpg" alt="" />
+              </div>
+              <div class="figure-overlay"></div>
+              <figcaption>Syrian</figcaption>
+            </figure>
           </section>
           <!-- how to detect when select input changes? -->
           <!-- https://www.w3schools.com/jsref/event_onselect.asp,https://www.w3schools.com/jsref/event_onchange.asp,https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select_event -->
