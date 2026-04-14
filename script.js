@@ -1,8 +1,8 @@
 const userForm = document.getElementById("user-form");
 let restaurantData;
-let filteredRestaurants; 
+let filteredRestaurants;
 
-// fetching data on page load so that it can be available for multiple functions instead of repeating it 
+// fetching data on page load so that it can be available for multiple functions instead of repeating it
 fetch("assets/data.json")
   .then((response) => response.json())
   .then((data) => {
@@ -47,9 +47,9 @@ userForm.addEventListener("submit", (event) => {
   // fetch("assets/data.json")
   //   .then((response) => response.json())
   //   .then((data) => {
-      // And passes the data to the function, above!
-      renderItems(cuisineSelection, priceSelection, boroughValues);
-    // });
+  // And passes the data to the function, above!
+  renderItems(cuisineSelection, priceSelection, boroughValues);
+  // });
 });
 
 // Function to render your items.
@@ -125,12 +125,12 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
   //     restaurant.borough.some((borough) => boroughValues.includes(borough)),
   //   );
   // }
-  if(boroughValues.length !== 0){
+  if (boroughValues.length !== 0) {
     filteredRestaurants = filteredRestaurants.filter((restaurant) =>
       restaurant.borough.some((borough) => boroughValues.includes(borough)),
     );
-  } 
-  
+  }
+
   // The if/else statements filters restuarants by borough depending on what other filters were or were not selected by the user. If the user selected a price AND boroughs, it filters from the price results. If the user only selected boroughs with no other filters then it filters through the whole dataset. I found out about .some and .includes syntax to check if any borough in a restaurants array matches any of the users selections from stack overflow and the other articles. The .some stops when it finds its first match instead of looping through everytghing and .includes checks for specific values in the array which would return true or false.  Sources: https://stackoverflow.com/questions/16312528/check-if-an-array-contains-any-element-of-another-array-in-javascript
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
   // https://www.w3schools.com/jsref/jsref_some.asp
@@ -147,7 +147,8 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
   //   selectedRestaurant =
   //     filteredCuisines[Math.floor(Math.random() * filteredCuisines.length)];
   // }
-  let selectedRestaurant =  filteredRestaurants[Math.floor(Math.random() * filteredRestaurants.length)];
+  let selectedRestaurant =
+    filteredRestaurants[Math.floor(Math.random() * filteredRestaurants.length)];
   // building template with selected restaurant
   const googleUrl = "https://maps.google.com/?q=" + selectedRestaurant.address;
 
@@ -180,14 +181,14 @@ function handleCuisine() {
   const cuisineSelection = cuisineSelect.value;
   filteredRestaurants = restaurantData;
   if (cuisineSelection !== "") {
-     filteredRestaurants = restaurantData.filter(
+    filteredRestaurants = restaurantData.filter(
       (restaurant) => restaurant.cuisine.toLowerCase() === cuisineSelection,
     );
   }
   // tutor helped me understand  https://bobbyhadz.com/blog/javascript-array-push-if-not-exist
   // 2. Push available prices to an array
   let availablePrices = [];
-   filteredRestaurants.forEach((restaurant) => {
+  filteredRestaurants.forEach((restaurant) => {
     if (!availablePrices.includes(restaurant.price)) {
       availablePrices.push(restaurant.price);
     }
@@ -203,7 +204,7 @@ function handleCuisine() {
       option.disabled = !availablePrices.includes(option.value);
     }
   });
-  handlePrices()
+  handlePrices();
 }
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select_event, https://dev.to/rayan2228/the-ultimate-css-selectors-cheat-sheet-2025-45ep
 
@@ -217,21 +218,19 @@ function handlePrices() {
     );
   }
   console.log(filteredRestaurants);
-  
-   let availableBoroughs = [];
-   filteredRestaurants.forEach((restaurant) => {
+
+  let availableBoroughs = [];
+  filteredRestaurants.forEach((restaurant) => {
     // if (!restaurant.borough.some((borough) => availableBoroughs.includes(borough))) {
-      availableBoroughs.push(...restaurant.borough);
-      console.log(restaurant.borough);
-      
+    availableBoroughs.push(...restaurant.borough);
+    console.log(restaurant.borough);
+
     // }
   });
   console.log(availableBoroughs);
-  
-  const boroughCheckboxes = document.querySelectorAll(
-    ".borough-checkbox",
-  );
-boroughCheckboxes.forEach((checkbox) => {
+
+  const boroughCheckboxes = document.querySelectorAll(".borough-checkbox");
+  boroughCheckboxes.forEach((checkbox) => {
     if (checkbox.value !== "") {
       checkbox.disabled = !availableBoroughs.includes(checkbox.value);
     }
@@ -240,22 +239,29 @@ boroughCheckboxes.forEach((checkbox) => {
 
 // how to push an array to another array -https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push, https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat
 
-const cuisineFigures = document.querySelectorAll(".cuisine-select-section figure")
+const cuisineFigures = document.querySelectorAll(
+  ".cuisine-select-section figure",
+);
+// how to select the clicked event element in js
+// https://stackoverflow.com/questions/1553661/how-to-get-the-onclick-calling-object
+// https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget
 
 function handleCuisineFigure(event) {
   console.log(event.currentTarget);
-  const figureElement = event.currentTarget
-  const figCaptionElement = figureElement.querySelector("figCaption")
-  const figCaptionValue = figCaptionElement.textContent.toLowerCase()
-  // querySelector can be used off document to search the page or can be used off a specific element on the page 
-  // change the custom UI by adding a class 
-  const cuisineFigures = document.querySelectorAll(".cuisine-select-section figure") 
-  cuisineFigures.forEach((figure)=> figure.classList.remove("active-figure"))
-  figureElement.classList.add("active-figure")
+  const figureElement = event.currentTarget;
+  const figCaptionElement = figureElement.querySelector("figCaption");
+  const figCaptionValue = figCaptionElement.textContent.toLowerCase();
+  // querySelector can be used off document to search the page or can be used off a specific element on the page
+  // change the custom UI by adding a class
+  const cuisineFigures = document.querySelectorAll(
+    ".cuisine-select-section figure",
+  );
+  cuisineFigures.forEach((figure) => figure.classList.remove("active-figure"));
+  figureElement.classList.add("active-figure");
   // Change the value of the select element
   const cuisineSelect = document.getElementById("cuisine-select");
-  cuisineSelect.value = figCaptionValue
-  handleCuisine()
+  cuisineSelect.value = figCaptionValue;
+  handleCuisine();
 }
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector
 

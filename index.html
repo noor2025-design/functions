@@ -24,7 +24,7 @@
     </header>
     <main>
       <section class="intro-section">
-        <p class="intro-phrase">Stop Scrolling. Start Eating</p>
+        <p class="intro-phrase">Stop Scrolling. Start Eating.</p>
         <section class="intro-card">
           <p class="intro-description">
             This is your curated guide to some of the best arabic cuisines in
@@ -61,7 +61,7 @@
                   alt="Moroccan Bastilla"
                 />
               </div>
-             
+
               <figcaption>Moroccan</figcaption>
             </figure>
             <figure onclick="handleCuisineFigure(event)">
@@ -71,7 +71,7 @@
                   alt=""
                 />
               </div>
-              
+
               <figcaption>Egyptian</figcaption>
             </figure>
             <figure onclick="handleCuisineFigure(event)">
@@ -81,14 +81,14 @@
                   alt=""
                 />
               </div>
-              
+
               <figcaption>Palestinian</figcaption>
             </figure>
             <figure onclick="handleCuisineFigure(event)">
               <div class="image-wrapper">
                 <img src="./assets/images/Yemeni-restuarant-card.jpg" alt="" />
               </div>
-             
+
               <figcaption>Yemeni</figcaption>
             </figure>
             <figure onclick="handleCuisineFigure(event)">
@@ -98,14 +98,14 @@
                   alt=""
                 />
               </div>
-             
+
               <figcaption>Lebanese</figcaption>
             </figure>
             <figure onclick="handleCuisineFigure(event)">
               <div class="image-wrapper">
                 <img src="./assets/images/Syrian-restaurant-card.jpg" alt="" />
               </div>
-             
+
               <figcaption>Syrian</figcaption>
             </figure>
           </section>
@@ -124,45 +124,45 @@
           <section class="price-section">
             <h3>What's the budget?</h3>
             <!-- <p>Select a Price Range:</p> -->
-             <section class="radio-input-section">
-             <input
-              type="radio"
-              name="price"
-              value=""
-              id="any-price"
-              class="price-input"
-              checked
-              onchange="handlePrices()"
-            />
-            <label class="price-label" for="any-price">Any Price</label>
+            <section class="radio-input-section">
+              <input
+                type="radio"
+                name="price"
+                value=""
+                id="any-price"
+                class="price-input"
+                checked
+                onchange="handlePrices()"
+              />
+              <label class="price-label" for="any-price">Any Price</label>
 
-            <input
-              type="radio"
-              name="price"
-              value="$"
-              id="low-price"
-              class="price-input"
-              onchange="handlePrices()"
-            />
-            <label class="price-label" for="low-price">$</label>
-            <input
-              type="radio"
-              name="price"
-              value="$$"
-              id="mid-price"
-              class="price-input"
-              onchange="handlePrices()"
-            />
-            <label class="price-label" for="mid-price">$$</label>
-            <input
-              type="radio"
-              name="price"
-              value="$$$"
-              id="high-price"
-              class="price-input"
-              onchange="handlePrices()"
-            />
-            <label class="price-label" for="high-price">$$$</label>
+              <input
+                type="radio"
+                name="price"
+                value="$"
+                id="low-price"
+                class="price-input"
+                onchange="handlePrices()"
+              />
+              <label class="price-label" for="low-price">$</label>
+              <input
+                type="radio"
+                name="price"
+                value="$$"
+                id="mid-price"
+                class="price-input"
+                onchange="handlePrices()"
+              />
+              <label class="price-label" for="mid-price">$$</label>
+              <input
+                type="radio"
+                name="price"
+                value="$$$"
+                id="high-price"
+                class="price-input"
+                onchange="handlePrices()"
+              />
+              <label class="price-label" for="high-price">$$$</label>
             </section>
           </section>
           <!-- https://www.w3schools.com/jsref/event_onchange.asp -->
@@ -170,52 +170,51 @@
           <!-- I used <input type="checkbox"> inside <label> elements to create a group of borough filter options for users. Each checkbox has label matching the "id" with "for". All five checkboxes have the same name of "borough" so that I can use querySelectorAll in javascript to pull all the boroughs that the user selected. Source: https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/ -->
           <h3>What borough(s)?</h3>
           <!-- <p>Select your preferred borough(s)</p> -->
-          <label for="manhattan-checkbox">
-            <input
-              type="checkbox"
-              name="borough"
-              value="manhattan"
-              id="manhattan-checkbox"
-              class="borough-checkbox"
-            />Manhattan</label
+          <input
+            type="checkbox"
+            name="borough"
+            value="manhattan"
+            id="manhattan-checkbox"
+            class="borough-checkbox"
+          />
+          <label class="borough-label" for="manhattan-checkbox">
+            Manhattan</label
           >
-          <label for="brooklyn-checkbox">
-            <input
-              type="checkbox"
-              name="borough"
-              value="brooklyn"
-              id="brooklyn-checkbox"
-              class="borough-checkbox"
-            />Brooklyn</label
+          <input
+            type="checkbox"
+            name="borough"
+            value="brooklyn"
+            id="brooklyn-checkbox"
+            class="borough-checkbox"
+          />
+          <label class="borough-label" for="brooklyn-checkbox"> Brooklyn</label>
+          <input
+            type="checkbox"
+            name="borough"
+            value="queens"
+            id="queens-checkbox"
+            class="borough-checkbox"
+          />
+          <label class="borough-label" for="queens-checkbox"> Queens</label>
+          <input
+            type="checkbox"
+            name="borough"
+            value="bronx"
+            id="bronx-checkbox"
+            class="borough-checkbox"
+          />
+          <label class="borough-label" for="bronx-checkbox"> Bronx</label>
+          <input
+            type="checkbox"
+            name="borough"
+            value="staten-island"
+            id="staten-island-checkbox"
+            class="borough-checkbox"
+          />
+          <label class="borough-label" for="staten-island-checkbox">
+            Staten Island</label
           >
-          <label for="queens-checkbox">
-            <input
-              type="checkbox"
-              name="borough"
-              value="queens"
-              id="queens-checkbox"
-              class="borough-checkbox"
-            />Queens</label
-          >
-          <label for="bronx-checkbox">
-            <input
-              type="checkbox"
-              name="borough"
-              value="bronx"
-              id="bronx-checkbox"
-              class="borough-checkbox"
-            />Bronx</label
-          >
-          <label for="staten-island-checkbox">
-            <input
-              type="checkbox"
-              name="borough"
-              value="staten-island"
-              id="staten-island-checkbox"
-              class="borough-checkbox"
-            />Staten Island</label
-          >
-          <button id="form-button" type="submit">Submit</button>
+          <button id="form-button" type="submit">Let's See!</button>
         </form>
       </section>
       <section id="selected-restaurant">
