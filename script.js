@@ -162,7 +162,7 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
             <figcaption>${selectedRestaurant.cuisine}</figcaption>
           </figure>
           <section class="restaurant-details">
-            <h4> restuarantDetails</h4>
+            <h4>Restuarant Details</h4>
             <p>${selectedRestaurant.location}</p>
             <p>${selectedRestaurant.hoursOfOperation}</p>
           </section>

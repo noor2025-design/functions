@@ -130,6 +130,7 @@ h2 {
   margin-block: 3rem;
   font-family: "New-Yorker", sans-serif;
   position: relative;
+  max-width: 600px;
 }
 .intro-card p {
   font-size: 1.5rem;
@@ -165,11 +166,18 @@ h3 {
 }
 .cuisine-select-section, .price-section, .borough-section{
     padding-block: 2rem;
+    max-width: 1200px;
+}
+.user-inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #user-form {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  align-items: center;
 }
 #form-button, .cuisine-select-button, .price-next-button,.price-back-button,.borough-back-button,.directions-link {
   background-color: var(--secondary-color);
@@ -242,6 +250,12 @@ select {
   display: none;
 }
 .cuisine-select-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+.cuisine-figure-section{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -357,6 +371,17 @@ align-items: center;
 /* Media Query for small desktops */
 /* I pulled these key breakpoints from https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
 @media (width >= 769px) {
+.cuisine-figure-section {
+  flex-direction: row;
+  flex-wrap: wrap;
+ justify-content: center;
+  gap: 3rem;
+}
+.cuisine-figure-section figure{
+    flex-basis: calc(33% - 3rem);
+    flex-grow: 0;
+    flex-shrink: 0;
+}
 }
 /* Media Query for large desktops */
 /* I pulled these key breakpoints from https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
