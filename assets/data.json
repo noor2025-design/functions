@@ -9,7 +9,9 @@
     "description": "Slow-braised lamb with warm spices, tender and deeply aromatic, layered with sweetness and richness in every bite.",
     "address": "47-12 30th Ave., Astoria, NY 11103",
     "hoursOfOperation": "Wed-Sun 12:00pm-10:00pm",
-    "borough": ["queens"]
+    "borough": ["queens"],
+    "cusineImage":"./assets/images/Moroccan-bastilla-restaurant-card.jpg",
+    "dishImage":"./assets/images/Moroccan-Lamb-Tagine.jpg"
   },
   {
     "cuisine": "Egyptian",
@@ -21,7 +23,9 @@
     "description": "A layered pastry enjoyed both sweet and savory, here featuring a spiced beef filling, crisp, rich and filling.",
     "address": "25-48 Steinway St, Astoria, NY 11103",
     "hoursOfOperation": "Tues-Sun 2:00pm-11:30pm",
-    "borough": ["queens"]
+    "borough": ["queens"],
+     "cusineImage":"./assets/images/Moroccan-bastilla-restaurant-card.jpg",
+    "dishImage":"./assets/images/Moroccan-Lamb-Tagine.jpg"
   },
   {
     "cuisine": "Palestinian",
@@ -33,7 +37,9 @@
     "description": "Tender lamb served over rice and soaked in a warm, tangy yogurt sauce, rich, fragrant, and meant to be shared.",
     "address": "107 Loisaida Ave, New York, NY",
     "hoursOfOperation": "Mon-Sun 11:00am-10:00pm",
-    "borough": ["manhattan"]
+    "borough": ["manhattan"],
+     "cusineImage":"./assets/images/Moroccan-bastilla-restaurant-card.jpg",
+    "dishImage":"./assets/images/Moroccan-Lamb-Tagine.jpg"
   },
   {
     "cuisine": "Yemeni",
@@ -45,7 +51,9 @@
     "description": "Lamb layered over aromatic rice, infused with warm spices and a subtle smokiness.",
      "address": "7316 3rd Ave, Brooklyn, NY 11209",
      "hoursOfOperation":"Mon-Sun 10am-11:00pm",
-     "borough": ["brooklyn"]
+     "borough": ["brooklyn"],
+      "cusineImage":"./assets/images/Moroccan-bastilla-restaurant-card.jpg",
+    "dishImage":"./assets/images/Moroccan-Lamb-Tagine.jpg"
   },
   {
     "cuisine": "Lebanese",
@@ -57,7 +65,9 @@
     "description": "A warm, comforting soup offered in several variations, from red lentil to chicken or beef, simple, nourishing, and deeply familiar.",
      "address": "1063 1st Ave, New York, NY 10022",
     "hoursOfOperation": "Mon-Sun 10am-2:00am",
-    "borough": ["manhattan"]
+    "borough": ["manhattan"],
+     "cusineImage":"./assets/images/Moroccan-bastilla-restaurant-card.jpg",
+    "dishImage":"./assets/images/Moroccan-Lamb-Tagine.jpg"
   },
   {
     "cuisine": "Syrian",
@@ -69,7 +79,9 @@
     "description": "Pita bread stuffed with sujok, tomato and cheese.",
     "address": "8530 3rd Ave, Brooklyn, NY 11209",
     "hoursOfOperation": "Mon-Thurs 12-11pm, Fri-Sat 12pm-12am, Sun 12pm-10pm",
-    "borough": ["brooklyn"]
+    "borough": ["brooklyn"],
+     "cusineImage":"./assets/images/Moroccan-bastilla-restaurant-card.jpg",
+    "dishImage":"./assets/images/Moroccan-Lamb-Tagine.jpg"
   }
 ]
 

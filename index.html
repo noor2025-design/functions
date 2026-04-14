@@ -24,7 +24,9 @@
     </header>
     <main>
       <section class="intro-section">
-        <p class="intro-phrase">Stop Scrolling. Start Eating.</p>
+        <p class="intro-phrase">
+          <span>Stop Scrolling.</span> <span>Start Eating.</span>
+        </p>
         <section class="intro-card">
           <p class="intro-description">
             This is your curated guide to some of the best arabic cuisines in
@@ -40,11 +42,7 @@
           <section class="cuisine-select-section">
             <h3>What are you in the mood for?</h3>
             <!-- <label for="cuisine-select">Select a Cuisine Type:</label> -->
-            <select
-              name="cuisine"
-              id="cuisine-select"
-              onchange="handleCuisine()"
-            >
+            <select name="cuisine" id="cuisine-select">
               <option value="">--Please choose an option--</option>
               <option value="">Any Cuisine</option>
               <option value="moroccan">Moroccan</option>
@@ -108,6 +106,13 @@
 
               <figcaption>Syrian</figcaption>
             </figure>
+            <button
+              class="cuisine-select-button"
+              type="button"
+              onclick="handleCuisine()"
+            >
+              NEXT
+            </button>
           </section>
           <!-- how to detect when select input changes? -->
           <!-- https://www.w3schools.com/jsref/event_onselect.asp,https://www.w3schools.com/jsref/event_onchange.asp,https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select_event -->
@@ -164,57 +169,86 @@
               />
               <label class="price-label" for="high-price">$$$</label>
             </section>
+            <section class="price-buttons-section">
+              <button
+                class="price-back-button"
+                type="button"
+                onclick="backToCuisine()"
+              >
+                BACK
+              </button>
+              <button
+                class="price-next-button"
+                type="button"
+                onclick="goToBoroughs()"
+              >
+                NEXT
+              </button>
+            </section>
           </section>
           <!-- https://www.w3schools.com/jsref/event_onchange.asp -->
 
           <!-- I used <input type="checkbox"> inside <label> elements to create a group of borough filter options for users. Each checkbox has label matching the "id" with "for". All five checkboxes have the same name of "borough" so that I can use querySelectorAll in javascript to pull all the boroughs that the user selected. Source: https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/ -->
-          <h3>What borough(s)?</h3>
-          <!-- <p>Select your preferred borough(s)</p> -->
-          <input
-            type="checkbox"
-            name="borough"
-            value="manhattan"
-            id="manhattan-checkbox"
-            class="borough-checkbox"
-          />
-          <label class="borough-label" for="manhattan-checkbox">
-            Manhattan</label
-          >
-          <input
-            type="checkbox"
-            name="borough"
-            value="brooklyn"
-            id="brooklyn-checkbox"
-            class="borough-checkbox"
-          />
-          <label class="borough-label" for="brooklyn-checkbox"> Brooklyn</label>
-          <input
-            type="checkbox"
-            name="borough"
-            value="queens"
-            id="queens-checkbox"
-            class="borough-checkbox"
-          />
-          <label class="borough-label" for="queens-checkbox"> Queens</label>
-          <input
-            type="checkbox"
-            name="borough"
-            value="bronx"
-            id="bronx-checkbox"
-            class="borough-checkbox"
-          />
-          <label class="borough-label" for="bronx-checkbox"> Bronx</label>
-          <input
-            type="checkbox"
-            name="borough"
-            value="staten-island"
-            id="staten-island-checkbox"
-            class="borough-checkbox"
-          />
-          <label class="borough-label" for="staten-island-checkbox">
-            Staten Island</label
-          >
-          <button id="form-button" type="submit">Let's See!</button>
+          <section class="borough-selection">
+            <h3>What borough(s)?</h3>
+            <!-- <p>Select your preferred borough(s)</p> -->
+            <input
+              type="checkbox"
+              name="borough"
+              value="manhattan"
+              id="manhattan-checkbox"
+              class="borough-checkbox"
+            />
+            <label class="borough-label" for="manhattan-checkbox">
+              Manhattan</label
+            >
+            <input
+              type="checkbox"
+              name="borough"
+              value="brooklyn"
+              id="brooklyn-checkbox"
+              class="borough-checkbox"
+            />
+            <label class="borough-label" for="brooklyn-checkbox">
+              Brooklyn</label
+            >
+            <input
+              type="checkbox"
+              name="borough"
+              value="queens"
+              id="queens-checkbox"
+              class="borough-checkbox"
+            />
+            <label class="borough-label" for="queens-checkbox"> Queens</label>
+            <input
+              type="checkbox"
+              name="borough"
+              value="bronx"
+              id="bronx-checkbox"
+              class="borough-checkbox"
+            />
+            <label class="borough-label" for="bronx-checkbox"> Bronx</label>
+            <input
+              type="checkbox"
+              name="borough"
+              value="staten-island"
+              id="staten-island-checkbox"
+              class="borough-checkbox"
+            />
+            <label class="borough-label" for="staten-island-checkbox">
+              Staten Island</label
+            >
+            <section class="borough-button-section">
+              <button
+                class="borough-back-button"
+                type="button"
+                onclick="backToPrices()"
+              >
+                BACK
+              </button>
+              <button id="form-button" type="submit">Let's See!</button>
+            </section>
+          </section>
         </form>
       </section>
       <section id="selected-restaurant">
@@ -223,10 +257,12 @@
     </main>
 
     <footer>
-      <!-- <p>ONE.RESTUARANT.ONE DISH.NO OVERTHINKING</p> -->
-      <!-- <p>Parsons School of Design, The New School</p> -->
-      <!-- <a href="">Typography & Interaction</a> -->
-      <!-- <p>2026 Noor Abdussaboor</p> -->
+      <p>ONE.RESTUARANT.ONE DISH.NO OVERTHINKING.</p>
+      <p>Parsons School of Design, The New School</p>
+      <section class="footer-text">
+      <a href="">Typography & Interaction</a>
+      <p>2026 Noor Abdussaboor</p>
+      </section>
     </footer>
   </body>
 </html>

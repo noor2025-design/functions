@@ -2,6 +2,7 @@
   --primary-color: #f05d49;
   --secondary-color: #f8bdf9;
   --background-color: #f6f0ec;
+  --primary-font: "New-Yorker", sans-serif;
   --body-copy: 1rem;
   --heading-copy: 2rem;
   --gutter: 2rem;
@@ -67,7 +68,11 @@ body {
   cursor: not-allowed;
 }
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/cursor */
+.price-buttons-section{
+    display: flex;
+    justify-content: space-between;
 
+}
 main {
   padding: var(--gutter);
 }
@@ -114,17 +119,21 @@ h2 {
 .intro-phrase {
   font-size: 2rem;
   font-family: "New-Yorker", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
 }
 .intro-card {
   background-color: var(--secondary-color);
   border-radius: 16px;
-  padding: 2rem;
+  padding: 2rem 2rem 2rem 3rem;
   margin-block: 3rem;
   font-family: "New-Yorker", sans-serif;
   position: relative;
 }
 .intro-card p {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  padding-bottom: 2rem;
 }
 .intro-card button {
   background-color: var(--primary-color);
@@ -136,6 +145,8 @@ h2 {
   left: 50%;
   transform: translateX(-50%);
   font-size: 1rem;
+ 
+  text-align: center;
 }
 
 .intro-card button:hover {
@@ -149,29 +160,38 @@ h3 {
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 1rem;
+
+}
+.cuisine-select-section, .price-section, .borough-section{
+    padding-block: 2rem;
 }
 #user-form {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
-#form-button {
-  background-color: lightgray;
+#form-button, .cuisine-select-button, .price-next-button,.price-back-button,.borough-back-button,.directions-link {
+  background-color: var(--secondary-color);
   padding: 0.5rem 1rem;
   border-radius: 8px;
   width: 10%;
   text-align: center;
   min-width: 150px;
+  font-family: var(--primary-font);
 }
-.directions-link {
-  background-color: lightgray;
+#form-button{
+    align-self: center;
+}
+/* .directions-link {
+  background-color: var;
   padding: 0.5rem 1rem;
   border-radius: 8px;
   text-align: center;
   width: 30%;
   min-width: 150px;
   align-self: center;
-}
+} */
 
 .borough-checkbox {
   /* appearance: auto; */
@@ -208,6 +228,12 @@ h3 {
   opacity: 0.5;
   cursor: not-allowed;
 }
+.borough-button-section{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-block: 2rem;
+}
 select {
   background: lightgray;
   padding: 0.5rem 1rem;
@@ -221,7 +247,8 @@ select {
   align-items: center;
   gap: 3rem;
 }
-.cuisine-select-section figure {
+.cuisine-select-section figure,
+.restaurant-card figure {
   width: 80%;
   background-color: var(--secondary-color);
   padding: 2rem;
@@ -246,20 +273,23 @@ select {
     left: 0;
     cursor: pointer;
 } */
-.cuisine-select-section .image-wrapper {
+.cuisine-select-section .image-wrapper,
+.restaurant-card .image-wrapper {
   width: 100%;
   aspect-ratio: 1/1;
   overflow: hidden;
   border-radius: 30px;
 }
-.cuisine-select-section img {
+.cuisine-select-section img,
+.restaurant-card img{
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.cuisine-select-section figcaption {
+.cuisine-select-section figcaption,
+.restaurant-card figcaption {
   font-family: "New-Yorker", sans-serif;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 #selected-restaurant ul {
@@ -269,16 +299,61 @@ select {
 .restaurant-card {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 3rem;
   max-width: 600px;
+  align-items: center;
+
+}
+.restaurant-details{
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    color: var(--background-color);
+    padding: 3rem;
+    border-radius: 8px;
 }
 
+.restaurant-details h4{
+ font-size: 2rem;
+ font-family: var(--primary-font);
+}
+
+.restaurant-details p{
+ font-size: 2rem;
+ font-family: "libre-caslon text", sans-serif;
+}
+
+.dish-name{
+font-size: 2rem;
+ font-family: var(--primary-font)
+}
+
+.dish-description{
+font-size: 1.5rem;
+ font-family: "libre-caslon text", sans-serif;
+ padding-inline: 2rem;
+}
 footer {
-  color: var(--color);
-  background-color: var(--background-color);
-  padding-inline: var(--gutter);
-}
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-family: var(--primary-font);
+  width: 100%;
+  padding: 5rem 3rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  text-align: center;
 
+  
+}
+.footer-text{
+display: flex;
+flex-direction: column;
+gap: 1rem;
+align-items: center;
+}
 /* Media Query for small desktops */
 /* I pulled these key breakpoints from https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
 @media (width >= 769px) {

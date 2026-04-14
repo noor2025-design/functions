@@ -154,16 +154,26 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
 
   let listItem = `
 				<li class="restaurant-card">
-					<h2>${selectedRestaurant.restaurant}</h2>
-                    <p>${selectedRestaurant.cuisine}</p>
-                    <p>${selectedRestaurant.dish}</p>
-                    <p>${selectedRestaurant.dishType}</p>
-                    <p>${selectedRestaurant.description}</p>
-                    <p>${selectedRestaurant.price}</p>
-                    <p>${selectedRestaurant.location}</p>
-                    <p>${selectedRestaurant.hoursOfOperation}</p>
-                    <a class="directions-link" href="${googleUrl}" target="_blank">Get Directions</a>
-                    </li>
+					<h3>${selectedRestaurant.restaurant}</h3>
+          <figure>
+            <div class="image-wrapper">
+             <img src=${selectedRestaurant.cusineImage} alt=${selectedRestaurant.cuisine} />
+            </div>
+            <figcaption>${selectedRestaurant.cuisine}</figcaption>
+          </figure>
+          <section class="restaurant-details">
+            <h4> restuarantDetails</h4>
+            <p>${selectedRestaurant.location}</p>
+            <p>${selectedRestaurant.hoursOfOperation}</p>
+          </section>
+          <h3>DISH RECOMMENDATION</h3>
+          <p class="dish-name">${selectedRestaurant.dish}</p>
+          <div class="image-wrapper">
+            <img src=${selectedRestaurant.dishImage} alt=${selectedRestaurant.dish} />
+          </div>
+          <p class="dish-description">${selectedRestaurant.description}</p>
+          <a class="directions-link" href="${googleUrl}" target="_blank">Get Directions</a>
+        </li>
                     `;
   // I wanted to create a clickable google maps link for each restaurant using the address stored in my JSON data. I learned from stack overflow that you can create a google maps link by appending an address string that would search for the location. A tutor helped me understand how to connect this to my JSON data so that the selectedRestaurant.address pulls the address string and appends the URL. Source: https://stackoverflow.com/questions/1300838/how-to-convert-an-address-into-a-google-maps-link-not-map
   // need to add message if match is not found - Hmmm...nothing matched that exactly but we found something close. Give this one a try:.
