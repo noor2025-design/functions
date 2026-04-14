@@ -61,7 +61,7 @@
                   alt="Moroccan Bastilla"
                 />
               </div>
-              <div class="figure-overlay"></div>
+             
               <figcaption>Moroccan</figcaption>
             </figure>
             <figure onclick="handleCuisineFigure(event)">
@@ -71,7 +71,7 @@
                   alt=""
                 />
               </div>
-              <div class="figure-overlay"></div>
+              
               <figcaption>Egyptian</figcaption>
             </figure>
             <figure onclick="handleCuisineFigure(event)">
@@ -81,31 +81,31 @@
                   alt=""
                 />
               </div>
-              <div class="figure-overlay"></div>
+              
               <figcaption>Palestinian</figcaption>
             </figure>
             <figure onclick="handleCuisineFigure(event)">
               <div class="image-wrapper">
                 <img src="./assets/images/Yemeni-restuarant-card.jpg" alt="" />
               </div>
-              <div class="figure-overlay"></div>
+             
               <figcaption>Yemeni</figcaption>
             </figure>
-            <figure>
+            <figure onclick="handleCuisineFigure(event)">
               <div class="image-wrapper">
                 <img
                   src="./assets/images/Lebanese-restaurant-card.jpg"
                   alt=""
                 />
               </div>
-              <div class="figure-overlay"></div>
+             
               <figcaption>Lebanese</figcaption>
             </figure>
             <figure onclick="handleCuisineFigure(event)">
               <div class="image-wrapper">
                 <img src="./assets/images/Syrian-restaurant-card.jpg" alt="" />
               </div>
-              <div class="figure-overlay"></div>
+             
               <figcaption>Syrian</figcaption>
             </figure>
           </section>
@@ -121,37 +121,11 @@
           </select> -->
 
           <!-- I used <input type="radio"> to create a group of radio buttons. I learned that all radio buttons in the same group should share the same name so that only one option can be selected at a time. Each button also has a value when the form is submitted by the user and what javascript reads as the user selection. I also used "checked" on the "any price" button to set it to default so that users don't feel constrained to one price point. I used the HTML checked attribute on "any price" radio button to make it default selected option when the page first loads so that a value is always selected. Sources: https://www.w3schools.com/tags/att_input_type_radio.asp,https://www.geeksforgeeks.org/javascript/how-to-get-value-of-selected-radio-button-using-javascript/,https://www.w3schools.com/tags/att_input_checked.asp  -->
-          <div>
+          <section class="price-section">
             <h3>What's the budget?</h3>
             <!-- <p>Select a Price Range:</p> -->
-            <input
-              type="radio"
-              name="price"
-              value="$"
-              id="low-price"
-              class="price-input"
-              onchange="handlePrices()"
-            />
-            <label for="low-price">$</label>
-            <input
-              type="radio"
-              name="price"
-              value="$$"
-              id="mid-price"
-              class="price-input"
-              onchange="handlePrices()"
-            />
-            <label for="mid-price">$$</label>
-            <input
-              type="radio"
-              name="price"
-              value="$$$"
-              id="high-price"
-              class="price-input"
-              onchange="handlePrices()"
-            />
-            <label for="high-price">$$$</label>
-            <input
+             <section class="radio-input-section">
+             <input
               type="radio"
               name="price"
               value=""
@@ -160,8 +134,37 @@
               checked
               onchange="handlePrices()"
             />
-            <label for="any-price">Any Price</label>
-          </div>
+            <label class="price-label" for="any-price">Any Price</label>
+
+            <input
+              type="radio"
+              name="price"
+              value="$"
+              id="low-price"
+              class="price-input"
+              onchange="handlePrices()"
+            />
+            <label class="price-label" for="low-price">$</label>
+            <input
+              type="radio"
+              name="price"
+              value="$$"
+              id="mid-price"
+              class="price-input"
+              onchange="handlePrices()"
+            />
+            <label class="price-label" for="mid-price">$$</label>
+            <input
+              type="radio"
+              name="price"
+              value="$$$"
+              id="high-price"
+              class="price-input"
+              onchange="handlePrices()"
+            />
+            <label class="price-label" for="high-price">$$$</label>
+            </section>
+          </section>
           <!-- https://www.w3schools.com/jsref/event_onchange.asp -->
 
           <!-- I used <input type="checkbox"> inside <label> elements to create a group of borough filter options for users. Each checkbox has label matching the "id" with "for". All five checkboxes have the same name of "borough" so that I can use querySelectorAll in javascript to pull all the boroughs that the user selected. Source: https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/ -->

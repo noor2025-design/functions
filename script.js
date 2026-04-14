@@ -243,9 +243,20 @@ boroughCheckboxes.forEach((checkbox) => {
 const cuisineFigures = document.querySelectorAll(".cuisine-select-section figure")
 
 function handleCuisineFigure(event) {
-  console.log(event.target.nextElementSibling);
-  const figureValue = event.target.nextElementSibling.textContent.toLowerCase()
-  console.log(figureValue);
-  
+  console.log(event.currentTarget);
+  const figureElement = event.currentTarget
+  const figCaptionElement = figureElement.querySelector("figCaption")
+  const figCaptionValue = figCaptionElement.textContent.toLowerCase()
+  // querySelector can be used off document to search the page or can be used off a specific element on the page 
+  // change the custom UI by adding a class 
+  const cuisineFigures = document.querySelectorAll(".cuisine-select-section figure") 
+  cuisineFigures.forEach((figure)=> figure.classList.remove("active-figure"))
+  figureElement.classList.add("active-figure")
+  // Change the value of the select element
+  const cuisineSelect = document.getElementById("cuisine-select");
+  cuisineSelect.value = figCaptionValue
+  handleCuisine()
 }
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector
+
 // https://stackoverflow.com/questions/44676281/plain-javascript-event-target-get-the-next-sibling-the-first-child

@@ -22,10 +22,27 @@ font-style: normal;
 }
 
 /* I used appearance:radio to restore the default radio button that was wiped out by the reset. I learned about the appearance prporty from this MDN article. Source: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/appearance */
+.radio-input-section{
+    display: flex;
+    justify-content: center;
+}
 .price-input{
-    appearance: radio;
+    /* appearance: radio; */
     margin-left: 1rem;
 }
+.price-label{
+    display: flex;
+    cursor: pointer;
+    position: relative;
+}
+.price-label::before{
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+}
+
 main{
     padding: var(--gutter);
 }
@@ -160,15 +177,22 @@ select{
  align-items: center;
  gap: 1rem;
  position: relative;
+ box-sizing: border-box;
+ border: 5px transparent solid;
 }
-.figure-overlay{
+
+.cuisine-select-section .active-figure{
+    border: 5px var(--primary-color) solid;
+    
+}
+/* .figure-overlay{
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     cursor: pointer;
-}
+} */
 .cuisine-select-section .image-wrapper{
     width: 100%;
     aspect-ratio: 1/1;
