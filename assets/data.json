@@ -24,8 +24,8 @@
     "address": "25-48 Steinway St, Astoria, NY 11103",
     "hoursOfOperation": "Tues-Sun 2:00pm-11:30pm",
     "borough": ["queens"],
-     "cusineImage":"./assets/images/Moroccan-bastilla-restaurant-card.jpg",
-    "dishImage":"./assets/images/Moroccan-Lamb-Tagine.jpg"
+    "cusineImage":"./assets/images/Egyptian-koshary-restaurant-card.jpg",
+    "dishImage":"./assets/images/Egyptian-beef-feteer.jpg"
   },
   {
     "cuisine": "Palestinian",
@@ -38,8 +38,8 @@
     "address": "107 Loisaida Ave, New York, NY",
     "hoursOfOperation": "Mon-Sun 11:00am-10:00pm",
     "borough": ["manhattan"],
-     "cusineImage":"./assets/images/Moroccan-bastilla-restaurant-card.jpg",
-    "dishImage":"./assets/images/Moroccan-Lamb-Tagine.jpg"
+    "cusineImage":"./assets/images/Palestinian-Maklouba-restaurant-card.jpg",
+    "dishImage":"./assets/images/Palestnian-mansaf.jpg"
   },
   {
     "cuisine": "Yemeni",
@@ -49,11 +49,11 @@
     "price": "$$",
     "location": "Bay Ridge, Brooklyn",
     "description": "Lamb layered over aromatic rice, infused with warm spices and a subtle smokiness.",
-     "address": "7316 3rd Ave, Brooklyn, NY 11209",
-     "hoursOfOperation":"Mon-Sun 10am-11:00pm",
-     "borough": ["brooklyn"],
-      "cusineImage":"./assets/images/Moroccan-bastilla-restaurant-card.jpg",
-    "dishImage":"./assets/images/Moroccan-Lamb-Tagine.jpg"
+    "address": "7316 3rd Ave, Brooklyn, NY 11209",
+    "hoursOfOperation":"Mon-Sun 10am-11:00pm",
+    "borough": ["brooklyn"],
+    "cusineImage":"./assets/images/Yemeni-restuarant-card.jpg",
+    "dishImage":"./assets/images/Yemeni-Mandi.jpg"
   },
   {
     "cuisine": "Lebanese",
@@ -66,8 +66,8 @@
      "address": "1063 1st Ave, New York, NY 10022",
     "hoursOfOperation": "Mon-Sun 10am-2:00am",
     "borough": ["manhattan"],
-     "cusineImage":"./assets/images/Moroccan-bastilla-restaurant-card.jpg",
-    "dishImage":"./assets/images/Moroccan-Lamb-Tagine.jpg"
+    "cusineImage":"./assets/images/Lebanese-restaurant-card.jpg",
+    "dishImage":"./assets/images/Lebanese-Lentil-Soup.jpg"
   },
   {
     "cuisine": "Syrian",
@@ -80,8 +80,8 @@
     "address": "8530 3rd Ave, Brooklyn, NY 11209",
     "hoursOfOperation": "Mon-Thurs 12-11pm, Fri-Sat 12pm-12am, Sun 12pm-10pm",
     "borough": ["brooklyn"],
-     "cusineImage":"./assets/images/Moroccan-bastilla-restaurant-card.jpg",
-    "dishImage":"./assets/images/Moroccan-Lamb-Tagine.jpg"
+    "cusineImage":"./assets/images/Syrian-restaurant-card.jpg",
+    "dishImage":"./assets/images/Syrian-restaurant-card.jpg"
   }
 ]
 

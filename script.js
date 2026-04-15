@@ -172,7 +172,7 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
             <img src=${selectedRestaurant.dishImage} alt=${selectedRestaurant.dish} />
           </div>
           <p class="dish-description">${selectedRestaurant.description}</p>
-          <a class="directions-link" href="${googleUrl}" target="_blank">Get Directions</a>
+          <a class="directions-link" href="${googleUrl}" target="_blank">Get Directions!</a>
         </li>
                     `;
   // I wanted to create a clickable google maps link for each restaurant using the address stored in my JSON data. I learned from stack overflow that you can create a google maps link by appending an address string that would search for the location. A tutor helped me understand how to connect this to my JSON data so that the selectedRestaurant.address pulls the address string and appends the URL. Source: https://stackoverflow.com/questions/1300838/how-to-convert-an-address-into-a-google-maps-link-not-map
