@@ -71,7 +71,7 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
   //   I noticed the site was still populating results when hitting submit without selecting anything. The return is used inside the function if both fields are empty and found this from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return.
 
   
-  let dataList = document.querySelector("#selected-restaurant ul");
+  let dataList = document.querySelector(".selected-restaurant ul");
   
   if (boroughValues.length !== 0) {
     filteredRestaurants = filteredRestaurants.filter((restaurant) =>

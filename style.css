@@ -200,7 +200,8 @@ h3 {
 .price-next-button,
 .price-back-button,
 .borough-back-button,
-.directions-link {
+.directions-link,
+ .selected-restaurant-back-button{
   background-color: var(--secondary-color);
   padding: 0.5rem 1rem;
   border-radius: 8px;
@@ -333,7 +334,13 @@ select {
   font-size: 2rem;
 }
 
-#selected-restaurant ul {
+.selected-restaurant{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.selected-restaurant ul {
   display: flex;
   justify-content: center;
 }
