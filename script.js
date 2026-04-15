@@ -26,10 +26,7 @@ userForm.addEventListener("submit", (event) => {
   const boroughCheckboxes = document.querySelectorAll(
     ".borough-checkbox:checked",
   );
-  // console.log(boroughCheckboxes);
-
-  // console.log(priceRadioInput);
-  // console.log(priceRadioInput.checked);
+  
 
   const cuisineSelection = cuisineSelect.value;
   // const priceSelection = priceSelect.value;
@@ -40,12 +37,11 @@ userForm.addEventListener("submit", (event) => {
       boroughValues.push(checkbox.value);
     });
   }
-  // console.log(boroughValues);
+  
 
-  // **Drop Down menu reference**
-  // I needed to capture the users dropdown selections to pass into my function. I learned from this post that you could use getElementById to grab the dropdown and .value to get the selected option, then store each for cuisine and price from stack overflow https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript.
-  //   console.log(cuisineSelection);
-  // add restaurant and dish suggestion to the page based on cuisine selection
+  // **Capturing Drop-Down menu**
+  // I needed to capture the users dropdown selections to pass into my function. I used getElementById to grab the dropdown and .value to get the selected option, then stored each for cuisine and price from stack overflow https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript.
+ 
 
   // Fetch gets your (local) JSON file…
   // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
@@ -65,12 +61,11 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
     boroughValues.length === 0
   ) {
     
-
     return;
   }
   //   I noticed the site was still populating results when hitting submit without selecting anything. The return is used inside the function if both fields are empty and found this from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return.
 
-  
+
   let dataList = document.querySelector(".selected-restaurant ul");
   
   if (boroughValues.length !== 0) {
@@ -78,27 +73,23 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
       restaurant.borough.some((borough) => boroughValues.includes(borough)),
     );
   }
-
-  // The if/else statements filters restuarants by borough depending on what other filters were or were not selected by the user. If the user selected a price AND boroughs, it filters from the price results. If the user only selected boroughs with no other filters then it filters through the whole dataset. I found out about .some and .includes syntax to check if any borough in a restaurants array matches any of the users selections from stack overflow and the other articles. The .some stops when it finds its first match instead of looping through everytghing and .includes checks for specific values in the array which would return true or false.  Sources: https://stackoverflow.com/questions/16312528/check-if-an-array-contains-any-element-of-another-array-in-javascript
+  // The if statement filters restuarants by borough if the user selected one or more boroughs. Now that filteredRestaurants is alrady narrrowed down by cuisine and price, the borough then filters for results. I found out about .some() and .includes() syntax to check if any borough in a restaurants array matches any of the users selections from stack overflow and the other articles. The .some() stops when it finds its first match instead of looping through everything and .includes() checks for specific values in the array which would return true or false.  Sources: https://stackoverflow.com/questions/16312528/check-if-an-array-contains-any-element-of-another-array-in-javascript
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
   // https://www.w3schools.com/jsref/jsref_some.asp
 
-  // I wanted the results to randomly select a different restuarant each time so the site doesnt push out the same restaurants when I add more resturants to my json file. I reviewed this article from stack overflow (https://stackoverflow.com/a/4550514) and a tutor explained it more clearly. The Math.random () generates a decimal number and multiplies it by the array length and Math.floor () rounds it down to a whole number because as I add more restuarants then the array will become longer so filteredPrices.length and filteredCuisines.length will grow. The Math.random is multiplied by however many resturants is in the data.
-  // let selectedRestaurant;
-  // if (boroughValues.length !== 0 && filteredBoroughs.length !== 0) {
-  //   selectedRestaurant =
-  //     filteredBoroughs[Math.floor(Math.random() * filteredBoroughs.length)];
-  // } else if (priceSelection !== "" && filteredPrices.length !== 0) {
-  //   selectedRestaurant =
-  //     filteredPrices[Math.floor(Math.random() * filteredPrices.length)];
-  // } else {
-  //   selectedRestaurant =
-  //     filteredCuisines[Math.floor(Math.random() * filteredCuisines.length)];
-  // }
+
+
+  // I wanted the results to randomly select a different restuarant each time so that the site doesn't push out the same one when I add more resturants to my json file. I reviewed this article from stack overflow (https://stackoverflow.com/a/4550514) and a tutor helped clarify it more. The Math.random() generates a random decimal number and multiplies it by filteredRestaurants.length which matches the number of resaurants with the users filters. The Math.floor()rounds it down to a whole number because as I add more restuarants then the array will become longer so filteredRestaurants.length will grow. 
+
   let selectedRestaurant =
     filteredRestaurants[Math.floor(Math.random() * filteredRestaurants.length)];
+
+
   // building template with selected restaurant
+
   const googleUrl = "https://maps.google.com/?q=" + selectedRestaurant.address;
+
+  // I wanted to create a clickable google maps link for each restaurant using the address stored in my JSON data. I found a stack overflow post that showed that you can create a google maps link by appending an address string to a base url for the location. A tutor helped me understand how to connect my JSON data so that the selectedRestaurant.address pulls the address string and appends the URL. Source: https://stackoverflow.com/questions/1300838/how-to-convert-an-address-into-a-google-maps-link-not-map
 
   let listItem = `
 				<li class="restaurant-card">
@@ -123,8 +114,8 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
           <a class="directions-link" href="${googleUrl}" target="_blank">Get Directions!</a>
         </li>
                     `;
-  // I wanted to create a clickable google maps link for each restaurant using the address stored in my JSON data. I learned from stack overflow that you can create a google maps link by appending an address string that would search for the location. A tutor helped me understand how to connect this to my JSON data so that the selectedRestaurant.address pulls the address string and appends the URL. Source: https://stackoverflow.com/questions/1300838/how-to-convert-an-address-into-a-google-maps-link-not-map
-  // need to add message if match is not found - Hmmm...nothing matched that exactly but we found something close. Give this one a try:.
+  
+ 
 
   // When I first tested the submit button, every time the user clicked the submit button the new results were being added on top of the previous results instead of one time. I found from stack overflow and W3 that I needed to clear the div before rendering new results each time the form was submitted and that setting innerHTML to "" would clear out results. Sources: https://stackoverflow.com/questions/3450593/how-do-i-clear-the-content-of-a-div-using-javascript, https://www.w3schools.com/jsref/prop_html_innerhtml.asp
   dataList.innerHTML = "";
@@ -143,7 +134,7 @@ function handleCuisine() {
       (restaurant) => restaurant.cuisine.toLowerCase() === cuisineSelection,
     );
   }
-  // tutor helped me understand  https://bobbyhadz.com/blog/javascript-array-push-if-not-exist
+  // I used .includes() to check if a price already exists in the array before adding it and .push() to add the value only if it is not already present so that there are no duplicates. The articles helped me understand how .push() works and tutor helped me understand how to combine them. A tutor also helped me better understand how this logic works togther in practice. Sources: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push,https://bobbyhadz.com/blog/javascript-array-push-if-not-exist.
   // 2. Push available prices to an array
   let availablePrices = [];
   filteredRestaurants.forEach((restaurant) => {
@@ -151,10 +142,9 @@ function handleCuisine() {
       availablePrices.push(restaurant.price);
     }
   });
-  console.log(availablePrices);
-
+  
   // 3. Disable the price radio inputs based on the available prices
-  // "any price" was also disabled with this change but fixed with tutor help
+  // "any price" was also disabled with this change but fixed 
   let radioOptions = document.querySelectorAll(".price-input");
   console.log(radioOptions);
   radioOptions.forEach((option) => {
@@ -164,7 +154,7 @@ function handleCuisine() {
   });
   handlePrices();
 }
-// https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select_event, https://dev.to/rayan2228/the-ultimate-css-selectors-cheat-sheet-2025-45ep
+// Disabled the price radio inputs based on availablePrices so that users can only select options that are available in teh dataset.The .disabled property evaulates whether the value is in availablePrices using .includes(). The article helped me understand to target using this selector. Sources: https://www.w3schools.com/jsref/prop_select_disabled.asp, https://dev.to/rayan2228/the-ultimate-css-selectors-cheat-sheet-2025-45ep.
 
 function handlePrices() {
   console.log("test 2");
@@ -185,6 +175,9 @@ function handlePrices() {
 
     // }
   });
+  
+// This article helped with understanding how the spread operator works because it can expand an array into individual elements.  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax. The (...restaurant.borough in my code adds each borough seperately intp the array).
+
   console.log(availableBoroughs);
 
   const boroughCheckboxes = document.querySelectorAll(".borough-checkbox");
@@ -195,14 +188,14 @@ function handlePrices() {
   });
 }
 
-// how to push an array to another array -https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push, https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat
+
 
 const cuisineFigures = document.querySelectorAll(
   ".cuisine-select-section figure",
 );
-// how to select the clicked event element in js
+// help with event.target and DOM navigation in js
 // https://stackoverflow.com/questions/1553661/how-to-get-the-onclick-calling-object
-// https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget
+
 
 function handleCuisineFigure(event) {
   console.log(event.currentTarget);
@@ -221,9 +214,12 @@ function handleCuisineFigure(event) {
   cuisineSelect.value = figCaptionValue;
   handleCuisine();
 }
-// https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector
 
+// These articles helped with accessing the element the event handler is connected to and how to add/remove classes to update an active state. I was running into issue getting the function to work. After reviewing with a tutor, I was able to resolve the issue. Sources:
 // https://stackoverflow.com/questions/44676281/plain-javascript-event-target-get-the-next-sibling-the-first-child
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
 
 
 function goToCuisines(){
