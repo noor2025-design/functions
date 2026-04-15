@@ -176,7 +176,7 @@ function handlePrices() {
     // }
   });
   
-// This article helped with understanding how the spread operator works because it can expand an array into individual elements.  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax. The (...restaurant.borough in my code adds each borough seperately intp the array).
+// This article helped with understanding how the spread operator works because it can expand an array into individual elements.  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax. The (...restaurant.borough) in my code adds each borough seperately into the array.
 
   console.log(availableBoroughs);
 
@@ -193,7 +193,7 @@ function handlePrices() {
 const cuisineFigures = document.querySelectorAll(
   ".cuisine-select-section figure",
 );
-// help with event.target and DOM navigation in js
+// event.target and DOM navigation in js
 // https://stackoverflow.com/questions/1553661/how-to-get-the-onclick-calling-object
 
 
