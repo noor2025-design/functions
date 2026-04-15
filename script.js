@@ -26,10 +26,10 @@ userForm.addEventListener("submit", (event) => {
   const boroughCheckboxes = document.querySelectorAll(
     ".borough-checkbox:checked",
   );
-  console.log(boroughCheckboxes);
+  // console.log(boroughCheckboxes);
 
-  console.log(priceRadioInput);
-  console.log(priceRadioInput.checked);
+  // console.log(priceRadioInput);
+  // console.log(priceRadioInput.checked);
 
   const cuisineSelection = cuisineSelect.value;
   // const priceSelection = priceSelect.value;
@@ -40,10 +40,10 @@ userForm.addEventListener("submit", (event) => {
       boroughValues.push(checkbox.value);
     });
   }
-  console.log(boroughValues);
+  // console.log(boroughValues);
 
   // **Drop Down menu reference**
-  // I needed to capture the users dropdown selections to pass into my function . I learned from this post that you could use getElementById to grab the dropdown and .value to get the selected option, then store each for cuisine and price from stack overflow https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript.
+  // I needed to capture the users dropdown selections to pass into my function. I learned from this post that you could use getElementById to grab the dropdown and .value to get the selected option, then store each for cuisine and price from stack overflow https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript.
   //   console.log(cuisineSelection);
   // add restaurant and dish suggestion to the page based on cuisine selection
 

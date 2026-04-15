@@ -36,14 +36,12 @@ body {
   font-style: normal;
 }
 
-/* I used appearance:radio to restore the default radio button that was wiped out by the reset. I learned about the appearance prporty from this MDN article. Source: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/appearance */
 .radio-input-section {
   display: flex;
   justify-content: center;
   padding: 1.5rem;
 }
 .price-input {
-  /* appearance: radio; */
   margin-left: 1rem;
 }
 .price-label {
@@ -71,8 +69,6 @@ body {
   left: 5px;
   display: none;
 }
-/* Adjacent sibling – selects next sibling */
-/* https://dev.to/rayan2228/the-ultimate-css-selectors-cheat-sheet-2025-45ep */
 
 .price-input:checked + .price-label::after {
   display: block;
@@ -81,7 +77,7 @@ body {
   opacity: 0.5;
   cursor: not-allowed;
 }
-/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/cursor */
+
 .price-buttons-section {
   display: flex;
   justify-content: space-between;
@@ -102,7 +98,6 @@ h1 {
   justify-content: center;
   align-items: center;
   line-height: 0.8;
-  /* padding: 2rem 1rem; */
 }
 
 h1 > span:first-of-type {
@@ -166,7 +161,7 @@ h2 {
 }
 
 .intro-card button:hover {
-  background-color: #ea6f5e;
+  background-color: var(--primary-color);
 }
 h3 {
   font-family: "New-Yorker", sans-serif;
@@ -378,7 +373,7 @@ select {
 
 .dish-description {
   font-size: 1.5rem;
-  font-family: var(--secondary-font)
+  font-family: var(--secondary-font);
   padding-inline: 2rem;
 }
 footer {
@@ -400,7 +395,7 @@ footer {
   align-items: center;
 }
 /* Media Query for small desktops */
-/* I pulled these key breakpoints from https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
+/* I pulled these breakpoints from https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
 @media (width >= 769px) {
   .cuisine-figure-section {
     flex-direction: row;
@@ -415,6 +410,6 @@ footer {
   }
 }
 /* Media Query for large desktops */
-/* I pulled these key breakpoints from https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
+/* I pulled these breakpoints from https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
 @media (width >= 1025px) {
 }

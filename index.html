@@ -36,11 +36,10 @@
         </section>
       </section>
       <section class="user-inputs">
-        <!-- A <select> tag element creates a dropdown menu with each <option> tag inside of each type of cuisine the user can pick from in the menu. I used the following references for how to set this up for my project from https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/select,https://www.javascripttutorial.net/javascript-dom/javascript-select-box/ -->
+        <!-- A <select> tag element creates a dropdown menu with each <option> tag inside of each type of cuisine the user can pick from in the menu. Each option value includes the string of the type of cuisine that my JS reads and matches in the restaurant data to filter the results. I used the following references for how to set this up for my project from https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/select,https://www.javascripttutorial.net/javascript-dom/javascript-select-box/ -->
         <form id="user-form">
           <section class="cuisine-select-section">
             <h3>What are you in the mood for?</h3>
-            <!-- <label for="cuisine-select">Select a Cuisine Type:</label> -->
             <select name="cuisine" id="cuisine-select">
               <option value="">--Please choose an option--</option>
               <option value="">Any Cuisine</option>
@@ -115,16 +114,13 @@
               NEXT
             </button>
           </section>
-          <!-- how to detect when select input changes? -->
-          <!-- https://www.w3schools.com/jsref/event_onselect.asp,https://www.w3schools.com/jsref/event_onchange.asp,https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select_event -->
 
-          <!-- <label for="price-select">Select a Price Range:</label>
-          <select name="price" id="price-select">
-            <option value="">--Select a Price Range--</option>
-            <option value="$">$</option>
-            <option value="$$">$$</option>
-            <option value="$$$">$$$</option>
-          </select> -->
+          <!-- NOTE: I initially references inline event handler examples and found articles online but realized from class notes that addEventLister() is better so will redo code to reflect that.  -->
+
+          <!-- how to detect when select input changes? -->
+          <!-- The onchange signals every time the user selects an option which triggers the handleCuisine() function in javascript. The onlick fires when the user clicks the button for each. Sources:https://www.w3schools.com/jsref/event_onchange.asp,https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener-->
+
+      
 
           <!-- I used <input type="radio"> to create a group of radio buttons. I learned that all radio buttons in the same group should share the same name so that only one option can be selected at a time. Each button also has a value when the form is submitted by the user and what javascript reads as the user selection. I also used "checked" on the "any price" button to set it to default so that users don't feel constrained to one price point. I used the HTML checked attribute on "any price" radio button to make it default selected option when the page first loads so that a value is always selected. Sources: https://www.w3schools.com/tags/att_input_type_radio.asp,https://www.geeksforgeeks.org/javascript/how-to-get-value-of-selected-radio-button-using-javascript/,https://www.w3schools.com/tags/att_input_checked.asp  -->
           <section class="price-section">
@@ -187,8 +183,7 @@
               </button>
             </section>
           </section>
-          <!-- https://www.w3schools.com/jsref/event_onchange.asp -->
-
+       
           <!-- I used <input type="checkbox"> inside <label> elements to create a group of borough filter options for users. Each checkbox has label matching the "id" with "for". All five checkboxes have the same name of "borough" so that I can use querySelectorAll in javascript to pull all the boroughs that the user selected. Source: https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/ -->
           <section class="borough-selection">
             <h3>What borough(s)?</h3>
