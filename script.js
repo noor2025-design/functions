@@ -59,72 +59,15 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
     cuisineSelection === "" &&
     boroughValues.length === 0
   ) {
-    // console.log("empty");
+    
 
     return;
   }
   //   I noticed the site was still populating results when hitting submit without selecting anything. The return is used inside the function if both fields are empty and found this from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return.
 
-  // The `ul` where the items will be inserted.
+  
   let dataList = document.querySelector("#selected-restaurant ul");
-  // let filteredCuisines;
-  // let filteredPrices;
-  // let filteredBoroughs;
-
-  // Alternate filtering method
-  // let filteredRestaurants = data;
-
-  // if (cuisineSelection !== "") {
-  //   filteredRestaurants = filteredRestaurants.filter(
-  //     (restaurant) => restaurant.cuisine.toLowerCase() === cuisineSelection,
-  //   );
-  // }
-  // if (priceSelection !== "") {
-  //   let isEmpty =
-  //     filteredRestaurants.filter(
-  //       (restaurant) => restaurant.price === priceSelection,
-  //     ).length === 0;
-  //   if (!isEmpty) {
-  //     filteredRestaurants = filteredRestaurants.filter(
-  //       (restaurant) => restaurant.price === priceSelection,
-  //     );
-  //   }
-  // }
-
-  // Source: I used the toLowerCase() to make the cuisine filter not be case sensitive. My dropdown option values are all lowercase but my JSON dats has cuisine names with the first letter capital. I used toLowerCase() on the restaurant cuisine value from JSON to match the user selection so both uppercase and lowercase selections are treated the same. Source: https://www.w3schools.com/jsref/jsref_tolowercase.asp
-  // if (cuisineSelection !== "") {
-  //   filteredCuisines = data.filter(
-  //     (restaurant) => restaurant.cuisine.toLowerCase() === cuisineSelection,
-  //   );
-  // }
-  // if (priceSelection !== "" && cuisineSelection !== "") {
-  //   filteredPrices = filteredCuisines.filter(
-  //     (restaurant) => restaurant.price === priceSelection,
-  //   );
-  // } else if (priceSelection !== "" && cuisineSelection === "") {
-  //   filteredPrices = data.filter(
-  //     (restaurant) => restaurant.price === priceSelection,
-  //   );
-  // }
-
-  // right logic - using boroughValues want to match restaurants filtered by price and if there are no matches for cuisine and price then filter only by cuisine?
-  // if (
-  //   boroughValues.length !== 0 &&
-  //   priceSelection !== "" &&
-  //   filteredPrices.length !== 0
-  // ) {
-  //   filteredBoroughs = filteredPrices.filter((restaurant) =>
-  //     restaurant.borough.some((borough) => boroughValues.includes(borough)),
-  //   );
-  // } else if (boroughValues.length !== 0 && cuisineSelection !== "") {
-  //   filteredBoroughs = filteredCuisines.filter((restaurant) =>
-  //     restaurant.borough.some((borough) => boroughValues.includes(borough)),
-  //   );
-  // } else if (boroughValues.length !== 0 && cuisineSelection === "") {
-  //   filteredBoroughs = data.filter((restaurant) =>
-  //     restaurant.borough.some((borough) => boroughValues.includes(borough)),
-  //   );
-  // }
+  
   if (boroughValues.length !== 0) {
     filteredRestaurants = filteredRestaurants.filter((restaurant) =>
       restaurant.borough.some((borough) => boroughValues.includes(borough)),
@@ -276,3 +219,4 @@ function handleCuisineFigure(event) {
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector
 
 // https://stackoverflow.com/questions/44676281/plain-javascript-event-target-get-the-next-sibling-the-first-child
+
