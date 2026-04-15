@@ -225,3 +225,33 @@ function handleCuisineFigure(event) {
 
 // https://stackoverflow.com/questions/44676281/plain-javascript-event-target-get-the-next-sibling-the-first-child
 
+
+function goToCuisines(){
+  introSection.classList.add("hidden");
+  cuisineSection.classList.remove("hidden");
+}
+
+function goToPrices(){
+  cuisineSection.classList.add("hidden");
+  priceSection.classList.remove("hidden");
+}
+
+function goToBoroughs(){
+  priceSection.classList.add("hidden");
+  boroughSection.classList.remove("hidden");
+}
+
+function backToCuisine(){
+  priceSection.classList.add("hidden");
+  cuisineSection.classList.remove("hidden");
+}
+
+function backToPrices(){
+  boroughSection.classList.add("hidden");
+  priceSection.classList.remove("hidden");
+}
+
+function backToIntro(){
+  selectedRestaurantSection.classList.add("hidden");
+  introSection.classList.remove("hidden");
+}
