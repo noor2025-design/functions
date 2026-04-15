@@ -1,4 +1,9 @@
 const userForm = document.getElementById("user-form");
+const introSection = document.querySelector(".intro-section");
+const cuisineSection = document.querySelector(".cuisine-select-section");
+const boroughSection = document.querySelector(".borough-selection");
+const priceSection = document.querySelector(".price-section");
+const selectedRestaurantSection = document.querySelector(".selected-restaurant");
 let restaurantData;
 let filteredRestaurants;
 
