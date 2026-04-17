@@ -3,7 +3,9 @@ const introSection = document.querySelector(".intro-section");
 const cuisineSection = document.querySelector(".cuisine-select-section");
 const boroughSection = document.querySelector(".borough-selection");
 const priceSection = document.querySelector(".price-section");
-const selectedRestaurantSection = document.querySelector(".selected-restaurant");
+const selectedRestaurantSection = document.querySelector(
+  ".selected-restaurant",
+);
 
 let restaurantData;
 let filteredRestaurants;
@@ -28,7 +30,6 @@ userForm.addEventListener("submit", (event) => {
   const boroughCheckboxes = document.querySelectorAll(
     ".borough-checkbox:checked",
   );
-  
 
   const cuisineSelection = cuisineSelect.value;
   // const priceSelection = priceSelect.value;
@@ -39,11 +40,9 @@ userForm.addEventListener("submit", (event) => {
       boroughValues.push(checkbox.value);
     });
   }
-  
 
   // **Capturing Drop-Down menu**
   // I needed to capture the users dropdown selections to pass into my function. I used getElementById to grab the dropdown and .value to get the selected option, then stored each for cuisine and price from stack overflow https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript.
- 
 
   // Fetch gets your (local) JSON file…
   // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
@@ -52,12 +51,10 @@ userForm.addEventListener("submit", (event) => {
   //   .then((data) => {
   // And passes the data to the function, above!
 
- 
-  goToResults()
+  goToResults();
   renderItems(cuisineSelection, priceSelection, boroughValues);
   // });
 });
-
 
 // Function to render your items.
 let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
@@ -66,14 +63,12 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
     cuisineSelection === "" &&
     boroughValues.length === 0
   ) {
-    
     return;
   }
   //   I noticed the site was still populating results when hitting submit without selecting anything. The return is used inside the function if both fields are empty and found this from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return.
 
-
   let dataList = document.querySelector(".selected-restaurant ul");
-  
+
   if (boroughValues.length !== 0) {
     filteredRestaurants = filteredRestaurants.filter((restaurant) =>
       restaurant.borough.some((borough) => boroughValues.includes(borough)),
@@ -83,13 +78,10 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
   // https://www.w3schools.com/jsref/jsref_some.asp
 
-
-
-  // I wanted the results to randomly select a different restuarant each time so that the site doesn't push out the same one when I add more resturants to my json file. I reviewed this article from stack overflow (https://stackoverflow.com/a/4550514) and a tutor helped clarify it more. The Math.random() generates a random decimal number and multiplies it by filteredRestaurants.length which matches the number of resaurants with the users filters. The Math.floor()rounds it down to a whole number because as I add more restuarants then the array will become longer so filteredRestaurants.length will grow. 
+  // I wanted the results to randomly select a different restuarant each time so that the site doesn't push out the same one when I add more resturants to my json file. I reviewed this article from stack overflow (https://stackoverflow.com/a/4550514) and a tutor helped clarify it more. The Math.random() generates a random decimal number and multiplies it by filteredRestaurants.length which matches the number of resaurants with the users filters. The Math.floor()rounds it down to a whole number because as I add more restuarants then the array will become longer so filteredRestaurants.length will grow.
 
   let selectedRestaurant =
     filteredRestaurants[Math.floor(Math.random() * filteredRestaurants.length)];
-
 
   // building template with selected restaurant
 
@@ -120,14 +112,11 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
           <a class="directions-link" href="${googleUrl}" target="_blank">Get Directions!</a>
         </li>
                     `;
-  
- 
 
   // When I first tested the submit button, every time the user clicked the submit button the new results were being added on top of the previous results instead of one time. I found from stack overflow and W3 that I needed to clear the div before rendering new results each time the form was submitted and that setting innerHTML to "" would clear out results. Sources: https://stackoverflow.com/questions/3450593/how-do-i-clear-the-content-of-a-div-using-javascript, https://www.w3schools.com/jsref/prop_html_innerhtml.asp
   dataList.innerHTML = "";
   dataList.insertAdjacentHTML("beforeend", listItem); // Add it to the `ul`!
 };
-
 
 function handleCuisine() {
   console.log("test");
@@ -149,9 +138,9 @@ function handleCuisine() {
       availablePrices.push(restaurant.price);
     }
   });
-  
+
   // 3. Disable the price radio inputs based on the available prices
-  // "any price" was also disabled with this change but fixed 
+  // "any price" was also disabled with this change but fixed
   let radioOptions = document.querySelectorAll(".price-input");
   console.log(radioOptions);
   radioOptions.forEach((option) => {
@@ -161,7 +150,6 @@ function handleCuisine() {
   });
   handlePrices();
   console.log("handle cuisine");
-  
 }
 // Disabled the price radio inputs based on availablePrices so that users can only select options that are available in teh dataset.The .disabled property evaulates whether the value is in availablePrices using .includes(). The article helped me understand to target using this selector. Sources: https://www.w3schools.com/jsref/prop_select_disabled.asp, https://dev.to/rayan2228/the-ultimate-css-selectors-cheat-sheet-2025-45ep.
 
@@ -169,7 +157,7 @@ function handlePrices() {
   console.log("test 2");
   const priceRadioInput = document.querySelector(".price-input:checked");
   const priceSelection = priceRadioInput.value;
-    if (!filteredRestaurants){
+  if (!filteredRestaurants) {
     filteredRestaurants = restaurantData;
   }
   if (priceSelection !== "") {
@@ -187,8 +175,8 @@ function handlePrices() {
 
     // }
   });
-  
-// This article helped with understanding how the spread operator works because it can expand an array into individual elements.  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax. The (...restaurant.borough) in my code adds each borough seperately into the array.
+
+  // This article helped with understanding how the spread operator works because it can expand an array into individual elements.  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax. The (...restaurant.borough) in my code adds each borough seperately into the array.
 
   console.log(availableBoroughs);
 
@@ -200,13 +188,9 @@ function handlePrices() {
   });
 }
 
-
-
 // const cuisineFigures = document.querySelectorAll(
 //   ".cuisine-select-section figure",
 // );
-
-
 
 function handleCuisineFigure(event) {
   console.log(event.currentTarget);
@@ -223,7 +207,6 @@ function handleCuisineFigure(event) {
   // Change the value of the select element
   const cuisineSelect = document.getElementById("cuisine-select");
   cuisineSelect.value = figCaptionValue;
-  handleCuisine();
 }
 
 // These articles helped with accessing the element the event handler is connected to and how to add/remove classes to update an active state. I was running into issue getting the function to work. After reviewing with a tutor, I was able to resolve the issue. Sources:
@@ -232,63 +215,107 @@ function handleCuisineFigure(event) {
 // https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
 
-const priceBackButton = document.querySelector(".price-back-button")
-const priceNextButton = document.querySelector(".price-next-button")
-const boroughBackButton = document.querySelector(".borough-back-button")
-const selectedRestaurantBackButton = document.querySelector(".selected-restaurant-back-button")
-const introButton = document.getElementById("intro-button")
-const cuisineSelectButton = document.querySelector(".cuisine-select-button")
+const priceBackButton = document.querySelector(".price-back-button");
+const priceNextButton = document.querySelector(".price-next-button");
+const boroughBackButton = document.querySelector(".borough-back-button");
+const selectedRestaurantBackButton = document.querySelector(
+  ".selected-restaurant-back-button",
+);
+const introButton = document.getElementById("intro-button");
+const cuisineSelectButton = document.querySelector(".cuisine-select-button");
 
-priceBackButton.addEventListener("click", backToCuisine)
-priceNextButton.addEventListener("click", goToBoroughs)
-boroughBackButton.addEventListener("click", backToPrices)
-introButton.addEventListener("click", goToCuisines)
-cuisineSelectButton.addEventListener("click", goToPrices)
-selectedRestaurantBackButton.addEventListener("click", backToIntro)
+priceBackButton.addEventListener("click", backToCuisine);
+priceNextButton.addEventListener("click", goToBoroughs);
+boroughBackButton.addEventListener("click", backToPrices);
+introButton.addEventListener("click", goToCuisines);
+cuisineSelectButton.addEventListener("click", goToPrices);
+selectedRestaurantBackButton.addEventListener("click", backToIntro);
 
-const cuisineFigures = document.querySelectorAll(".cuisine-select-section figure")
-cuisineFigures.forEach((input) => input.addEventListener("click", handleCuisineFigure));
+const cuisineFigures = document.querySelectorAll(
+  ".cuisine-select-section figure",
+);
+cuisineFigures.forEach((input) =>
+  input.addEventListener("click", handleCuisineFigure),
+);
 
-const priceInputs = document.querySelectorAll(".price-input")
+const priceInputs = document.querySelectorAll(".price-input");
 priceInputs.forEach((input) => input.addEventListener("change", handlePrices));
 
-function goToCuisines(){
+function goToCuisines() {
   introSection.classList.add("hidden");
   cuisineSection.classList.remove("hidden");
 }
 
-function goToPrices(){
+function goToPrices() {
+  handleCuisine();
   cuisineSection.classList.add("hidden");
   priceSection.classList.remove("hidden");
 }
 
-function goToBoroughs(){
-   // where user does not make any selections for cuisine or price 
-  if (!filteredRestaurants){
+function goToBoroughs() {
+  // where user does not make any selections for cuisine or price
+  if (!filteredRestaurants) {
     filteredRestaurants = restaurantData;
-    handlePrices()
   }
+  handlePrices();
   priceSection.classList.add("hidden");
   boroughSection.classList.remove("hidden");
 }
 
-function backToCuisine(){
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/checked
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/disabled
+function backToCuisine() {
   priceSection.classList.add("hidden");
   cuisineSection.classList.remove("hidden");
+  // to reset prices going moving backwards for the user
+  document.querySelectorAll(".price-input").forEach((radio) => {
+    if (radio.value === "") {
+      radio.checked = true;
+    } else {
+      radio.checked = false;
+    }
+    radio.disabled = false;
+  });
 }
 
-function backToPrices(){
+function backToPrices() {
   boroughSection.classList.add("hidden");
   priceSection.classList.remove("hidden");
+  // reset boroughs when moving backwards to the prices selection
+  document.querySelectorAll(".borough-checkbox").forEach((checkbox) => {
+    checkbox.checked = false;
+    checkbox.disabled = false;
+  });
 }
 
-function backToIntro(){
+function backToIntro() {
   selectedRestaurantSection.classList.add("hidden");
   introSection.classList.remove("hidden");
+  // reset cuisine selections
+  document.getElementById("cuisine-select").value = "";
+  const cuisineFigures = document.querySelectorAll(
+    ".cuisine-select-section figure",
+  );
+  cuisineFigures.forEach((figure) => figure.classList.remove("active-figure"));
+  // to reset prices going moving backwards for the user
+  document.querySelectorAll(".price-input").forEach((radio) => {
+    if (radio.value === "") {
+      radio.checked = true;
+    } else {
+      radio.checked = false;
+    }
+    radio.disabled = false;
+  });
+  // reset boroughs when moving backwards to the prices selection
+  document.querySelectorAll(".borough-checkbox").forEach((checkbox) => {
+    checkbox.checked = false;
+    checkbox.disabled = false;
+  });
+  // resetting filtered restaurants
+   filteredRestaurants = restaurantData;
 }
 
-function goToResults(){
+function goToResults() {
   boroughSection.classList.add("hidden");
   selectedRestaurantSection.classList.remove("hidden");
-
 }

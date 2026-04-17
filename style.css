@@ -209,7 +209,15 @@ h3 {
 #form-button {
   align-self: center;
 }
-
+.cuisine-select-button{
+  align-self: flex-end;
+}
+.cuisine-select-button .arrow-svg, 
+.price-back-button .arrow-svg,
+.price-next-button .arrow-svg,
+.borough-back-button .arrow-svg{
+  width: 2rem;
+}
 
 section.hidden{
     display: none;
