@@ -227,6 +227,16 @@ const boroughBackButton = document.querySelector(".borough-back-button")
 const selectedRestaurantBackButton = document.querySelector(".selected-restaurant-back-button")
 const introButton = document.querySelector(".intro-button")
 
+priceBackButton.addEventListener("click", backToCuisine)
+priceNextButton.addEventListener("click", goToBoroughs)
+priceBackButton.addEventListener("click", backToPrices)
+priceNextButton.addEventListener("click", goToCuisines)
+priceNextButton.addEventListener("click", goToPrices)
+priceBackButton.addEventListener("click", backToIntro)
+
+
+const priceInputs = document.querySelectorAll(".price-input")
+priceInputs.forEach((input)) => input.addEventListener("change", handlePrices);
 
 
 function goToCuisines(){
