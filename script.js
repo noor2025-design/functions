@@ -58,13 +58,13 @@ userForm.addEventListener("submit", (event) => {
 
 // Function to render your items.
 let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
-  if (
-    priceSelection === "" &&
-    cuisineSelection === "" &&
-    boroughValues.length === 0
-  ) {
-    return;
-  }
+  // if (
+  //   priceSelection === "" &&
+  //   cuisineSelection === "" &&
+  //   boroughValues.length === 0
+  // ) {
+  //   return;
+  // }
   //   I noticed the site was still populating results when hitting submit without selecting anything. The return is used inside the function if both fields are empty and found this from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return.
 
   let dataList = document.querySelector(".selected-restaurant ul");
