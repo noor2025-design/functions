@@ -122,6 +122,7 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
   dataList.insertAdjacentHTML("beforeend", listItem); // Add it to the `ul`!
 };
 
+
 function handleCuisine() {
   console.log("test");
   // when the user makes a selection from the dropdown menu, want to disable prices that are not available
@@ -193,8 +194,7 @@ function handlePrices() {
 const cuisineFigures = document.querySelectorAll(
   ".cuisine-select-section figure",
 );
-// event.target and DOM navigation in js
-// https://stackoverflow.com/questions/1553661/how-to-get-the-onclick-calling-object
+
 
 
 function handleCuisineFigure(event) {
@@ -220,6 +220,13 @@ function handleCuisineFigure(event) {
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+
+const priceBackButton = document.querySelector(".price-back-button")
+const priceNextButton = document.querySelector(".price-next-button")
+const boroughBackButton = document.querySelector(".borough-back-button")
+const selectedRestaurantBackButton = document.querySelector(".selected-restaurant-back-button")
+const introButton = document.querySelector(".intro-button")
+
 
 
 function goToCuisines(){

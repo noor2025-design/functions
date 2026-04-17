@@ -32,7 +32,7 @@
             NYC. Tell us what you're feeling and we'll find you the restaurant
             and your next dish.
           </p>
-          <button id="intro-button" type="button" onclick="goToCuisines()">Let's Get Started!</button>
+          <button id="intro-button" type="button">Let's Get Started!</button>
         </section>
       </section>
       <section class="user-inputs">
@@ -51,76 +51,74 @@
               <option value="syrian">Syrian</option>
             </select>
             <section class="cuisine-figure-section">
-            <figure onclick="handleCuisineFigure(event)">
-              <div class="image-wrapper">
-                <img
-                  src="./assets/images/Moroccan-bastilla-restaurant-card.jpg"
-                  alt="Moroccan Bastilla"
-                />
-              </div>
+              <figure>
+                <div class="image-wrapper">
+                  <img
+                    src="./assets/images/Moroccan-bastilla-restaurant-card.jpg"
+                    alt="Moroccan Bastilla"
+                  />
+                </div>
 
-              <figcaption>Moroccan</figcaption>
-            </figure>
-            <figure onclick="handleCuisineFigure(event)">
-              <div class="image-wrapper">
-                <img
-                  src="./assets/images/Egyptian-koshary-restaurant-card.jpg"
-                  alt=""
-                />
-              </div>
+                <figcaption>Moroccan</figcaption>
+              </figure>
+              <figure>
+                <div class="image-wrapper">
+                  <img
+                    src="./assets/images/Egyptian-koshary-restaurant-card.jpg"
+                    alt=""
+                  />
+                </div>
 
-              <figcaption>Egyptian</figcaption>
-            </figure>
-            <figure onclick="handleCuisineFigure(event)">
-              <div class="image-wrapper">
-                <img
-                  src="./assets/images/Palestinian-Maklouba-restaurant-card.jpg"
-                  alt=""
-                />
-              </div>
+                <figcaption>Egyptian</figcaption>
+              </figure>
+              <figure>
+                <div class="image-wrapper">
+                  <img
+                    src="./assets/images/Palestinian-Maklouba-restaurant-card.jpg"
+                    alt=""
+                  />
+                </div>
 
-              <figcaption>Palestinian</figcaption>
-            </figure>
-            <figure onclick="handleCuisineFigure(event)">
-              <div class="image-wrapper">
-                <img src="./assets/images/Yemeni-restuarant-card.jpg" alt="" />
-              </div>
+                <figcaption>Palestinian</figcaption>
+              </figure>
+              <figure>
+                <div class="image-wrapper">
+                  <img
+                    src="./assets/images/Yemeni-restuarant-card.jpg"
+                    alt=""
+                  />
+                </div>
 
-              <figcaption>Yemeni</figcaption>
-            </figure>
-            <figure onclick="handleCuisineFigure(event)">
-              <div class="image-wrapper">
-                <img
-                  src="./assets/images/Lebanese-restaurant-card.jpg"
-                  alt=""
-                />
-              </div>
+                <figcaption>Yemeni</figcaption>
+              </figure>
+              <figure>
+                <div class="image-wrapper">
+                  <img
+                    src="./assets/images/Lebanese-restaurant-card.jpg"
+                    alt=""
+                  />
+                </div>
 
-              <figcaption>Lebanese</figcaption>
-            </figure>
-            <figure onclick="handleCuisineFigure(event)">
-              <div class="image-wrapper">
-                <img src="./assets/images/Syrian-restaurant-card.jpg" alt="" />
-              </div>
+                <figcaption>Lebanese</figcaption>
+              </figure>
+              <figure>
+                <div class="image-wrapper">
+                  <img
+                    src="./assets/images/Syrian-restaurant-card.jpg"
+                    alt=""
+                  />
+                </div>
 
-              <figcaption>Syrian</figcaption>
-            </figure>
+                <figcaption>Syrian</figcaption>
+              </figure>
             </section>
-            <button
-              class="cuisine-select-button"
-              type="button"
-              onclick="goToPrices()"
-            >
-              NEXT
-            </button>
+            <button class="cuisine-select-button" type="button">NEXT</button>
           </section>
 
           <!-- NOTE: I initially references inline event handler examples and found articles online but realized from class notes that addEventLister() is better so will redo code to reflect that.  -->
 
           <!-- how to detect when select input changes? -->
           <!-- The onchange signals every time the user selects an option which triggers the handleCuisine() function in javascript. The onlick fires when the user clicks the button for each. Sources:https://www.w3schools.com/jsref/event_onchange.asp,https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener-->
-
-      
 
           <!-- I used <input type="radio"> to create a group of radio buttons. I learned that all radio buttons in the same group should share the same name so that only one option can be selected at a time. Each button also has a value when the form is submitted by the user and what javascript reads as the user selection. I also used "checked" on the "any price" button to set it to default so that users don't feel constrained to one price point. I used the HTML checked attribute on "any price" radio button to make it default selected option when the page first loads so that a value is always selected. Sources: https://www.w3schools.com/tags/att_input_type_radio.asp,https://www.geeksforgeeks.org/javascript/how-to-get-value-of-selected-radio-button-using-javascript/,https://www.w3schools.com/tags/att_input_checked.asp  -->
           <section class="price-section">
@@ -134,7 +132,6 @@
                 id="any-price"
                 class="price-input"
                 checked
-                onchange="handlePrices()"
               />
               <label class="price-label" for="any-price">Any Price</label>
 
@@ -144,7 +141,6 @@
                 value="$"
                 id="low-price"
                 class="price-input"
-                onchange="handlePrices()"
               />
               <label class="price-label" for="low-price">$</label>
               <input
@@ -153,7 +149,6 @@
                 value="$$"
                 id="mid-price"
                 class="price-input"
-                onchange="handlePrices()"
               />
               <label class="price-label" for="mid-price">$$</label>
               <input
@@ -162,28 +157,15 @@
                 value="$$$"
                 id="high-price"
                 class="price-input"
-                onchange="handlePrices()"
               />
               <label class="price-label" for="high-price">$$$</label>
             </section>
             <section class="price-buttons-section">
-              <button
-                class="price-back-button"
-                type="button"
-                onclick="backToCuisine()"
-              >
-                BACK
-              </button>
-              <button
-                class="price-next-button"
-                type="button"
-                onclick="goToBoroughs()"
-              >
-                NEXT
-              </button>
+              <button class="price-back-button" type="button">BACK</button>
+              <button class="price-next-button" type="button">NEXT</button>
             </section>
           </section>
-       
+
           <!-- I used <input type="checkbox"> inside <label> elements to create a group of borough filter options for users. Each checkbox has label matching the "id" with "for". All five checkboxes have the same name of "borough" so that I can use querySelectorAll in javascript to pull all the boroughs that the user selected. Source: https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/ -->
           <section class="borough-selection">
             <h3>What borough(s)?</h3>
@@ -235,13 +217,7 @@
               Staten Island</label
             >
             <section class="borough-button-section">
-              <button
-                class="borough-back-button"
-                type="button"
-                onclick="backToPrices()"
-              >
-                BACK
-              </button>
+              <button class="borough-back-button" type="button">BACK</button>
               <button id="form-button" type="submit">Let's See!</button>
             </section>
           </section>
@@ -249,7 +225,7 @@
       </section>
       <section class="selected-restaurant hidden">
         <ul></ul>
-        <button class="selected-restaurant-back-button" type="button" onclick="backToIntro">BACK</button>
+        <button class="selected-restaurant-back-button"type="button">BACK</button>
       </section>
     </main>
 
@@ -257,8 +233,10 @@
       <p>ONE RESTUARANT. ONE DISH. NO OVERTHINKING.</p>
       <p>Parsons School of Design, The New School</p>
       <section class="footer-text">
-      <a href="https://typography-interaction-2526.github.io/">Typography & Interaction</a>
-      <p>2026 Noor Abdussaboor</p>
+        <a href="https://typography-interaction-2526.github.io/"
+          >Typography & Interaction</a
+        >
+        <p>2026 Noor Abdussaboor</p>
       </section>
     </footer>
   </body>
