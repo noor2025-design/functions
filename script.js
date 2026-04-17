@@ -4,6 +4,7 @@ const cuisineSection = document.querySelector(".cuisine-select-section");
 const boroughSection = document.querySelector(".borough-selection");
 const priceSection = document.querySelector(".price-section");
 const selectedRestaurantSection = document.querySelector(".selected-restaurant");
+
 let restaurantData;
 let filteredRestaurants;
 
@@ -17,6 +18,7 @@ fetch("assets/data.json")
 // The page was refreshing every time I hit submit and cleared the results. I found event.preventDefault() to stop this behavior and it tells the browser to ignore the browser behavior and listen to javascript from this reference https://www.tutorialspoint.com/article/how-to-stop-refreshing-the-page-on-submit-in-javascript.
 userForm.addEventListener("submit", (event) => {
   event.preventDefault();
+
   const cuisineSelect = document.getElementById("cuisine-select");
   // const priceSelect = document.getElementById("price-select");
 
@@ -49,9 +51,13 @@ userForm.addEventListener("submit", (event) => {
   //   .then((response) => response.json())
   //   .then((data) => {
   // And passes the data to the function, above!
+
+ 
+  goToResults()
   renderItems(cuisineSelection, priceSelection, boroughValues);
   // });
 });
+
 
 // Function to render your items.
 let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
@@ -154,6 +160,8 @@ function handleCuisine() {
     }
   });
   handlePrices();
+  console.log("handle cuisine");
+  
 }
 // Disabled the price radio inputs based on availablePrices so that users can only select options that are available in teh dataset.The .disabled property evaulates whether the value is in availablePrices using .includes(). The article helped me understand to target using this selector. Sources: https://www.w3schools.com/jsref/prop_select_disabled.asp, https://dev.to/rayan2228/the-ultimate-css-selectors-cheat-sheet-2025-45ep.
 
@@ -161,6 +169,9 @@ function handlePrices() {
   console.log("test 2");
   const priceRadioInput = document.querySelector(".price-input:checked");
   const priceSelection = priceRadioInput.value;
+    if (!filteredRestaurants){
+    filteredRestaurants = restaurantData;
+  }
   if (priceSelection !== "") {
     filteredRestaurants = filteredRestaurants.filter(
       (restaurant) => restaurant.price === priceSelection,
@@ -191,9 +202,9 @@ function handlePrices() {
 
 
 
-const cuisineFigures = document.querySelectorAll(
-  ".cuisine-select-section figure",
-);
+// const cuisineFigures = document.querySelectorAll(
+//   ".cuisine-select-section figure",
+// );
 
 
 
@@ -225,19 +236,21 @@ const priceBackButton = document.querySelector(".price-back-button")
 const priceNextButton = document.querySelector(".price-next-button")
 const boroughBackButton = document.querySelector(".borough-back-button")
 const selectedRestaurantBackButton = document.querySelector(".selected-restaurant-back-button")
-const introButton = document.querySelector(".intro-button")
+const introButton = document.getElementById("intro-button")
+const cuisineSelectButton = document.querySelector(".cuisine-select-button")
 
 priceBackButton.addEventListener("click", backToCuisine)
 priceNextButton.addEventListener("click", goToBoroughs)
-priceBackButton.addEventListener("click", backToPrices)
-priceNextButton.addEventListener("click", goToCuisines)
-priceNextButton.addEventListener("click", goToPrices)
-priceBackButton.addEventListener("click", backToIntro)
+boroughBackButton.addEventListener("click", backToPrices)
+introButton.addEventListener("click", goToCuisines)
+cuisineSelectButton.addEventListener("click", goToPrices)
+selectedRestaurantBackButton.addEventListener("click", backToIntro)
 
+const cuisineFigures = document.querySelectorAll(".cuisine-select-section figure")
+cuisineFigures.forEach((input) => input.addEventListener("click", handleCuisineFigure));
 
 const priceInputs = document.querySelectorAll(".price-input")
-priceInputs.forEach((input)) => input.addEventListener("change", handlePrices);
-
+priceInputs.forEach((input) => input.addEventListener("change", handlePrices));
 
 function goToCuisines(){
   introSection.classList.add("hidden");
@@ -250,6 +263,11 @@ function goToPrices(){
 }
 
 function goToBoroughs(){
+   // where user does not make any selections for cuisine or price 
+  if (!filteredRestaurants){
+    filteredRestaurants = restaurantData;
+    handlePrices()
+  }
   priceSection.classList.add("hidden");
   boroughSection.classList.remove("hidden");
 }
@@ -267,4 +285,10 @@ function backToPrices(){
 function backToIntro(){
   selectedRestaurantSection.classList.add("hidden");
   introSection.classList.remove("hidden");
+}
+
+function goToResults(){
+  boroughSection.classList.add("hidden");
+  selectedRestaurantSection.classList.remove("hidden");
+
 }

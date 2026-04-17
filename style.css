@@ -210,7 +210,8 @@ h3 {
   align-self: center;
 }
 
-.hidden{
+
+section.hidden{
     display: none;
 }
 
