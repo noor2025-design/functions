@@ -92,23 +92,20 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
   let listItem = `
 				<li class="restaurant-card">
 					<h3>${selectedRestaurant.restaurant}</h3>
-          <figure>
-            <div class="image-wrapper">
-             <img src=${selectedRestaurant.cusineImage} alt=${selectedRestaurant.cuisine} />
-            </div>
-            <figcaption>${selectedRestaurant.cuisine}</figcaption>
-          </figure>
           <section class="restaurant-details">
             <h4>Restuarant Details</h4>
             <p>${selectedRestaurant.location}</p>
             <p>${selectedRestaurant.hoursOfOperation}</p>
           </section>
-          <h3>DISH RECOMMENDATION</h3>
+          <h3>Dish Recommendation</h3>
+          <section class="selected-dish-section">
+         
           <p class="dish-name">${selectedRestaurant.dish}</p>
           <div class="image-wrapper">
             <img src=${selectedRestaurant.dishImage} alt=${selectedRestaurant.dish} />
           </div>
           <p class="dish-description">${selectedRestaurant.description}</p>
+           </section> 
           <a class="directions-link" href="${googleUrl}" target="_blank">Get Directions!</a>
         </li>
                     `;

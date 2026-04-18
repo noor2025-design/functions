@@ -81,6 +81,7 @@ body {
 .price-buttons-section {
   display: flex;
   justify-content: space-between;
+  margin-top: auto;
 }
 main {
   padding: var(--gutter);
@@ -150,27 +151,17 @@ h2 {
   font-size: 1.5rem;
   padding-bottom: 2rem;
 }
-.intro-card button {
-  background-color: var(--primary-color);
-  border-radius: 16px;
-  padding: 1rem 2rem;
-  color: var(--secondary-color);
+#intro-button{
   position: absolute;
   bottom: -30px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 1rem;
-  text-align: center;
-  font-family: var(--secondary-font);
-  cursor: pointer;
 }
 
-.intro-card button:hover {
-  background-color: var(--primary-color);
-}
+
 h3 {
   font-family: "New-Yorker", sans-serif;
-  font-size: 2rem;
+  font-size: 3rem;
   flex-direction: column;
   display: flex;
   justify-content: center;
@@ -183,6 +174,12 @@ h3 {
 .borough-section {
   padding-block: 2rem;
   max-width: 1200px;
+  min-height: 50vh;
+}
+.price-section{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction:column;
 }
 .user-inputs {
   display: flex;
@@ -195,6 +192,7 @@ h3 {
   gap: 2rem;
   align-items: center;
 }
+#intro-button,
 #form-button,
 .cuisine-select-button,
 .price-next-button,
@@ -202,18 +200,38 @@ h3 {
 .borough-back-button,
 .directions-link,
  .selected-restaurant-back-button{
-  background-color: var(--secondary-color);
   padding: 0.5rem 1rem;
   border-radius: 8px;
   text-align: center;
   font-family: var(--secondary-font);
+  font-weight: bold;
   cursor: pointer;
   width: fit-content;
+
 }
+#intro-button, #form-button,.directions-link
+ {
+background-color: var(--primary-color);
+color: var(--background-color);
+border: 2px var(--primary-color) solid;
+ }
+#intro-button:hover, #form-button:hover,.directions-link:hover {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
+
+.cuisine-select-button,
+.price-next-button,
+.price-back-button,
+.borough-back-button,
+ .selected-restaurant-back-button{
+background-color: var(--secondary-color);
+ }
 
 #form-button {
   align-self: center;
 }
+
 .cuisine-select-button{
   align-self: flex-end;
 }
@@ -303,8 +321,7 @@ select {
   /* align-items: center; */
   gap: .5rem;
 }
-.cuisine-select-section figure,
-.restaurant-card figure {
+.cuisine-select-section figure{
   background-color: var(--secondary-color);
   padding: .5rem;
   border-radius: 30px;
@@ -318,12 +335,10 @@ select {
 }
 .cuisine-select-section figure{
   /* flex: 1 1 calc(50% - .5rem); */
-   
+  
 }
 
-.restaurant-card figure{
- width: 80%;
-}
+
 .cuisine-select-section .active-figure {
   border: 5px var(--primary-color) solid;
 }
@@ -348,8 +363,7 @@ select {
   height: 100%;
   object-fit: cover;
 }
-.cuisine-select-section figcaption,
-.restaurant-card figcaption {
+.cuisine-select-section figcaption{
   font-family: "New-Yorker", sans-serif;
   font-size: 2rem;
 }
@@ -391,6 +405,15 @@ select {
   font-family: var(--secondary-font)
 }
 
+.selected-dish-section{
+  padding: 3rem 2rem;
+  border-radius: 8px;
+  background-color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
 .dish-name {
   font-size: 2rem;
   font-family: var(--primary-font);
