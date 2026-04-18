@@ -127,11 +127,15 @@ h2 {
   padding: 2rem;
 }
 .intro-phrase {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-family: "New-Yorker", sans-serif;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+}
+
+.intro-phrase span{
+  white-space: nowrap;
 }
 .intro-card {
   background-color: var(--secondary-color);
@@ -290,17 +294,19 @@ select {
   gap: 3rem;
 }
 .cuisine-figure-section {
-  display: flex;
-   flex-wrap: wrap;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* display: flex; */
+   /* flex-wrap: wrap; */
+    /* justify-content: center; */
   /* flex-direction: column; */
   /* align-items: center; */
-  gap: 3rem;
+  gap: .5rem;
 }
 .cuisine-select-section figure,
 .restaurant-card figure {
   background-color: var(--secondary-color);
-  padding: 2rem;
+  padding: .5rem;
   border-radius: 30px;
   display: flex;
   flex-direction: column;
@@ -311,7 +317,7 @@ select {
   border: 5px transparent solid;
 }
 .cuisine-select-section figure{
-  flex: 1 1 calc(50% - .5rem);
+  /* flex: 1 1 calc(50% - .5rem); */
    
 }
 
@@ -417,16 +423,25 @@ footer {
 /* I pulled these breakpoints from https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
 @media (width >= 769px) {
   .cuisine-figure-section {
+    grid-template-columns: repeat(3, 1fr);
     /* flex-direction: row; */
-    flex-wrap: wrap;
-    justify-content: center;
+    /* flex-wrap: wrap; */
+    /* justify-content: center; */
     gap: 3rem;
   }
   .cuisine-figure-section figure {
-    flex-basis: calc(33% - 3rem);
-    flex-grow: 0;
-    flex-shrink: 0;
+    /* flex-basis: calc(33% - 3rem); */
+    /* flex-grow: 0; */
+    /* flex-shrink: 0; */
   }
+  .cuisine-select-section figcaption,
+.restaurant-card figcaption {
+  font-family: "New-Yorker", sans-serif;
+  font-size: 2rem;
+}
+.intro-phrase {
+  font-size: 2rem;
+}
 }
 /* Media Query for large desktops */
 /* I pulled these breakpoints from https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
