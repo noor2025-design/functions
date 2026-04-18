@@ -6,7 +6,7 @@ const priceSection = document.querySelector(".price-section");
 const selectedRestaurantSection = document.querySelector(
   ".selected-restaurant",
 );
-
+const progressBar = document.querySelector(".progress-bar")
 let restaurantData;
 let filteredRestaurants;
 
@@ -20,7 +20,7 @@ fetch("assets/data.json")
 // The page was refreshing every time I hit submit and cleared the results. I found event.preventDefault() to stop this behavior and it tells the browser to ignore the browser behavior and listen to javascript from this reference https://www.tutorialspoint.com/article/how-to-stop-refreshing-the-page-on-submit-in-javascript.
 userForm.addEventListener("submit", (event) => {
   event.preventDefault();
-
+  progressBar.classList.add("hidden")
   const cuisineSelect = document.getElementById("cuisine-select");
   // const priceSelect = document.getElementById("price-select");
 
@@ -241,12 +241,15 @@ priceInputs.forEach((input) => input.addEventListener("change", handlePrices));
 function goToCuisines() {
   introSection.classList.add("hidden");
   cuisineSection.classList.remove("hidden");
+  progressBar.classList.remove("hidden")
+  handleProgressBar(0);
 }
 
 function goToPrices() {
   handleCuisine();
   cuisineSection.classList.add("hidden");
   priceSection.classList.remove("hidden");
+  handleProgressBar(1);
 }
 
 function goToBoroughs() {
@@ -257,6 +260,7 @@ function goToBoroughs() {
   handlePrices();
   priceSection.classList.add("hidden");
   boroughSection.classList.remove("hidden");
+  handleProgressBar(2);
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/checked
@@ -264,6 +268,7 @@ function goToBoroughs() {
 function backToCuisine() {
   priceSection.classList.add("hidden");
   cuisineSection.classList.remove("hidden");
+  handleProgressBar(0);
   // to reset prices going moving backwards for the user
   document.querySelectorAll(".price-input").forEach((radio) => {
     if (radio.value === "") {
@@ -278,6 +283,7 @@ function backToCuisine() {
 function backToPrices() {
   boroughSection.classList.add("hidden");
   priceSection.classList.remove("hidden");
+  handleProgressBar(1);
   // reset boroughs when moving backwards to the prices selection
   document.querySelectorAll(".borough-checkbox").forEach((checkbox) => {
     checkbox.checked = false;
@@ -288,6 +294,7 @@ function backToPrices() {
 function backToIntro() {
   selectedRestaurantSection.classList.add("hidden");
   introSection.classList.remove("hidden");
+  // progressBar.classList.add("hidden")
   // reset cuisine selections
   document.getElementById("cuisine-select").value = "";
   const cuisineFigures = document.querySelectorAll(
@@ -309,10 +316,30 @@ function backToIntro() {
     checkbox.disabled = false;
   });
   // resetting filtered restaurants
-   filteredRestaurants = restaurantData;
+  filteredRestaurants = restaurantData;
 }
 
 function goToResults() {
   boroughSection.classList.add("hidden");
   selectedRestaurantSection.classList.remove("hidden");
+}
+
+const progressCircles = document.querySelectorAll(".progress-circle");
+
+function handleProgressBar(activeIndex) {
+  progressCircles.forEach((circle, index) => {
+    if (activeIndex === index) {
+      circle.classList.add("active");
+      circle.classList.remove("completed");
+      circle.classList.remove("not-completed");
+    } else if (index < activeIndex) {
+      circle.classList.add("completed");
+      circle.classList.remove("active");
+      circle.classList.remove("not-completed");
+    } else {
+      circle.classList.add("not-completed");
+      circle.classList.remove("active");
+      circle.classList.remove("completed");
+    }
+  });
 }
