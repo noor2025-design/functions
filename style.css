@@ -291,13 +291,14 @@ select {
 }
 .cuisine-figure-section {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+   flex-wrap: wrap;
+    justify-content: center;
+  /* flex-direction: column; */
+  /* align-items: center; */
   gap: 3rem;
 }
 .cuisine-select-section figure,
 .restaurant-card figure {
-  width: 80%;
   background-color: var(--secondary-color);
   padding: 2rem;
   border-radius: 30px;
@@ -309,7 +310,14 @@ select {
   box-sizing: border-box;
   border: 5px transparent solid;
 }
+.cuisine-select-section figure{
+  flex: 1 1 calc(50% - .5rem);
+   
+}
 
+.restaurant-card figure{
+ width: 80%;
+}
 .cuisine-select-section .active-figure {
   border: 5px var(--primary-color) solid;
 }
@@ -409,7 +417,7 @@ footer {
 /* I pulled these breakpoints from https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
 @media (width >= 769px) {
   .cuisine-figure-section {
-    flex-direction: row;
+    /* flex-direction: row; */
     flex-wrap: wrap;
     justify-content: center;
     gap: 3rem;
