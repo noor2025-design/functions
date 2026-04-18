@@ -226,8 +226,19 @@ border: 2px var(--primary-color) solid;
 .borough-back-button,
  .selected-restaurant-back-button{
 background-color: var(--secondary-color);
+border: 2px transparent solid;
  }
 
+ .cuisine-select-button:hover,
+.price-next-button:hover,
+.price-back-button:hover,
+.borough-back-button:hover,
+ .selected-restaurant-back-button:hover{
+border: 2px var(--primary-color) solid;
+ }
+#intro-button{
+  padding: 1rem 2rem;
+}
 #form-button {
   align-self: center;
 }
