@@ -521,7 +521,48 @@ footer {
   flex-direction: column;
   gap: 1rem;
   align-items: center;
+  justify-content: center;
+
 }
+.copyright-symbol{
+  font-size: 1rem;
+  font-family: var(--secondary-font);
+  margin-right: .25rem;
+}
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@keyframes */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/animation */
+@keyframes animate-in {
+from {
+    transform: translateY(20px);
+    opacity:0;
+  }
+
+  to {
+    transform: translateY(0px);
+    opacity:1;
+  }
+}
+@keyframes animate-out {
+from {
+    transform: translateY(0px);
+    opacity:1;
+  }
+
+  to {
+    transform: translateY(-20px);
+    opacity:0;
+  }
+}
+
+.animate-in{
+  animation: .5s ease-in-out animate-in forwards;
+}
+
+.animate-out{
+  animation: .5s ease-in-out animate-out forwards;
+}
+
 /* Media Query for small desktops */
 /* I pulled these breakpoints from https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
 @media (width >= 769px) {
