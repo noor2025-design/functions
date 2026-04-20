@@ -20,10 +20,10 @@ fetch("assets/data.json")
 // The page was refreshing every time I hit submit and cleared the results. I found event.preventDefault() to stop this behavior and it tells the browser to ignore the browser behavior and listen to javascript from this reference https://www.tutorialspoint.com/article/how-to-stop-refreshing-the-page-on-submit-in-javascript.
 userForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  setTimeout(() => {
-    
-    progressBar.classList.add("hidden");
-  }, 500);
+  // setTimeout(() => {
+
+  //   progressBar.classList.add("hidden");
+  // }, 500);
   const cuisineSelect = document.getElementById("cuisine-select");
   // const priceSelect = document.getElementById("price-select");
 
@@ -53,11 +53,10 @@ userForm.addEventListener("submit", (event) => {
   //   .then((response) => response.json())
   //   .then((data) => {
   // And passes the data to the function, above!
-console.log(event.currentTarget);
-
+  console.log(event.currentTarget);
 
   // goToResults();
-  handleAnimation(event.currentTarget, 1)
+  handleAnimation(event.currentTarget, 1);
   renderItems(cuisineSelection, priceSelection, boroughValues);
   // });
 });
@@ -246,10 +245,10 @@ priceInputs.forEach((input) => input.addEventListener("change", handlePrices));
 
 function goToCuisines(event) {
   handleAnimation(event.currentTarget, 1);
-  setTimeout(() => {
-    
-    progressBar.classList.remove("hidden");
-  }, 500);
+  // setTimeout(() => {
+
+  //   progressBar.classList.remove("hidden");
+  // }, 500);
   handleProgressBar(0);
 }
 
@@ -266,7 +265,7 @@ function goToBoroughs(event) {
   }
   handlePrices();
   handleAnimation(event.currentTarget, 1);
-  
+
   handleProgressBar(2);
 }
 
@@ -287,8 +286,8 @@ function backToCuisine(event) {
 }
 
 function backToPrices(event) {
-handleAnimation(event.currentTarget, -1);
-  
+  handleAnimation(event.currentTarget, -1);
+
   handleProgressBar(1);
   // reset boroughs when moving backwards to the prices selection
   document.querySelectorAll(".borough-checkbox").forEach((checkbox) => {
@@ -297,10 +296,8 @@ handleAnimation(event.currentTarget, -1);
   });
 }
 
-function backToIntro() {
-  selectedRestaurantSection.classList.add("hidden");
-  introSection.classList.remove("animate-out");
-  introSection.classList.remove("hidden");
+function backToIntro(event) {
+  handleAnimation(event.currentTarget, 1);
   // progressBar.classList.add("hidden")
   // reset cuisine selections
   document.getElementById("cuisine-select").value = "";
@@ -349,17 +346,17 @@ function handleProgressBar(activeIndex) {
     }
   });
 }
-// Tutor helped me with animation and progress bar with js 
+// Tutor helped me with animation and progress bar with js
 function handleAnimation(targetElement, direction) {
   // add the animate-out class to the target section
   let targetSection = targetElement.closest(
     ".intro-section, .cuisine-select-section, .price-section, .borough-selection, .selected-restaurant ",
   );
-if (!targetSection) {
-  targetSection = document.querySelector(".borough-selection")
-}
+  if (!targetSection) {
+    targetSection = document.querySelector(".borough-selection");
+  }
   targetSection.classList.add("animate-out");
-  
+
   // select for the next sections and add class for animate-in
   const sectionClasses = [
     "intro-section",
@@ -371,17 +368,40 @@ if (!targetSection) {
   console.log(targetSection.className);
   let animateInClass;
   sectionClasses.forEach((section, index) => {
-    if (targetSection.className.includes(section)) {
+    if (targetSection.className.includes("selected-restaurant")) {
+      animateInClass = ".intro-section"
+    }
+    else if (targetSection.className.includes(section)) {
       animateInClass = "." + sectionClasses[index + direction];
     }
   });
   const animateInElement = document.querySelector(animateInClass);
   console.log(animateInElement);
+  if (
+    animateInClass === ".cuisine-select-section" ||
+    animateInClass === ".price-section" ||
+    animateInClass === ".borough-selection"
+  ) {
+    progressBar.classList.remove("animate-out");
+    progressBar.classList.add("animate-in");
+  } else {
+    progressBar.classList.remove("animate-in");
+    progressBar.classList.add("animate-out");
+  }
   setTimeout(() => {
     animateInElement.classList.remove("animate-out");
     animateInElement.classList.add("animate-in");
     animateInElement.classList.remove("hidden");
     targetSection.classList.add("hidden");
+    if (
+      animateInClass === ".cuisine-select-section" ||
+      animateInClass === ".price-section" ||
+      animateInClass === ".borough-selection"
+    ) {
+      progressBar.classList.remove("hidden");
+    } else {
+      progressBar.classList.add("hidden");
+    }
   }, 500);
 }
 
