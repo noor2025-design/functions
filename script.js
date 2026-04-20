@@ -56,7 +56,7 @@ userForm.addEventListener("submit", (event) => {
   console.log(event.currentTarget);
 
   // goToResults();
-  handleAnimation(event.currentTarget, 1);
+  handleAnimation(".borough-selection",".selected-restaurant");
   renderItems(cuisineSelection, priceSelection, boroughValues);
   // });
 });
@@ -243,8 +243,8 @@ cuisineFigures.forEach((input) =>
 const priceInputs = document.querySelectorAll(".price-input");
 priceInputs.forEach((input) => input.addEventListener("change", handlePrices));
 
-function goToCuisines(event) {
-  handleAnimation(event.currentTarget, 1);
+function goToCuisines() {
+  handleAnimation(".intro-section",".cuisine-select-section");
   // setTimeout(() => {
 
   //   progressBar.classList.remove("hidden");
@@ -252,27 +252,27 @@ function goToCuisines(event) {
   handleProgressBar(0);
 }
 
-function goToPrices(event) {
-  handleAnimation(event.currentTarget, 1);
+function goToPrices() {
+  handleAnimation(".cuisine-select-section", ".price-section");
   handleCuisine();
   handleProgressBar(1);
 }
 
-function goToBoroughs(event) {
+function goToBoroughs() {
   // where user does not make any selections for cuisine or price
   if (!filteredRestaurants) {
     filteredRestaurants = restaurantData;
   }
   handlePrices();
-  handleAnimation(event.currentTarget, 1);
+  handleAnimation(".price-section",".borough-selection");
 
   handleProgressBar(2);
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/checked
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/disabled
-function backToCuisine(event) {
-  handleAnimation(event.currentTarget, -1);
+function backToCuisine() {
+  handleAnimation(".price-section", ".cuisine-select-section");
   handleProgressBar(0);
   // to reset prices going moving backwards for the user
   document.querySelectorAll(".price-input").forEach((radio) => {
@@ -285,8 +285,8 @@ function backToCuisine(event) {
   });
 }
 
-function backToPrices(event) {
-  handleAnimation(event.currentTarget, -1);
+function backToPrices() {
+  handleAnimation(".borough-selection",".price-section");
 
   handleProgressBar(1);
   // reset boroughs when moving backwards to the prices selection
@@ -296,8 +296,8 @@ function backToPrices(event) {
   });
 }
 
-function backToIntro(event) {
-  handleAnimation(event.currentTarget, 1);
+function backToIntro() {
+  handleAnimation(".selected-restaurant", ".intro-section");
   // progressBar.classList.add("hidden")
   // reset cuisine selections
   document.getElementById("cuisine-select").value = "";
@@ -327,9 +327,9 @@ function backToIntro(event) {
 // handleAnimation(event.currentTarget, 1)
 // }
 
-const progressCircles = document.querySelectorAll(".progress-circle");
 
 function handleProgressBar(activeIndex) {
+  const progressCircles = document.querySelectorAll(".progress-circle");
   progressCircles.forEach((circle, index) => {
     if (activeIndex === index) {
       circle.classList.add("active");
@@ -347,44 +347,44 @@ function handleProgressBar(activeIndex) {
   });
 }
 // Tutor helped me with animation and progress bar with js
-function handleAnimation(targetElement, direction) {
+function handleAnimation(animateOutClass, animateInClass) {
   // add the animate-out class to the target section
-  let targetSection = targetElement.closest(
-    ".intro-section, .cuisine-select-section, .price-section, .borough-selection, .selected-restaurant ",
-  );
-  if (!targetSection) {
-    targetSection = document.querySelector(".borough-selection");
-  }
-  targetSection.classList.add("animate-out");
-
+  // let targetSection = targetElement.closest(
+  //   ".intro-section, .cuisine-select-section, .price-section, .borough-selection, .selected-restaurant ",
+  // );
+  // if (!targetSection) {
+  //   targetSection = document.querySelector(".borough-selection");
+  // }
+  // targetSection.classList.add("animate-out");
+  const animateOutElement = document.querySelector(animateOutClass)
+animateOutElement.classList.add("animate-out");
   // select for the next sections and add class for animate-in
-  const sectionClasses = [
-    "intro-section",
-    "cuisine-select-section",
-    "price-section",
-    "borough-selection",
-    "selected-restaurant",
-  ];
-  console.log(targetSection.className);
-  let animateInClass;
-  sectionClasses.forEach((section, index) => {
-    if (targetSection.className.includes("selected-restaurant")) {
-      animateInClass = ".intro-section"
-    }
-    else if (targetSection.className.includes(section)) {
-      animateInClass = "." + sectionClasses[index + direction];
-    }
-  });
+  // const sectionClasses = [
+  //   "intro-section",
+  //   "cuisine-select-section",
+  //   "price-section",
+  //   "borough-selection",
+  //   "selected-restaurant",
+  // ];
+  // console.log(targetSection.className);
+
+  // sectionClasses.forEach((section, index) => {
+    
+  //   if (targetSection.className.includes("selected-restaurant")) {
+  //     animateInClass = ".intro-section"
+  //   }
+  //   else if (targetSection.className.includes(section)) {
+  //     animateInClass = "." + sectionClasses[index + direction];
+  //   }
+  // });
   const animateInElement = document.querySelector(animateInClass);
   console.log(animateInElement);
   if (
-    animateInClass === ".cuisine-select-section" ||
-    animateInClass === ".price-section" ||
-    animateInClass === ".borough-selection"
+    animateInClass !== ".cuisine-select-section" &&
+    animateInClass !== ".price-section" &&
+    animateInClass !== ".borough-selection"
   ) {
-    progressBar.classList.remove("animate-out");
-    progressBar.classList.add("animate-in");
-  } else {
+
     progressBar.classList.remove("animate-in");
     progressBar.classList.add("animate-out");
   }
@@ -392,13 +392,15 @@ function handleAnimation(targetElement, direction) {
     animateInElement.classList.remove("animate-out");
     animateInElement.classList.add("animate-in");
     animateInElement.classList.remove("hidden");
-    targetSection.classList.add("hidden");
+    animateOutElement.classList.add("hidden");
     if (
       animateInClass === ".cuisine-select-section" ||
       animateInClass === ".price-section" ||
       animateInClass === ".borough-selection"
     ) {
+      progressBar.classList.remove("animate-out");
       progressBar.classList.remove("hidden");
+      progressBar.classList.add("animate-in");
     } else {
       progressBar.classList.add("hidden");
     }
