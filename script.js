@@ -99,8 +99,13 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
 					<h3>${selectedRestaurant.restaurant}</h3>
           <section class="restaurant-details">
             <h4>Restuarant Details</h4>
-            <p>${selectedRestaurant.location}</p>
-            <p>${selectedRestaurant.hoursOfOperation}</p>
+            <p class="restaurant-location">${selectedRestaurant.location}</p>
+            <section>
+            ${selectedRestaurant.hoursOfOperation.map((item)=> {
+              return `<p class="restaurant-hours"><span>${item.days}:</span><span>${item.hours}</span></p>`
+            }).join("")
+            }
+            </section>
           </section>
           <h3>Dish Recommendation</h3>
           <section class="selected-dish-section">

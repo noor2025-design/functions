@@ -8,10 +8,10 @@
     "location": "Astoria, Queens",
     "description": "Slow-braised lamb with warm spices, tender and deeply aromatic, layered with sweetness and richness in every bite.",
     "address": "47-12 30th Ave., Astoria, NY 11103",
-    "hoursOfOperation": "Wed-Sun 12:00pm-10:00pm",
+    "hoursOfOperation": [{ "days": "Wed-Sun", "hours": "12:00pm-10:00pm" }],
     "borough": ["queens"],
-    "cusineImage":"./assets/images/Moroccan-bastilla-restaurant-card.jpg",
-    "dishImage":"./assets/images/Moroccan-Lamb-Tagine.jpg"
+    "cusineImage": "./assets/images/Moroccan-bastilla-restaurant-card.jpg",
+    "dishImage": "./assets/images/Moroccan-Lamb-Tagine.jpg"
   },
   {
     "cuisine": "Egyptian",
@@ -22,10 +22,10 @@
     "location": "Astoria, Queens",
     "description": "A layered pastry enjoyed both sweet and savory, here featuring a spiced beef filling, crisp, rich and filling.",
     "address": "25-48 Steinway St, Astoria, NY 11103",
-    "hoursOfOperation": "Tues-Sun 2:00pm-11:30pm",
+    "hoursOfOperation": [{ "days": "Tues-Sun", "hours": "2:00pm-11:30pm" }],
     "borough": ["queens"],
-    "cusineImage":"./assets/images/Egyptian-koshary-restaurant-card.jpg",
-    "dishImage":"./assets/images/Egyptian-beef-feteer.jpg"
+    "cusineImage": "./assets/images/Egyptian-koshary-restaurant-card.jpg",
+    "dishImage": "./assets/images/Egyptian-beef-feteer.jpg"
   },
   {
     "cuisine": "Palestinian",
@@ -36,10 +36,10 @@
     "location": "East Village, Manhattan",
     "description": "Tender lamb served over rice and soaked in a warm, tangy yogurt sauce, rich, fragrant, and meant to be shared.",
     "address": "107 Loisaida Ave, New York, NY",
-    "hoursOfOperation": "Mon-Sun 11:00am-10:00pm",
+    "hoursOfOperation": [{ "days": "Mon-Sun", "hours": "11:00am-10:00pm" }],
     "borough": ["manhattan"],
-    "cusineImage":"./assets/images/Palestinian-Maklouba-restaurant-card.jpg",
-    "dishImage":"./assets/images/Palestnian-mansaf.jpg"
+    "cusineImage": "./assets/images/Palestinian-Maklouba-restaurant-card.jpg",
+    "dishImage": "./assets/images/Palestnian-mansaf.jpg"
   },
   {
     "cuisine": "Yemeni",
@@ -50,10 +50,10 @@
     "location": "Bay Ridge, Brooklyn",
     "description": "Lamb layered over aromatic rice, infused with warm spices and a subtle smokiness.",
     "address": "7316 3rd Ave, Brooklyn, NY 11209",
-    "hoursOfOperation":"Mon-Sun 10am-11:00pm",
+    "hoursOfOperation": [{ "days": "Mon-Sun", "hours": "10:00am-11:00pm" }],
     "borough": ["brooklyn"],
-    "cusineImage":"./assets/images/Yemeni-restuarant-card.jpg",
-    "dishImage":"./assets/images/Yemeni-Mandi.jpg"
+    "cusineImage": "./assets/images/Yemeni-restuarant-card.jpg",
+    "dishImage": "./assets/images/Yemeni-Mandi.jpg"
   },
   {
     "cuisine": "Lebanese",
@@ -63,11 +63,11 @@
     "price": "$",
     "location": "Midtown, Manhattan",
     "description": "A warm, comforting soup offered in several variations, from red lentil to chicken or beef, simple, nourishing, and deeply familiar.",
-     "address": "1063 1st Ave, New York, NY 10022",
-    "hoursOfOperation": "Mon-Sun 10am-2:00am",
+    "address": "1063 1st Ave, New York, NY 10022",
+    "hoursOfOperation": [{ "days": "Mon-Sun", "hours": "10:00am-2:00am" }],
     "borough": ["manhattan"],
-    "cusineImage":"./assets/images/Lebanese-restaurant-card.jpg",
-    "dishImage":"./assets/images/Lebanese-Lentil-Soup.jpg"
+    "cusineImage": "./assets/images/Lebanese-restaurant-card.jpg",
+    "dishImage": "./assets/images/Lebanese-Lentil-Soup.jpg"
   },
   {
     "cuisine": "Syrian",
@@ -78,10 +78,13 @@
     "location": "Bay Ridge, Brooklyn",
     "description": "Pita bread stuffed with sujok, tomato and cheese.",
     "address": "8530 3rd Ave, Brooklyn, NY 11209",
-    "hoursOfOperation": "Mon-Thurs 12-11pm, Fri-Sat 12pm-12am, Sun 12pm-10pm",
+    "hoursOfOperation": [
+      { "days": "Mon-Thurs", "hours": "12:00pm-11:00pm" },
+      { "days": "Fri-Sat", "hours": "12:00pm-12:00am" },
+      { "days": "Sun", "hours": "12:00pm-10:00pm" }
+    ],
     "borough": ["brooklyn"],
-    "cusineImage":"./assets/images/Syrian-restaurant-card.jpg",
-    "dishImage":"./assets/images/Syrian-Toshka.jpg"
+    "cusineImage": "./assets/images/Syrian-restaurant-card.jpg",
+    "dishImage": "./assets/images/Syrian-Toshka.jpg"
   }
 ]
-

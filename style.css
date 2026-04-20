@@ -394,6 +394,7 @@ select {
 .cuisine-figure-section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  
   /* display: flex; */
    /* flex-wrap: wrap; */
     /* justify-content: center; */
@@ -462,14 +463,14 @@ select {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  max-width: 600px;
+  max-width: 400px;
   align-items: center;
 }
 .restaurant-details {
   background-color: var(--primary-color);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   color: var(--background-color);
   padding: 3rem;
   border-radius: 8px;
@@ -484,15 +485,20 @@ select {
   font-size: 2rem;
   font-family: var(--secondary-font)
 }
-
+.restaurant-hours{
+  display: flex;
+  flex-direction: column;
+  margin-block: 0.5rem;
+}
 .selected-dish-section{
-  padding: 3rem 2rem;
+  padding: 3rem;
   border-radius: 8px;
   background-color: var(--secondary-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  
 }
 .dish-name {
   font-size: 2rem;
@@ -572,6 +578,7 @@ from {
     /* flex-wrap: wrap; */
     /* justify-content: center; */
     gap: 3rem;
+    max-width: 600px ;
   }
   .cuisine-figure-section figure {
     /* flex-basis: calc(33% - 3rem); */
