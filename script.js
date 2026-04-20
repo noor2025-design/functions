@@ -56,7 +56,7 @@ userForm.addEventListener("submit", (event) => {
   console.log(event.currentTarget);
 
   // goToResults();
-  handleAnimation(".borough-selection",".selected-restaurant");
+  handleAnimation(".borough-selection", ".selected-restaurant");
   renderItems(cuisineSelection, priceSelection, boroughValues);
   // });
 });
@@ -244,7 +244,7 @@ const priceInputs = document.querySelectorAll(".price-input");
 priceInputs.forEach((input) => input.addEventListener("change", handlePrices));
 
 function goToCuisines() {
-  handleAnimation(".intro-section",".cuisine-select-section");
+  handleAnimation(".intro-section", ".cuisine-select-section");
   // setTimeout(() => {
 
   //   progressBar.classList.remove("hidden");
@@ -264,7 +264,7 @@ function goToBoroughs() {
     filteredRestaurants = restaurantData;
   }
   handlePrices();
-  handleAnimation(".price-section",".borough-selection");
+  handleAnimation(".price-section", ".borough-selection");
 
   handleProgressBar(2);
 }
@@ -286,7 +286,7 @@ function backToCuisine() {
 }
 
 function backToPrices() {
-  handleAnimation(".borough-selection",".price-section");
+  handleAnimation(".borough-selection", ".price-section");
 
   handleProgressBar(1);
   // reset boroughs when moving backwards to the prices selection
@@ -323,11 +323,6 @@ function backToIntro() {
   filteredRestaurants = restaurantData;
 }
 
-// function goToResults(event) {
-// handleAnimation(event.currentTarget, 1)
-// }
-
-
 function handleProgressBar(activeIndex) {
   const progressCircles = document.querySelectorAll(".progress-circle");
   progressCircles.forEach((circle, index) => {
@@ -348,51 +343,44 @@ function handleProgressBar(activeIndex) {
 }
 // Tutor helped me with animation and progress bar with js
 function handleAnimation(animateOutClass, animateInClass) {
-  // add the animate-out class to the target section
-  // let targetSection = targetElement.closest(
-  //   ".intro-section, .cuisine-select-section, .price-section, .borough-selection, .selected-restaurant ",
-  // );
-  // if (!targetSection) {
-  //   targetSection = document.querySelector(".borough-selection");
-  // }
-  // targetSection.classList.add("animate-out");
-  const animateOutElement = document.querySelector(animateOutClass)
-animateOutElement.classList.add("animate-out");
-  // select for the next sections and add class for animate-in
-  // const sectionClasses = [
-  //   "intro-section",
-  //   "cuisine-select-section",
-  //   "price-section",
-  //   "borough-selection",
-  //   "selected-restaurant",
-  // ];
-  // console.log(targetSection.className);
+  // animating out the current section
+  const animateOutElement = document.querySelector(animateOutClass);
+  animateOutElement.classList.remove("animate-in");
+  animateOutElement.classList.add("animate-out");
 
-  // sectionClasses.forEach((section, index) => {
-    
-  //   if (targetSection.className.includes("selected-restaurant")) {
-  //     animateInClass = ".intro-section"
-  //   }
-  //   else if (targetSection.className.includes(section)) {
-  //     animateInClass = "." + sectionClasses[index + direction];
-  //   }
-  // });
   const animateInElement = document.querySelector(animateInClass);
   console.log(animateInElement);
+  // animating out header
+  const headerElement = document.querySelector("header");
+  if (animateOutClass === ".intro-section") {
+    headerElement.classList.remove("animate-in");
+    headerElement.classList.add("animate-out");
+  }
+  // animating out the progress bar 
   if (
     animateInClass !== ".cuisine-select-section" &&
     animateInClass !== ".price-section" &&
     animateInClass !== ".borough-selection"
   ) {
-
     progressBar.classList.remove("animate-in");
     progressBar.classList.add("animate-out");
   }
   setTimeout(() => {
+    // animating in the next section
     animateInElement.classList.remove("animate-out");
     animateInElement.classList.add("animate-in");
     animateInElement.classList.remove("hidden");
     animateOutElement.classList.add("hidden");
+    // animating in header
+    if (animateOutClass === ".intro-section") {
+      headerElement.classList.add("hidden");
+    }
+    if (animateOutClass === ".selected-restaurant") {
+      headerElement.classList.remove("animate-out");
+      headerElement.classList.add("animate-in");
+      headerElement.classList.remove("hidden");
+    }
+    // animating in progress bar
     if (
       animateInClass === ".cuisine-select-section" ||
       animateInClass === ".price-section" ||

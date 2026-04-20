@@ -323,7 +323,7 @@ border: 2px var(--primary-color) solid;
   width: 2rem;
 }
 
-section.hidden{
+header.hidden, section.hidden{
     display: none;
 }
 
