@@ -464,6 +464,7 @@ select {
   flex-direction: column;
   gap: 3rem;
   max-width: 400px;
+  width: 80%;
   align-items: center;
 }
 .restaurant-details {
@@ -477,12 +478,12 @@ select {
 }
 
 .restaurant-details h4 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-family: var(--primary-font);
 }
 
 .restaurant-details p {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-family: var(--secondary-font)
 }
 .restaurant-hours{
@@ -491,7 +492,7 @@ select {
   margin-block: 0.5rem;
 }
 .selected-dish-section{
-  padding: 3rem;
+  padding: 1.5rem 1.5rem 2rem;
   border-radius: 8px;
   background-color: var(--secondary-color);
   display: flex;
@@ -500,15 +501,20 @@ select {
   gap: 2rem;
   
 }
+.dish-details{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 90%;
+}
 .dish-name {
   font-size: 2rem;
   font-family: var(--primary-font);
 }
 
 .dish-description {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-family: var(--secondary-font);
-  padding-inline: 2rem;
 }
 footer {
   background-color: var(--primary-color);
@@ -593,8 +599,29 @@ from {
 .intro-phrase {
   font-size: 2rem;
 }
+.restaurant-details h4 {
+  font-size: 2.5rem;
 }
-/* Media Query for large desktops */
-/* I pulled these breakpoints from https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
-@media (width >= 1025px) {
+.restaurant-details p {
+  font-size: 2rem;
+  
+}
+.restaurant-card {
+  width: 100%;
+ 
+}
+.selected-dish-section{
+  padding: 3rem;
+  
+}
+.dish-name {
+  font-size: 2.5rem;
+ 
+}
+
+.dish-description {
+  font-size: 1.5rem;
+ 
+  padding-inline: 2rem;
+}
 }

@@ -101,21 +101,24 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
             <h4>Restuarant Details</h4>
             <p class="restaurant-location">${selectedRestaurant.location}</p>
             <section>
-            ${selectedRestaurant.hoursOfOperation.map((item)=> {
-              return `<p class="restaurant-hours"><span>${item.days}:</span><span>${item.hours}</span></p>`
-            }).join("")
-            }
+            ${selectedRestaurant.hoursOfOperation
+              .map((item) => {
+                return `<p class="restaurant-hours"><span>${item.days}:</span><span>${item.hours}</span></p>`;
+              })
+              .join("")}
             </section>
           </section>
           <h3>Dish Recommendation</h3>
           <section class="selected-dish-section">
          
-          <p class="dish-name">${selectedRestaurant.dish}</p>
-          <div class="image-wrapper">
-            <img src=${selectedRestaurant.dishImage} alt=${selectedRestaurant.dish} />
-          </div>
-          <p class="dish-description">${selectedRestaurant.description}</p>
-           </section> 
+           <p class="dish-name">${selectedRestaurant.dish}</p>
+           <section class="dish-details"> 
+           <div class="image-wrapper">
+             <img src=${selectedRestaurant.dishImage} alt=${selectedRestaurant.dish} />
+           </div>
+            <p class="dish-description">${selectedRestaurant.description}</p>
+            </section>
+          </section> 
           <a class="directions-link" href="${googleUrl}" target="_blank">Get Directions!</a>
         </li>
                     `;
@@ -361,7 +364,7 @@ function handleAnimation(animateOutClass, animateInClass) {
     headerElement.classList.remove("animate-in");
     headerElement.classList.add("animate-out");
   }
-  // animating out the progress bar 
+  // animating out the progress bar
   if (
     animateInClass !== ".cuisine-select-section" &&
     animateInClass !== ".price-section" &&
