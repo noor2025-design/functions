@@ -564,7 +564,7 @@ from {
 
 
 /* MEDIA QUERY */
-/* I used a single breakpoint for this project because the layout only required one major adjustment bteween smaller screens and larger screens. Based on responsiveness, additional breakpoints did not appear neccessary for this design. I referenced these breakpoints which I have used in past projects as a guide nut attributing again. Source: https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
+/* I used a single breakpoint for this project because the layout only required one major adjustment between smaller screens and larger screens. Based on responsiveness, additional breakpoints did not appear neccessary for this design. I referenced these breakpoints which I have used in past projects as a guide but attributing again. Source: https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
 @media (width >= 769px) {
   .cuisine-figure-section {
     grid-template-columns: repeat(3, 1fr);
@@ -608,4 +608,4 @@ from {
 }
 
 /* General Attribution for :first-of-type and :last-of-type   */
-/* I used pseudo class selectors such as :first-of-type and :last-of-type multiple times throughout my CSS to target elements based on position within the parent container. Instead of repeating individual attributions, I am including this general reference to cover everywhere they were used. Source: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Selectors */
+/* I used these pseudo class selectors such as :first-of-type and :last-of-type multiple times throughout my CSS to target elements based on position within the parent container. Instead of repeating individual attributions, I am including this general reference to cover everywhere they were used in the css style sheet. Source: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Selectors */
