@@ -22,6 +22,8 @@ body {
 }
 
 /* I hadn't used a .ttf file before and needed to know how to load it. This lets me add the custom font pointing it to the file path and specifying the type of format which I found from https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@font-face. */
+
+/* TYPOGRAPHY */
 @font-face {
   font-family: "New-Yorker";
   src: url("./Fonts/New-Yorker-6Y46.ttf") format("truetype");
@@ -36,6 +38,7 @@ body {
   font-style: normal;
 }
 
+/* PRICE INPUTS */
 .radio-input-section {
   display: flex;
   justify-content: center;
@@ -83,6 +86,8 @@ body {
   justify-content: space-between;
   margin-top: auto;
 }
+
+/* LAYOUT, HEADER AND INTRO SECTIONS */
 main {
   padding: var(--gutter);
   flex: 1;
@@ -96,7 +101,7 @@ header {
 }
 h1 {
   font-size: 6rem;
-  font-family: "New-Yorker", sans-serif;
+  font-family: var(--primary-font);
   flex-direction: column;
   display: flex;
   justify-content: center;
@@ -107,6 +112,7 @@ h1 {
 h1 > span:first-of-type {
   font-size: 2rem;
 }
+/* I have used :first-of-type pseudo-class in the past, but I am including this attribution because it was not covered in class. My understanding is that :first-of-type targets the first <span> inside the h1 without it being the first child. Source: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:first-of-type   */
 h2 {
   flex-direction: column;
   font-family: "Titr";
@@ -131,7 +137,7 @@ h2 {
 }
 .intro-phrase {
   font-size: 1.75rem;
-  font-family: "New-Yorker", sans-serif;
+  font-family: var(--primary-font);
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
@@ -162,7 +168,7 @@ h2 {
 
 
 h3 {
-  font-family: "New-Yorker", sans-serif;
+  font-family: var(--primary-font);
   font-size: 3rem;
   flex-direction: column;
   display: flex;
@@ -172,6 +178,7 @@ h3 {
   padding: 1rem;
 }
 
+/* PROGRESS BAR */
 .progress-bar{
 display: flex;
 width: 50vw;
@@ -184,6 +191,8 @@ min-width: 300px;
   width: 33%;
   position: relative;
 }
+/* I used the :not(selector) to exclude specific elements from being selected in this case is the progress node that does not match the user's current question. This allows me to apply styles to all non-active progress nodes while excluding the current one. Source: https://dev.to/rayan2228/the-ultimate-css-selectors-cheat-sheet-2025-45ep  */
+
 .progress-circle{
 height:20px ;
 width: 20px;
@@ -235,7 +244,7 @@ position: relative;
   background-color: var(--secondary-color);
 }
 
-
+/* USER INPUT SECTIONS */
 .cuisine-select-section,
 .price-section,
 .borough-section {
@@ -259,6 +268,8 @@ position: relative;
   gap: 2rem;
   align-items: center;
 }
+
+/* BUTTONS */
 #intro-button,
 #form-button,
 .cuisine-select-button,
@@ -325,6 +336,7 @@ header.hidden, section.hidden{
     display: none;
 }
 
+/* BOROUGH SELECTION  */
 .borough-label {
   display: flex;
   cursor: pointer;
@@ -370,6 +382,8 @@ select {
   cursor: pointer;
   display: none;
 }
+
+/* CUISINE SELECTION */
 .cuisine-select-section {
   display: flex;
   flex-direction: column;
@@ -412,10 +426,11 @@ select {
   object-fit: cover;
 }
 .cuisine-select-section figcaption{
-  font-family: "New-Yorker", sans-serif;
+  font-family: var(--primary-font);
   font-size: 1.5rem;
 }
 
+/* RESTAURANT CARD */
 .selected-restaurant{
     display: flex;
     flex-direction: column;
@@ -458,6 +473,8 @@ select {
   flex-direction: column;
   margin-block: 0.5rem;
 }
+
+/* SELECTED DISH  */
 .selected-dish-section{
   padding: 1.5rem 1.5rem 2rem;
   border-radius: 8px;
@@ -483,6 +500,8 @@ select {
   font-size: 1.4rem;
   font-family: var(--secondary-font);
 }
+
+/* FOOTER */
 footer {
   background-color: var(--primary-color);
   color: var(--secondary-color);
@@ -509,7 +528,8 @@ footer {
   margin-right: .25rem;
 }
 
-/* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@keyframes */
+/* ANIMATION */
+/* I worked with a tutor to build this animation. The tutor mainly supported the javascript logic behind it but I was able to apply the CSS animation styling myself using these resources on keyframes and animation. Sources: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@keyframes */
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/animation */
 @keyframes animate-in {
 from {
@@ -542,8 +562,9 @@ from {
   animation: .5s ease-in-out animate-out forwards;
 }
 
-/* Media Query for small desktops */
-/* I pulled these breakpoints from https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
+
+/* MEDIA QUERY */
+/* I used a single breakpoint for this project because the layout only required one major adjustment bteween smaller screens and larger screens. Based on responsiveness, additional breakpoints did not appear neccessary for this design. I referenced these breakpoints which I have used in past projects as a guide nut attributing again. Source: https://dev.to/gerryleonugroho/responsive-design-breakpoints-2025-playbook-53ih */
 @media (width >= 769px) {
   .cuisine-figure-section {
     grid-template-columns: repeat(3, 1fr);
@@ -553,7 +574,7 @@ from {
   
   .cuisine-select-section figcaption,
 .restaurant-card figcaption {
-  font-family: "New-Yorker", sans-serif;
+  font-family: var(--primary-font);
   font-size: 2rem;
 }
 .intro-phrase {
@@ -585,3 +606,6 @@ from {
   padding-inline: 2rem;
 }
 }
+
+/* General Attribution for :first-of-type and :last-of-type   */
+/* I used pseudo class selectors such as :first-of-type and :last-of-type multiple times throughout my CSS to target elements based on position within the parent container. Instead of repeating individual attributions, I am including this general reference to cover everywhere they were used. Source: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Selectors */

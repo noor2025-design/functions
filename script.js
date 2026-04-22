@@ -17,7 +17,7 @@ fetch("assets/data.json")
     restaurantData = data;
   });
 
-// The page was refreshing every time I hit submit and cleared the results. I found event.preventDefault() to stop this behavior and it tells the browser to ignore the browser behavior and listen to javascript from this reference https://www.tutorialspoint.com/article/how-to-stop-refreshing-the-page-on-submit-in-javascript.
+// The page was refreshing every time I hit submit and cleared the results. I found event.preventDefault() to stop this behavior and it tells the browser to ignore the browser behavior and listen to javascript from this reference. Source:https://www.tutorialspoint.com/article/how-to-stop-refreshing-the-page-on-submit-in-javascript.
 userForm.addEventListener("submit", (event) => {
   event.preventDefault();
   
@@ -41,11 +41,13 @@ userForm.addEventListener("submit", (event) => {
     });
   }
 
-  // **Capturing Drop-Down menu**
-  // I needed to capture the users dropdown selections to pass into my function. I used getElementById to grab the dropdown and .value to get the selected option, then stored each for cuisine and price from stack overflow https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript.
+  // I created an empty array called boroughValues to store users borough selections. I used .forEach to loop through each checkbox and .push to add the value into the array. I found that .push adds to an array and returns the new array.  Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
 
-  
-  console.log(event.currentTarget);
+
+  // **Capturing user selections form from inputs*
+  // I needed to capture the users dropdown selections to pass into my function. I used getElementById to grab the dropdown and .value to get the selected cuisine, price to pass filter values and looped through borough selection for all checked values. Source: stack overflow https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript.
+
+  // when the user submits, it calls handleAnimation to switch teh interface an dthen render items to filter the users selections for what to show 
 
   handleAnimation(".borough-selection", ".selected-restaurant");
   renderItems(cuisineSelection, priceSelection, boroughValues);
@@ -55,7 +57,10 @@ userForm.addEventListener("submit", (event) => {
 // Function to render your items.
 let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
   
-  //   I noticed the site was still populating results when hitting submit without selecting anything. The return is used inside the function if both fields are empty and found this from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return.
+
+  // grab the ul where the selected restaurant will show, and only filter if the user actually selected boroughs
+  // go through eahc restaurant and keep it if atleast one borough is selecte
+  // matches any boroughs teh user selected and .some checks for atleast one match and .includes uses all the values
 
   let dataList = document.querySelector(".selected-restaurant ul");
 
@@ -67,6 +72,8 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
   // The if statement filters restuarants by borough if the user selected one or more boroughs. Now that filteredRestaurants is alrady narrrowed down by cuisine and price, the borough then filters for results. I found out about .some() and .includes() syntax to check if any borough in a restaurants array matches any of the users selections from stack overflow and the other articles. The .some() stops when it finds its first match instead of looping through everything and .includes() checks for specific values in the array which would return true or false.  Sources: https://stackoverflow.com/questions/16312528/check-if-an-array-contains-any-element-of-another-array-in-javascript
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
   // https://www.w3schools.com/jsref/jsref_some.asp
+
+
 
   // I wanted the results to randomly select a different restuarant each time so that the site doesn't push out the same one when I add more resturants to my json file. I reviewed this article from stack overflow (https://stackoverflow.com/a/4550514) and a tutor helped clarify it more. The Math.random() generates a random decimal number and multiplies it by filteredRestaurants.length which matches the number of resaurants with the users filters. The Math.floor()rounds it down to a whole number because as I add more restuarants then the array will become longer so filteredRestaurants.length will grow.
 
@@ -108,13 +115,15 @@ let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
         </li>
                     `;
 
+  // I needed to show the restaurants hours of operation but some restuarants have multipte hours/days and hoursofoperation is an array with objects for day/hours. I used .map in the template literal to loop through and return for each. Then I noticed that there were commas after each time it returned with the hours/days so .join combines them all without commas. Sources: https://stackoverflow.com/questions/46544878/js-how-to-map-through-array-in-template-literals,https://www.w3schools.com/jsref/jsref_join.asp, 
+
+
   // When I first tested the submit button, every time the user clicked the submit button the new results were being added on top of the previous results instead of one time. I found from stack overflow and W3 that I needed to clear the div before rendering new results each time the form was submitted and that setting innerHTML to "" would clear out results. Sources: https://stackoverflow.com/questions/3450593/how-do-i-clear-the-content-of-a-div-using-javascript, https://www.w3schools.com/jsref/prop_html_innerhtml.asp
   dataList.innerHTML = "";
   dataList.insertAdjacentHTML("beforeend", listItem); // Add it to the `ul`!
 };
 
 function handleCuisine() {
-  console.log("test");
   // when the user makes a selection from the dropdown menu, want to disable prices that are not available
   // 1. Filter data based on cuisine type
   const cuisineSelect = document.getElementById("cuisine-select");
@@ -125,7 +134,8 @@ function handleCuisine() {
       (restaurant) => restaurant.cuisine.toLowerCase() === cuisineSelection,
     );
   }
-  // I used .includes() to check if a price already exists in the array before adding it and .push() to add the value only if it is not already present so that there are no duplicates. The articles helped me understand how .push() works and tutor helped me understand how to combine them. A tutor also helped me better understand how this logic works togther in practice. Sources: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push,https://bobbyhadz.com/blog/javascript-array-push-if-not-exist.
+
+  // I needed to collect onlt the prices from the filtered restaurants so I could disable price options that were not available. I tied using .push() and .includes() on my own but could not get the logic to work correctly together. A tutor helped me understand how this logic works togther in practice. The .includes checks if a price is already in the array, and .push only adds if its not there yet so that there are no duplicates. Sources: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push,https://bobbyhadz.com/blog/javascript-array-push-if-not-exist.
   // 2. Push available prices to an array
   let availablePrices = [];
   filteredRestaurants.forEach((restaurant) => {
@@ -144,12 +154,11 @@ function handleCuisine() {
     }
   });
   handlePrices();
-  console.log("handle cuisine");
+  
 }
-// Disabled the price radio inputs based on availablePrices so that users can only select options that are available in teh dataset.The .disabled property evaulates whether the value is in availablePrices using .includes(). The article helped me understand to target using this selector. Sources: https://www.w3schools.com/jsref/prop_select_disabled.asp, https://dev.to/rayan2228/the-ultimate-css-selectors-cheat-sheet-2025-45ep.
+// Disabled the price radio inputs based on availablePrices so that users can only select options that are available in the dataset. The .disabled property evaluates whether the value is in availablePrices using .includes(). The article helped me understand to target using this selector. Sources: https://www.w3schools.com/jsref/prop_select_disabled.asp, https://dev.to/rayan2228/the-ultimate-css-selectors-cheat-sheet-2025-45ep.
 
 function handlePrices() {
-  console.log("test 2");
   const priceRadioInput = document.querySelector(".price-input:checked");
   const priceSelection = priceRadioInput.value;
   if (!filteredRestaurants) {
@@ -160,20 +169,18 @@ function handlePrices() {
       (restaurant) => restaurant.price === priceSelection,
     );
   }
-  console.log(filteredRestaurants);
 
   let availableBoroughs = [];
   filteredRestaurants.forEach((restaurant) => {
   
     availableBoroughs.push(...restaurant.borough);
-    console.log(restaurant.borough);
+    
 
     // }
   });
 
-  // This article helped with understanding how the spread operator works because it can expand an array into individual elements.  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax. The (...restaurant.borough) in my code adds each borough seperately into the array.
+  // This article helped with understanding how the spread operator works because it can expand an array into individual elements. The (...restaurant.borough) in my code adds each borough seperately into the array. Source:  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax.
 
-  console.log(availableBoroughs);
 
   const boroughCheckboxes = document.querySelectorAll(".borough-checkbox");
   boroughCheckboxes.forEach((checkbox) => {
@@ -185,7 +192,6 @@ function handlePrices() {
 
 
 function handleCuisineFigure(event) {
-  console.log(event.currentTarget);
   const figureElement = event.currentTarget;
   const figCaptionElement = figureElement.querySelector("figCaption");
   const figCaptionValue = figCaptionElement.textContent.toLowerCase();
@@ -201,9 +207,8 @@ function handleCuisineFigure(event) {
   cuisineSelect.value = figCaptionValue;
 }
 
-// These articles helped with accessing the element the event handler is connected to and how to add/remove classes to update an active state. I was running into issue getting the function to work. After reviewing with a tutor, I was able to resolve the issue. Sources:
-// https://stackoverflow.com/questions/44676281/plain-javascript-event-target-get-the-next-sibling-the-first-child
-
+// These articles helped with accessing the element the event handler is connected to and how to add/remove classes to update an active state. This function handles when a user clicks a cuisine figure. I was having trouble getting the right element from the click event and a tutor introduced me to event.currentTaret which gives the lement the event handler is attached to. I was then able to use querySelector to find the figcaption inside it and classList add/remove to clear the active state from all figures an only focus on the one that was clicked. 
+// Sources:
 // https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
 
@@ -256,7 +261,7 @@ function goToBoroughs() {
   handleProgressBar(2);
 }
 
-// https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/checked
+// When the user clicks back to cuisine, I needed to reset the price sectionn back to the default. I used .checked to re-select the any-price option and unchecked all the others. I used .disabled for any price options that were disabled  that needed to be reenabled as the user moves forward. Sources: https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/checked
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/disabled
 function backToCuisine() {
   handleAnimation(".price-section", ".cuisine-select-section");
@@ -310,6 +315,7 @@ function backToIntro() {
   filteredRestaurants = restaurantData;
 }
 
+// I tried to implement the progress bar using classList to add remove status based on the step the user was on. I had the basic logic working but was not able to get it fully functioning on my own. A tutor helped me tweak the logic and get it working as intended.
 function handleProgressBar(activeIndex) {
   const progressCircles = document.querySelectorAll(".progress-circle");
   progressCircles.forEach((circle, index) => {
@@ -382,4 +388,6 @@ function handleAnimation(animateOutClass, animateInClass) {
   }, 500);
 }
 
-// https://stackoverflow.com/questions/72870075/javascript-closest-to-utilise-either-one-of-two-selectors
+// I wanted to animate between sections for each question but could the transitions to work. I understood the idea of adding and removing classes to trigger animations but I was struggling with the timing and order with hiding and showing sections at the right moment. A tutor helped me structure the functions using setTimeout to delay the animate in so that it happend after the animate-out stops. 
+// Sources: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/animation,https://www.w3schools.com/JSREF/met_win_settimeout.asp
+
