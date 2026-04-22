@@ -20,12 +20,9 @@ fetch("assets/data.json")
 // The page was refreshing every time I hit submit and cleared the results. I found event.preventDefault() to stop this behavior and it tells the browser to ignore the browser behavior and listen to javascript from this reference https://www.tutorialspoint.com/article/how-to-stop-refreshing-the-page-on-submit-in-javascript.
 userForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  // setTimeout(() => {
-
-  //   progressBar.classList.add("hidden");
-  // }, 500);
+  
   const cuisineSelect = document.getElementById("cuisine-select");
-  // const priceSelect = document.getElementById("price-select");
+  
 
   // I used the :checked pseudo-class selector from DEV article to target only inputs that are selected by the user. The document.querySelector(".price-input:checked") grabs the single checked radio button and document.querySelectorAll(".borough-checkbox:checked") grabs all checked borough checkboxes at once. I also used the forEach loop pattern from the javascript tutorial article to loop through the checked borough checkboxes for each value in the array to filter the results. Sources: https://dev.to/rayan2228/the-ultimate-css-selectors-cheat-sheet-2025-45ep, https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/
 
@@ -35,7 +32,7 @@ userForm.addEventListener("submit", (event) => {
   );
 
   const cuisineSelection = cuisineSelect.value;
-  // const priceSelection = priceSelect.value;
+  
   const priceSelection = priceRadioInput.value;
   let boroughValues = [];
   if (boroughCheckboxes) {
@@ -47,15 +44,9 @@ userForm.addEventListener("submit", (event) => {
   // **Capturing Drop-Down menu**
   // I needed to capture the users dropdown selections to pass into my function. I used getElementById to grab the dropdown and .value to get the selected option, then stored each for cuisine and price from stack overflow https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript.
 
-  // Fetch gets your (local) JSON file…
-  // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-  // fetch("assets/data.json")
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  // And passes the data to the function, above!
+  
   console.log(event.currentTarget);
 
-  // goToResults();
   handleAnimation(".borough-selection", ".selected-restaurant");
   renderItems(cuisineSelection, priceSelection, boroughValues);
   // });
@@ -63,13 +54,7 @@ userForm.addEventListener("submit", (event) => {
 
 // Function to render your items.
 let renderItems = (cuisineSelection, priceSelection, boroughValues) => {
-  // if (
-  //   priceSelection === "" &&
-  //   cuisineSelection === "" &&
-  //   boroughValues.length === 0
-  // ) {
-  //   return;
-  // }
+  
   //   I noticed the site was still populating results when hitting submit without selecting anything. The return is used inside the function if both fields are empty and found this from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return.
 
   let dataList = document.querySelector(".selected-restaurant ul");
@@ -179,7 +164,7 @@ function handlePrices() {
 
   let availableBoroughs = [];
   filteredRestaurants.forEach((restaurant) => {
-    // if (!restaurant.borough.some((borough) => availableBoroughs.includes(borough))) {
+  
     availableBoroughs.push(...restaurant.borough);
     console.log(restaurant.borough);
 
@@ -198,9 +183,6 @@ function handlePrices() {
   });
 }
 
-// const cuisineFigures = document.querySelectorAll(
-//   ".cuisine-select-section figure",
-// );
 
 function handleCuisineFigure(event) {
   console.log(event.currentTarget);
@@ -253,10 +235,7 @@ priceInputs.forEach((input) => input.addEventListener("change", handlePrices));
 
 function goToCuisines() {
   handleAnimation(".intro-section", ".cuisine-select-section");
-  // setTimeout(() => {
-
-  //   progressBar.classList.remove("hidden");
-  // }, 500);
+  
   handleProgressBar(0);
 }
 
@@ -306,7 +285,7 @@ function backToPrices() {
 
 function backToIntro() {
   handleAnimation(".selected-restaurant", ".intro-section");
-  // progressBar.classList.add("hidden")
+
   // reset cuisine selections
   document.getElementById("cuisine-select").value = "";
   const cuisineFigures = document.querySelectorAll(

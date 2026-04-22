@@ -109,7 +109,6 @@ h1 > span:first-of-type {
 }
 h2 {
   flex-direction: column;
-  /* font-family: "nawin-arabic", sans-serif; */
   font-family: "Titr";
   font-size: 5rem;
   font-weight: 900;
@@ -188,7 +187,6 @@ min-width: 300px;
 .progress-circle{
 height:20px ;
 width: 20px;
-/* background-color:var(--primary-color); */
 border: var(--primary-color) 2px solid;
 border-radius: 50%;
 position: relative;
@@ -327,19 +325,6 @@ header.hidden, section.hidden{
     display: none;
 }
 
-/* .directions-link {
-  background-color: var;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  text-align: center;
-  width: 30%;
-  min-width: 150px;
-  align-self: center;
-} */
-
-.borough-checkbox {
-  /* appearance: auto; */
-}
 .borough-label {
   display: flex;
   cursor: pointer;
@@ -394,12 +379,6 @@ select {
 .cuisine-figure-section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  
-  /* display: flex; */
-   /* flex-wrap: wrap; */
-    /* justify-content: center; */
-  /* flex-direction: column; */
-  /* align-items: center; */
   gap: .5rem;
 }
 .cuisine-select-section figure{
@@ -414,23 +393,11 @@ select {
   box-sizing: border-box;
   border: 5px transparent solid;
 }
-.cuisine-select-section figure{
-  /* flex: 1 1 calc(50% - .5rem); */
-  
-}
-
 
 .cuisine-select-section .active-figure {
   border: 5px var(--primary-color) solid;
 }
-/* .figure-overlay{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-} */
+
 .cuisine-select-section .image-wrapper,
 .restaurant-card .image-wrapper {
   width: 100%;
@@ -580,17 +547,10 @@ from {
 @media (width >= 769px) {
   .cuisine-figure-section {
     grid-template-columns: repeat(3, 1fr);
-    /* flex-direction: row; */
-    /* flex-wrap: wrap; */
-    /* justify-content: center; */
     gap: 3rem;
     max-width: 600px ;
   }
-  .cuisine-figure-section figure {
-    /* flex-basis: calc(33% - 3rem); */
-    /* flex-grow: 0; */
-    /* flex-shrink: 0; */
-  }
+  
   .cuisine-select-section figcaption,
 .restaurant-card figcaption {
   font-family: "New-Yorker", sans-serif;
